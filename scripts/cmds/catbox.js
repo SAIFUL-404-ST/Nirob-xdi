@@ -1,49 +1,41 @@
 const axios = require("axios");
-const fs = require("fs-extra");
-const FormData = require("form-data");
 
-module.exports = {
-  config: {
-    name: "catbox",
-    version: "1.0",
-    author: "nirob",
-    description: "Uploads replied image or video to catbox.moe and returns link",
-    category: "tools",
-    usage: "Reply with image/video",
-    cooldown: 5,
-  },
-
-  onStart: async function ({ message, event, api }) {
-    const reply = event.messageReply;
-
-    if (!reply || !reply.attachments || reply.attachments.length === 0) {
-      return message.reply("Please reply to a photo or video.");
-    }
-
-    const attachment = reply.attachments[0];
-    const url = attachment.url;
-    const ext = attachment.type === "video" ? ".mp4" : attachment.type === "photo" ? ".jpg" : null;
-
-    if (!ext) return message.reply("Only photo or video attachments are supported.");
-
-    const path = __dirname + `/cache/file${ext}`;
-    const res = await axios.get(url, { responseType: "arraybuffer" });
-    fs.writeFileSync(path, res.data);
-
-    const form = new FormData();
-    form.append("fileToUpload", fs.createReadStream(path));
-    form.append("reqtype", "fileupload");
-
-    try {
-      const upload = await axios.post("https://catbox.moe/user/api.php", form, {
-        headers: form.getHeaders(),
-      });
-
-      fs.unlinkSync(path);
-      message.reply(`Uploaded successfully:\n${upload.data}`);
-    } catch (err) {
-      fs.unlinkSync(path);
-      message.reply("Upload failed. Try again later.");
-    }
-  }
+const baseApiUrl = async () => {
+  const base = await axios.get(
+    `https://raw.githubusercontent.com/Mostakim0978/D1PT0/refs/heads/main/baseApiUrl.json`
+  );
+  return base.data.api;
 };
+
+(module.exports.config = {
+  name: "catbox",
+  aliases: ["cat","cb"],
+  version: "1.6.9",
+  author: "Nazrul",
+  role: 0,
+  category: "utility",
+  Description: "Convert mp4/mp3/image to link",
+  countdown: 5,
+  guide: {
+    en: "reply to a mp4/mp3/image to upload in catbox"
+  }
+},
+
+module.exports.onStart = async ({ api, event }) => {
+  try {
+   const allUrl = event.messageReply?.attachments[0]?.url; 
+   if (!allUrl) {
+        return api.sendMessage("❌ Please reply to a attachment for Upload..!", event.threadID, event.messageID);
+      };
+   const msg = await api.sendMessage("✨ Uploading Your attachment.. Please Wait✨", event.threadID);
+
+   const { data } = await axios.get(`${await baseApiUrl()}/catbox?url=${encodeURIComponent(allUrl)}`);
+
+  await api.unsendMessage(msg.messageID);
+
+     api.sendMessage(`✅ Here's your Uploaded Url ✨\n\n`+ data.url , event.threadID, event.messageID);
+        
+  } catch (e) {
+    api.sendMessage("❌ error while uploading your attachment.", event.threadID);
+  }
+  });
