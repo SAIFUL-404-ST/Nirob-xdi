@@ -32,7 +32,7 @@ module.exports = {
         fs.writeFileSync(videoPath, Buffer.from(response.data, "binary"));
 
         return message.reply({
-          body: "⛔ এই নেও বসের আইডির লিংক |👇= https://www.facebook.com/share/1LBhgrKVPD/ মেসেজ দেও 😚",
+          body: "⛔ এই নেও বসের আইডির লিংক |👇= https://www.facebook.com/share/100081317798618 মেসেজ দেও 😚",
           attachment: fs.createReadStream(videoPath)
         }, () => fs.unlinkSync(videoPath)); // পাঠানোর পর temp ভিডিও ডিলিট
       } catch (err) {
