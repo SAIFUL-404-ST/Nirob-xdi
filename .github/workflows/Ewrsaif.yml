@@ -1,10 +1,10 @@
-name: nirob
+name: saif
 
 on:
   push:
-    branches: [ shan ]
+    branches: [ saif ]
   pull_request:
-    branches: [ shan ]
+    branches: [ saif ]
 jobs:
   build:
     runs-on: ubuntu-latest
