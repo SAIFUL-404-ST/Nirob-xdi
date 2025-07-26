@@ -15,17 +15,17 @@ module.exports = {
 		envConfig: {}
 	},
 	onStart: async function ({ message }) {
-		const authorName = " ღ⸙SAIFღ⸙ ";
-		const ownAge = "『 ⸙__20+__⸙ 』";
-		const messenger = "https://m.me/saif9xm";
-		const authorFB = "https://www.facebook.com/saif9xm";
-		const authorNumber = "_01311673711";
-		const Status = "ღ__𝙋𝙐𝙍𝘼𝙄 𝙎𝙄𝙉𝙂𝙇𝙀 __ღ";
+		const authorName = " SAIF ";
+		const ownAge = "『 20+ 』";
+		const messenger = "https://m.me/100081317798618";
+		const authorFB = "https://www.facebook.com/100081317798618";
+		const authorNumber = "01823772045";
+		const Status = "Broken";
 		const urls = [
-"https://files.catbox.moe/kszyk7.mp4",
-"https://files.catbox.moe/kszyk7.mp4",
-"https://files.catbox.moe/kszyk7.mp4",
-"https://files.catbox.moe/kszyk7.mp4"
+"https://files.catbox.moe/21a4wp.mp4",
+"https://files.catbox.moe/21a4wp.mp4",
+"https://files.catbox.moe/21a4wp.mp4",
+"https://files.catbox.moe/21a4wp.mp4"
 ];
 		const link = urls[Math.floor(Math.random() * urls.length)];
 		const now = moment().tz('Asia/Jakarta');
@@ -54,7 +54,7 @@ module.exports = {
     𝑻𝒈: https://t.me/@S41FUL0
     𝑰𝒏𝒔𝒕𝒂: https://www.instagram.com/saif9xm
     𝑪𝒂𝒑𝑪𝒖𝒕: 𝐬𝐨𝐫𝐫𝐲>³
-    𝑻𝒊𝒌𝑻𝒐𝒌: brand_saif1
+    𝑻𝒊𝒌𝑻𝒐𝒌: heartless_saif1145
     𝒀𝒐𝒖𝑻𝒖𝒃𝒆: 𝐰𝐚𝐢𝐭⚠
 \===============`,
 			attachment: await global.utils.getStreamFromURL(link)
