@@ -10,12 +10,12 @@ module.exports.config = {
 }
 module.exports.onStart = async function({ api, args, Users, event}) {
     var mention = Object.keys(event.mentions)[0];
-    if(!mention) return api.sendMessage("বস তামিম খানকিরপুলারে একটা মেনশন দেন-!!🫂", event.threadID);
+    if(!mention) return api.sendMessage("বস সাইফুল!! খানকিরপুলারে একটা মেনশন দেন-!!🫂", event.threadID);
  let name =  event.mentions[mention];
     var arraytag = [];
         arraytag.push({id: mention, tag: name});
     var a = function (a) { api.sendMessage(a, event.threadID); }
-a("তোরে চুদলো BOSS TAMIM");
+a("তোরে চুদলো সাইফুল বস");
 setTimeout(() => {a({body: "ভোদাই জানে চোদার মজা তোর মাকে জিজ্ঞেস কর কেমন দিছিলাম চোদা 🥰।" + " নিশি রাতে তোর মাকে চুদে পেয়েছিলাম অনেক আনন্দ।🤩✊🏻 " + name, mentions: arraytag})}, 3000);
 setTimeout(() => {a({body: "খাংকির পোলা তর কচি বোন রে চুদি 😍.." + " " + name, mentions: arraytag})}, 5000);
 setTimeout(() => {a({body: "মাদারচোদ তর আম্মু পম পম খাংকির পো 🐰" + " " + name, mentions: arraytag})}, 7000);
