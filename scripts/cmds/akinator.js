@@ -5,7 +5,7 @@ module.exports = {
     name: "akinator",
     aliases: ["aki"],
     version: "1.0",
-    author: "𝗦𝗵𝗔𝗻",
+    author: "SAIF",
     countDown: 10,
     role: 0,
     shortDescription: {
