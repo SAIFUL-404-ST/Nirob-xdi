@@ -24,7 +24,7 @@ body: `
 ‣ 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤 ⓕ
 محمد سيف الإسلام
 \n\n\n  `,
-attachment: await global.utils.getStreamFromURL("https://files.catbox.moe/8ll3tv.mp4")
+attachment: await global.utils.getStreamFromURL("https://files.catbox.moe/rfn7jh.mp4")
 });
 }
 }
