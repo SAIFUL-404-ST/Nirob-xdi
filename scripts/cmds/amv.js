@@ -13,7 +13,7 @@ module.exports = {
   config: {
     name: "amv",
     aliases: [], 
-    author: "𝗦𝗵𝗔𝗻",
+    author: "SAIF",
     version: "1.0",
     cooldowns: 5,
     role: 0,
