@@ -69,7 +69,7 @@ module.exports = {
 
       // Media from catbox (video)
       let attachment = null;
-      const mediaUrl = "https://files.catbox.moe/9nx2wx.mp4";
+      const mediaUrl = "https://files.catbox.moe/dmk6bi.mp4";
 
       if (mediaUrl.endsWith(".jpg") || mediaUrl.endsWith(".png") || mediaUrl.endsWith(".mp4")) {
         const response = await axios.get(mediaUrl, { responseType: "stream" });
