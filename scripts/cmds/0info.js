@@ -24,10 +24,10 @@ module.exports = {
     const status = "Broken";
 
     const urls = [
-      "https://files.catbox.moe/21a4wp.mp4",
-      "https://files.catbox.moe/21a4wp.mp4",
-      "https://files.catbox.moe/21a4wp.mp4",
-      "https://files.catbox.moe/21a4wp.mp4"
+      "https://files.catbox.moe/ree9su.mp4",
+      "https://files.catbox.moe/ree9su.mp4",
+      "https://files.catbox.moe/ree9su.mp4",
+      "https://files.catbox.moe/ree9su.mp4"
     ];
     const link = urls[Math.floor(Math.random() * urls.length)];
 
