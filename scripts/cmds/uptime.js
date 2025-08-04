@@ -8,7 +8,7 @@ module.exports = {
   config: {
     name: "uptime",
     aliases: ["up"],
-    author: "NIROB",
+    author: "SAIF",
     countDown: 0,
     role: 0,
     category: "system",
@@ -69,7 +69,7 @@ module.exports = {
 
       // Media from catbox (video)
       let attachment = null;
-      const mediaUrl = "https://files.catbox.moe/dmk6bi.mp4";
+      const mediaUrl = "https://files.catbox.moe/ggr1ui.mp4";
 
       if (mediaUrl.endsWith(".jpg") || mediaUrl.endsWith(".png") || mediaUrl.endsWith(".mp4")) {
         const response = await axios.get(mediaUrl, { responseType: "stream" });
