@@ -4,7 +4,7 @@ module.exports = {
 	config: {
 		name: "leave",
 		version: "1.5",
-		author: "Modified by Mim x ChatGPT",
+		author: "SAIF ",
 		category: "events"
 	},
 
@@ -36,7 +36,7 @@ module.exports = {
 🫡 আবার নতুন কেউ আসে...
 		
 🥀 বিদায় {userName}, 
-⚠️ গ্রুপে থাকার মতো মন-মানসিকতা ছিল না বোধহয়!`
+⚠️ Jah Vag !`
 		}
 	},
 
