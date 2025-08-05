@@ -6,7 +6,7 @@ module.exports = {
 	config: {
 		name: "welcome",
 		version: "1.7",
-		author: "𝐍𝐑𝐁",
+		author: "SAIF",
 		category: "events"
 	},
 
@@ -31,7 +31,7 @@ module.exports = {
 				+ `\n ♻ 𝑻𝒉𝑬 𝑩𝒐𝑻 𝑯𝒂𝑺 𝑩𝒆𝒆𝑵 𝑪𝒐𝒏𝒏𝑬𝒄𝒕𝒆𝑫 𝑻𝒐 𝑻𝒉𝑬 𝑮𝒓𝒐𝑼𝒑 ⚜`
 				+ `\n ⚜🔹𝑩𝒐𝑻 𝑷𝒓𝒆𝑭𝒊𝒙🔹: %1`
 				+ `\n __________________________`
-				+ `\n ~𝑶𝒘𝑵𝒆𝒓🔹:https://www.facebook.com/profile.php?id=61570000466312`
+				+ `\n ~𝑶𝒘𝑵𝒆𝒓🔹:https://www.facebook.com/profile.php?id=100081317798618`
 				+ `\n __________________________`
 				+ `\n 💠|❇ 𝑻𝒐 𝑽𝒊𝒆𝑾 𝑪𝒐𝒎𝒎𝑨𝒎𝒅𝑺 𝑷𝒍𝒆𝑨𝒔𝑬 𝑬𝒏𝒕𝑬𝒓: %1help`,
 			multiple1: "𝑻𝒐 𝑻𝒉𝑬",
