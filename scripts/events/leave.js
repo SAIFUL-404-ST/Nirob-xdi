@@ -23,14 +23,14 @@ module.exports = {
 			session2: "দুপুর",
 			session3: "বিকেল",
 			session4: "রাত",
-			leaveType1: "নিজে চলে গেছে",
-			leaveType2: "কে কিক দেওয়া হয়েছে",
+			leaveType1: "LEFT THE GROUP",
+			leaveType2: "KICKED BY ADMINISTRATOR ",
 			defaultLeaveMessage:
 `📤 {userName} {type} ❗
 
-🔔 সময় ছিল {time}টা — শুভ {session}।
+🔔 TIME: {time}টা — শুভ {session}।
 
-💬 গ্রুপ: {threadName}
+💬 GROUP NAME: {threadName}
 
 😮‍💨 কেউ গেলে গ্রুপ থেমে যায় না,
 🫡 আবার নতুন কেউ আসে...
