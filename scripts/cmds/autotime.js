@@ -1,1 +1,275 @@
-const _0x304968=_0x5f1a;(function(_0x25185f,_0x16b35c){const _0x318eb7=_0x5f1a,_0x34f815=_0x25185f();while(!![]){try{const _0x49922f=parseInt(_0x318eb7(0x19b))/0x1+-parseInt(_0x318eb7(0x17c))/0x2*(parseInt(_0x318eb7(0x198))/0x3)+-parseInt(_0x318eb7(0x197))/0x4+-parseInt(_0x318eb7(0x17e))/0x5+-parseInt(_0x318eb7(0x19c))/0x6+-parseInt(_0x318eb7(0x18a))/0x7+parseInt(_0x318eb7(0x18e))/0x8;if(_0x49922f===_0x16b35c)break;else _0x34f815['push'](_0x34f815['shift']());}catch(_0x2e29db){_0x34f815['push'](_0x34f815['shift']());}}}(_0x3e16,0xa6b67));function _0x5f1a(_0x5886b0,_0x200879){const _0x3e1693=_0x3e16();return _0x5f1a=function(_0x5f1ae9,_0x3d4a0e){_0x5f1ae9=_0x5f1ae9-0x17a;let _0x589298=_0x3e1693[_0x5f1ae9];return _0x589298;},_0x5f1a(_0x5886b0,_0x200879);}function _0x3e16(){const _0xbc7d58=['────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x203:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20~এখন\x20দুপুর\x20৩টা\x20বাজে😘\x0a\x20────\x20•💜•\x20────','13010344RWoGPs','moment-timezone','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x201:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20১টা\x20বাজে\x20প্রেম\x20না\x20কইরা\x20যাইয়া\x20ঘুমা\x20বেক্কল😘\x0a\x20────\x20•💜•\x20────\x20','2.0.0','message','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x204:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20৪টা\x20বাজে\x20একটু\x20পর\x20ফজরের\x20আযান\x20দিলে\x20নামাজ\x20পড়ে\x20নিও\x20সবাই\x20🌃\x20\x0a────\x20•💜•\x20────\x20','autotime','forEach','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x2012:00\x20𝗔𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20১২টা\x20বেজে\x20গেলো\x20সবাই\x20শুয়ে\x20পড়ো\x20🥀\x0a\x20────\x20•💜•\x20────','3640652AMBVJN','678euoZNU','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x202:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20২টা\x20বাজে\x20যারা\x20ছ্যাকা\x20খাইছে\x20তারা\x20জেগে\x20আছে\x20😳\x0a\x20────\x20•💜•\x20────\x20','threadID','1294131ZBwFcc','4919526qSCiRi','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x205:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20বিকাল\x20৫টা\x20বাজে\x20একটু\x20পর\x20মাগরিবের\x20আযান\x20দিবে\x20সবাই\x20নামাজ\x20পড়ে\x20নিও\x20😻😇\x0a\x20────\x20•💜•\x20────','exports','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x2011:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20১১টা\x20বাজে\x0aখাউয়া\x20দাউয়া\x20করে\x20নেউ😙\x0a\x20────\x20•💜•\x20────','𝗔𝗺𝗶𝗻𝘂𝗹\x20𝗦𝗼𝗿𝗱𝗮𝗿','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x209:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20৯টা\x20বাজে\x20সবাই\x20কি\x20শুয়ে\x20পড়লা\x20💞\x0a\x20────\x20•💜•\x20────','log','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x203:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20৩টা\x20বাজে\x20সবাই\x20মনে\x20হয়\x20ঘুম🥹\x20আমার\x20ভাই\x20ঘুম\x20আসে\x20না🌃\x20\x0a────\x20•💜•\x20────\x20','AutoTime','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x206:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20সকাল\x20৬টা\x20বাজে\x20ঘুম\x20থেকে\x20উঠো\x20সবাই❤️🥀\x20💖\x20\x0a────\x20•💜•\x20────\x20','1006sPwSjP','hh:mm:ss\x20A','1374410UzyOab','diff','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x2012:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20দুপুর\x20১২টা\x20বাজে\x20❤️🥵\x0a\x20────\x20•💜•\x20────','startOf','sendMessage','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x201:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20দুপুর\x20১টা\x20বাজে\x20সবাই\x20কাজ\x20বন্ধ\x20করে\x20জোহরের\x20নামাজ\x20পড়ে\x20নাও😻😇\x20\x0a\x20────\x20•💜•\x20────\x20🚶','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x2010:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20সকাল\x20১০টা\x20বাজে\x20মিস\x20করছি\x20তোমাদের🙀\x0a────\x20•💜•\x20────','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x207:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20সকাল\x20৭টা\x20বাজে\x20সবাই\x20ব্রেকফাস্ট\x20করে\x20নাও🥰\x20\x0a────\x20•💜•\x20────','map','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x2010:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20১০টা\x20বাজে\x20সবাই\x20ঘুমায়\x20পড়ো\x20আমার\x20বউ\x20নাই\x20ভাই\x20ঘুম\x20ও\x20আসে\x20না\x20☺️\x0a\x20────\x20•💜•\x20────','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x208:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20রাত\x20৮টা\x20বাজে\x20😋\x0a\x20────\x20•💜•\x20────','────\x20•💜•\x20────\x20\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x208:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20সকাল\x20৮\x20টা\x20বাজে\x20সবাই\x20মনে\x20হয়\x20কাজে\x20ব্যস্ত\x20হয়ে\x20গেছো😵\x20\x0a────\x20•💜•\x20────\x20','832475GGhfPY','────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x206:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20সন্ধ্যা\x20৬টা\x20বাজে\x20সবাই\x20হাতমুখ\x20ধুয়ে\x20কিছু\x20খেয়ে\x20নাও\x20এবং\x20পরিবারের\x20সাথে\x20সময়\x20কাটাও\x20💖\x0a\x20────\x20•💜•\x20────','Asia/Dhaka'];_0x3e16=function(){return _0xbc7d58;};return _0x3e16();}function hi(){const _0x4c210d=_0x5f1a;console[_0x4c210d(0x1a2)]('Hello\x20World!');}hi();const moment=require(_0x304968(0x18f));module[_0x304968(0x19e)]['config']={'name':'autotime','version':_0x304968(0x191),'role':0x0,'author':_0x304968(0x1a0),'description':_0x304968(0x194),'category':_0x304968(0x17a),'countDown':0x3},module[_0x304968(0x19e)]['onLoad']=async({api:_0x1d5129})=>{const _0x575b49=_0x304968,_0x1aca94={'12:00:00\x20PM':{'message':_0x575b49(0x196)},'01:00:00\x20AM':{'message':_0x575b49(0x190)},'02:00:00\x20AM':{'message':_0x575b49(0x199)},'03:00:00\x20AM':{'message':_0x575b49(0x1a3)},'04:00:00\x20AM':{'message':_0x575b49(0x193)},'05:00:00\x20AM':{'message':'────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x205:00\x20𝗔𝐌\x20⏳\x0a\x0a\x20এখন\x20ভোর\x20৫টা\x20বাজে\x20সবাই\x20নামাজ\x20পড়ছো\x20তো?❤️\x20\x0a────\x20•💜•\x20────'},'06:00:00\x20AM':{'message':_0x575b49(0x17b)},'07:00:00\x20AM':{'message':_0x575b49(0x185)},'08:00:00\x20AM':{'message':_0x575b49(0x189)},'09:00:00\x20AM':{'message':'────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x209:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20সকাল\x20৯\x20টা\x20বাজে\x20মন\x20দিয়ে\x20কাজ\x20করো\x20সবাই❤️🙈\x20\x0a────\x20•💜•\x20────'},'10:00:00\x20AM':{'message':_0x575b49(0x184)},'11:00:00\x20AM':{'message':'────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x2011:00\x20A𝐌\x20⏳\x0a\x0a\x20এখন\x20সকাল\x20১১টা\x20বাজে😻\x0a\x20────\x20•💜•\x20────'},'12:00:00\x20PM':{'message':_0x575b49(0x180)},'01:00:00\x20PM':{'message':_0x575b49(0x183)},'02:00:00\x20PM':{'message':'────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x202:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20দুপুর\x20২টা\x20বাজে\x20গোসল\x20করে\x20সবাই\x20দুপুরের\x20খাবার\x20খেয়ে\x20নাও\x20💖😇\x0a\x20────\x20•💜•\x20────\x20'},'03:00:00\x20PM':{'message':_0x575b49(0x18d)},'04:00:00\x20PM':{'message':'────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x204:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20বিকাল\x20৪টা\x20বাজে\x20আসরের\x20আযান\x20দিলে\x20সবাই\x20নামাজ\x20পড়ে\x20নাও🐱\x0a\x20────\x20•💜•\x20────'},'05:00:00\x20PM':{'message':_0x575b49(0x19d)},'06:00:00\x20PM':{'message':_0x575b49(0x18b)},'07:00:00\x20PM':{'message':'────\x20•💜•\x20────\x0a\x20𝐍𝐨𝐰\x20𝐢𝐭𝐬\x20𝐭𝐢𝐦𝐞\x207:00\x20𝐏𝐌\x20⏳\x0a\x0a\x20এখন\x20সন্ধ্যা\x20৭\x20টা\x20বাজে\x20কি\x20করছো\x20সবাই\x20এখন\x20এশার\x20আযান\x20দিবে\x20সবাই\x20নামাজ\x20পড়ে\x20নাও💞\x0a\x20────\x20•💜•\x20────'},'08:00:00\x20PM':{'message':_0x575b49(0x188)},'09:00:00\x20PM':{'message':_0x575b49(0x1a1)},'10:00:00\x20PM':{'message':_0x575b49(0x187)},'11:00:00\x20PM':{'message':_0x575b49(0x19f)}},_0x2c827b=()=>{const _0x1d00f7=_0x575b49,_0xde61e3=moment()['tz'](_0x1d00f7(0x18c)),_0x36cc76=_0xde61e3['format'](_0x1d00f7(0x17d)),_0x3185db=_0x1aca94[_0x36cc76];if(_0x3185db){const _0x4c3da8=global['db']['allThreadData'][_0x1d00f7(0x186)](_0x16cca0=>_0x16cca0[_0x1d00f7(0x19a)]);_0x4c3da8[_0x1d00f7(0x195)](async(_0x15884f,_0x53e397)=>{const _0x50d960=_0x1d00f7;_0x1d5129[_0x50d960(0x182)]({'body':_0x3185db[_0x50d960(0x192)]},_0x15884f);});}const _0x5be7d3=moment()['add'](0x1,'minute')[_0x1d00f7(0x181)]('minute'),_0x39a664=_0x5be7d3[_0x1d00f7(0x17f)](moment());setTimeout(_0x2c827b,_0x39a664);};_0x2c827b();},module[_0x304968(0x19e)]['onStart']=()=>{};
+const axios = require("axios");
+const fs = require("fs");
+const path = require("path");
+const moment = require("moment-timezone");
+
+module.exports = {
+  config: {
+    name: "autotime",
+    version: "2.0.0",
+    role: 0,
+    author: "SAIF",
+    description: "AutoTime with video attachment support and separate video URLs",
+    category: "autotime",
+    countDown: 3,
+  },
+
+  onLoad: async ({ api }) => {
+    const videoUrls = {
+      "12:00:00 PM": "https://files.catbox.moe/lq945m.mp4",
+      "01:00:00 AM": "https://files.catbox.moe/dkixes.mp4",
+      "02:00:00 AM": "https://files.catbox.moe/2rduu3.mp4",
+      "03:00:00 AM": "https://files.catbox.moe/klief3.mp4",
+      "04:00:00 AM": "https://files.catbox.moe/dwoxxs.mp4",
+      "05:00:00 AM": "https://files.catbox.moe/wahux7.mp4",
+      "06:00:00 AM": "https://files.catbox.moe/84zavd.mp4",
+      "07:00:00 AM": "https://files.catbox.moe/8kn1q5.mp4",
+      "08:00:00 AM": "https://files.catbox.moe/i4g4qe.mp4",
+      "09:00:00 AM": "https://files.catbox.moe/wb6u7i.mp4",
+      "10:00:00 AM": "https://files.catbox.moe/8lbhqb.mp4",
+      "11:00:00 AM": "https://files.catbox.moe/jf3whz.mp4",
+      "12:00:00 AM": "https://files.catbox.moe/p3sja8.mp4",
+      "01:00:00 PM": "https://files.catbox.moe/vuagha.mp4",
+      "02:00:00 PM": "https://files.catbox.moe/zfw388.mp4",
+      "03:00:00 PM": "https://files.catbox.moe/v0zoib.mp4",
+      "04:00:00 PM": "https://files.catbox.moe/suqugl.mp4",
+      "05:00:00 PM": "https://files.catbox.moe/r7tusd.mp4",
+      "06:00:00 PM": "https://files.catbox.moe/bujvd1.mp4",
+      "07:00:00 PM": "https://files.catbox.moe/ksktn5.mp4",
+      "08:00:00 PM": "https://files.catbox.moe/r2h3jm.mp4",
+      "09:00:00 PM": "https://files.catbox.moe/wivtg4.mp4",
+      "10:00:00 PM": "https://files.catbox.moe/uhrcnj.mp4",
+      "11:00:00 PM": "https://files.catbox.moe/5u5w5n.mp4",
+    };
+
+    const messages = {
+      "12:00:00 PM": `──── •💜• ────
+Now its time 12:00 PM ⏳
+
+~এখন রাত ১২.০০ টা  বাজে😘
+──── •💜• ────
+
+CEO_SAIF`,
+      "01:00:00 AM": `──── •💜• ────
+Now its time 1:00 AM ⏳
+
+এখন রাত ১টা বাজে প্রেম না কয়রা যাইয়া ঘুমা বেক্কল😘
+──── •💜• ────
+
+CEO_SAIF`,
+      "02:00:00 AM": `──── •💜• ────
+Now its time 2:00 AM ⏳
+
+এখন রাত ২টা বাজে যারা ছ্যাকা খাইছে তারা জেগে আছে 😳
+──── •💜• ────
+
+CEO_SAIF`,
+      "03:00:00 AM": `──── •💜• ────
+Now its time 3:00 AM ⏳
+
+এখন রাত ৩টা বাজে সবাই মনে হয় ঘুম🥹 আমার ভাই ঘুম আসে না🌃 
+──── •💜• ────
+
+CEO_SAIF`,
+      "04:00:00 AM": `──── •💜• ────
+Now its time 4:00 AM ⏳
+
+এখন রাত ৪টা বাজে একটু পর ফজরের আযান দিলে নামাজ পড়ে নিও সবাই 🌃 
+──── •💜• ────
+
+CEO_SAIF`,
+      "05:00:00 AM": `──── •💜• ────
+Now its time 5:00 AM ⏳
+
+এখন ভোর ৫টা বাজে সবাই নামাজ পড়ছো তো?❤️ 
+──── •💜• ────
+
+CEO_SAIF`,
+      "06:00:00 AM": `──── •💜• ────
+Now its time 6:00 AM ⏳
+
+এখন সকাল ৬টা বাজে ঘুম থেকে উঠো সবাই❤️🥀💖
+──── •💜• ────
+
+CEO_SAIF`,
+      "07:00:00 AM": `──── •💜• ────
+Now its time 7:00 AM ⏳
+
+এখন সকাল ৭টা বাজে সবাই ব্রেকফাস্ট করে নাও🥰 
+──── •💜• ────
+
+CEO_SAIF`,
+      "08:00:00 AM": `──── •💜• ────
+Now its time 8:00 AM ⏳
+
+এখন সকাল ৮টা বাজে সবাই মনে হয় কাজে ব্যস্ত হয়ে গেছো😵 
+──── •💜• ────
+
+CEO_SAIF`,
+      "09:00:00 AM": `──── •💜• ────
+Now its time 9:00 AM ⏳
+
+এখন সকাল ৯টা বাজে মন দিয়ে কাজ করো সবাই❤️🙈 
+──── •💜• ────
+
+CEO_SAIF`,
+      "10:00:00 AM": `──── •💜• ────
+Now its time 10:00 AM ⏳
+
+এখন সকাল ১০টা বাজে মিস করছি তোমাদের🙀
+──── •💜• ────
+
+CEO_SAIF`,
+      "11:00:00 AM": `──── •💜• ────
+Now its time 11:00 AM ⏳
+
+এখন সকাল ১১টা বাজে😻 
+──── •💜• ────
+
+CEO_SAIF`,
+      "12:00:00 AM": `──── •💜• ────
+Now its time 12:00 AM ⏳
+
+এখন রাত ১২টা বেজে গেলো সবাই শুয়ে পড়ো 🥀
+──── •💜• ────
+
+CEO_SAIF`,
+      "01:00:00 PM": `──── •💜• ────
+Now its time 1:00 PM ⏳
+
+এখন দুপুর ১টা বাজে সবাই কাজ বন্ধ করে জোহরের নামাজ পড়ো নাও😻😇 
+──── •💜• ────
+
+CEO_SAIF`,
+      "02:00:00 PM": `──── •💜• ────
+Now its time 2:00 PM ⏳
+
+এখন দুপুর ২টা বাজে গোসল করে সবাই দুপুরের খাবার খেয়ে নাও 💖😇 
+──── •💜• ────
+
+CEO_SAIF`,
+      "03:00:00 PM": `──── •💜• ────
+Now its time 3:00 PM ⏳
+
+~এখন দুপুর ৩টা বাজে😘
+──── •💜• ────
+
+CEO_SAIF`,
+      "04:00:00 PM": `──── •💜• ────
+Now its time 4:00 PM ⏳
+
+এখন বিকাল ৪টা বাজে আসরের আযান দিলে সবাই নামাজ পড়ে নাও🐱 
+──── •💜• ────
+
+CEO_SAIF`,
+      "05:00:00 PM": `──── •💜• ────
+Now its time 5:00 PM ⏳
+
+এখন বিকাল ৫টা বাজে একটু পর মাগরিবের আযান দিবে সবাই নামাজ পড়ে নিও 😻😇
+──── •💜• ────
+
+CEO_SAIF`,
+      "06:00:00 PM": `──── •💜• ────
+Now its time 6:00 PM ⏳
+
+এখন সন্ধ্যা ৬টা বাজে সবাই হাতমুখ ধুয়ে কিছু খেয়ে নাও এবং পরিবারের সাথে সময় কাটাও 💖
+──── •💜• ────
+
+CEO_SAIF`,
+      "07:00:00 PM": `──── •💜• ────
+Now its time 7:00 PM ⏳
+
+এখন সন্ধ্যা ৭টা বাজে কি করছো সবাই এখন এশার আযান দিবে সবাই নামাজ পড়ে নাও💞
+──── •💜• ────
+
+CEO_SAIF`,
+      "08:00:00 PM": `──── •💜• ────
+Now its time 8:00 PM ⏳
+
+এখন রাত ৮টা বাজে 😋
+──── •💜• ────
+
+CEO_SAIF`,
+      "09:00:00 PM": `──── •💜• ────
+Now its time 9:00 PM ⏳
+
+এখন রাত ৯টা বাজে সবাই কি শুয়ে পড়লা 💞
+──── •💜• ────
+
+CEO_SAIF`,
+      "10:00:00 PM": `──── •💜• ────
+Now its time 10:00 PM ⏳
+
+এখন রাত ১০টা বাজে সবাই ঘুমায় পড়ো আমার বউ নাই ভাই ঘুম ও আসে না ☺️
+──── •💜• ────
+
+CEO_SAIF`,
+      "11:00:00 PM": `──── •💜• ────
+Now its time 11:00 PM ⏳
+
+এখন রাত ১১টা বাজে খাউয়া দাউয়া করে নেউ😙
+──── •💜• ────
+
+CEO_SAIF`,
+    };
+
+    async function downloadFile(url, filepath) {
+      const writer = fs.createWriteStream(filepath);
+      const response = await axios({
+        url,
+        method: "GET",
+        responseType: "stream",
+      });
+      response.data.pipe(writer);
+      return new Promise((resolve, reject) => {
+        writer.on("finish", resolve);
+        writer.on("error", reject);
+      });
+    }
+
+    const sendMessages = async () => {
+      const timeZone = "Asia/Dhaka";
+      const now = moment().tz(timeZone);
+      const currentTime = now.format("hh:mm:ss A");
+
+      const messageText = messages[currentTime];
+      const videoUrl = videoUrls[currentTime];
+
+      if (messageText && videoUrl) {
+        const activeThreads = Object.keys(global.db.allThreadData).filter(
+          (id) => global.db.allThreadData[id].threadID
+        );
+
+        for (const threadID of activeThreads) {
+          try {
+            let msg = { body: messageText };
+
+            if (videoUrl.trim() !== "") {
+              const filepath = path.join(__dirname, `temp_${threadID}.mp4`);
+              await downloadFile(videoUrl, filepath);
+              msg.attachment = fs.createReadStream(filepath);
+              await api.sendMessage(msg, threadID);
+              fs.unlink(filepath, (err) => {
+                if (err) console.error("Failed to delete temp file:", err);
+              });
+            } else {
+              await api.sendMessage(msg, threadID);
+            }
+          } catch (err) {
+            console.error("Send message error:", err);
+          }
+        }
+      }
+
+      const nextCheckIn = moment()
+        .add(1, "minute")
+        .startOf("minute")
+        .diff(moment());
+      setTimeout(sendMessages, nextCheckIn);
+    };
+
+    sendMessages();
+  },
+
+  onStart: () => {},
+};
