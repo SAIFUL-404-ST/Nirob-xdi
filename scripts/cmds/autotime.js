@@ -39,7 +39,7 @@ module.exports.onLoad = async ({ api }) => {
       video: "https://files.catbox.moe/wahux7.mp4"
     },
     "06:00:00 AM": {
-      message: " ──── •🖤• ──── NOW ITS TIME 05:00 AM! ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ  নতুন দিনের শুরু হোক হাসি দিয়ে 😊 ──── •🖤• ────ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ 𝐂꯭︎𝐄꯭𝐎꯭꯭꯭𝆺꯭𝅥ࠫ༎꯭𝐒꯭︎𝐀꯭︎𝐈꯭︎𝐅꯭ 💝",
+      message: " ──── •🖤• ──── NOW ITS TIME 06:00 AM! ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ  নতুন দিনের শুরু হোক হাসি দিয়ে 😊 ──── •🖤• ────ㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤㅤ 𝐂꯭︎𝐄꯭𝐎꯭꯭꯭𝆺꯭𝅥ࠫ༎꯭𝐒꯭︎𝐀꯭︎𝐈꯭︎𝐅꯭ 💝",
       video: "https://files.catbox.moe/84zavd.mp4"
     },
     "07:00:00 AM": {
