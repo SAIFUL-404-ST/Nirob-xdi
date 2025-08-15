@@ -19,16 +19,16 @@ module.exports = {
 			defaultLeaveMessage: "{userName} đã {type} khỏi nhóm"
 		},
 		en: {
-			session1: "সকাল",
-			session2: "দুপুর",
-			session3: "বিকেল",
-			session4: "রাত",
+			session1: "MORNING",
+			session2: "AFTERNOON",
+			session3: "AFTERNOON",
+			session4: "NIGHT ",
 			leaveType1: "LEFT THE GROUP",
 			leaveType2: "KICKED BY ADMINISTRATOR ",
 			defaultLeaveMessage:
 `📤 {userName} {type} ❗
 
-🔔 TIME: {time}টা — শুভ {session}।
+🔔 TIME: {time}  — GOOD {session}।
 
 💬 GROUP NAME: {threadName}
 
@@ -51,7 +51,7 @@ module.exports = {
 				if (leftParticipantFbId == api.getCurrentUserID())
 					return;
 
-				const hours = getTime("HH");
+				const hours = getTime("HH:mm:ss");
 				const threadName = threadData.threadName;
 				const userName = await usersData.getName(leftParticipantFbId);
 
