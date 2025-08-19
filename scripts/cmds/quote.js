@@ -7,18 +7,18 @@ const mahmud = async () => {
 
 module.exports = {
   config: {
-    name: "joke",
-    aliases: ["jokes"],
+    name: "quote",
+    aliases: ["quotes", "q"],
     version: "1.7",
     author: "MahMUD",
     countDown: 5,
     role: 0,
     category: "fun",
     shortDescription: {
-      en: "Get a random joke"
+      en: "Get a random Mahmud quote"
     },
     longDescription: {
-      en: "Fetches a funny joke from Mahmud's global API"
+      en: "Fetches a deep or inspiring quote from Mahmud's global API"
     },
     guide: {
       en: "{pn}"
@@ -36,13 +36,13 @@ module.exports = {
     }
 
     try {
-      const apiUrl = `${await mahmud()}/api/joke`;
+      const apiUrl = `${await mahmud()}/api/quote`;
       const res = await axios.get(apiUrl);
-      const { joke, message: msg } = res.data;
+      const { quote, message: msg } = res.data;
 
-      message.reply(`${msg}\n\n😂 ${joke}`);
+      message.reply(`${msg}\n\n ${quote}`);
     } catch (err) {
-      message.reply("🥹error, contact MahMUD");
+      message.reply("🥹error, contact MahMUD.");
     }
   }
 };

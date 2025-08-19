@@ -7,7 +7,7 @@ const baseApiUrl = async () => {
 
 module.exports = {
   config: {
-    name: "fluxpro",
+    name: "xlnub",
     version: "1.7",
     author: "MahMUD",
     countDown: 10,
@@ -16,26 +16,32 @@ module.exports = {
     guide: "{pn} [prompt]"
   },
 
-  onStart: async function ({ api, event, args }) {
+  onStart: async function ({ api, event, args, message }) {
     const prompt = args.join(" ");
     if (!prompt) return api.sendMessage("Please provide a prompt to generate an image.", event.threadID, event.messageID);
 
     try {
+      const waitingMessage = await message.reply(`🔄| Generate, your image,, please wait...`);
+
       const apiUrl = await baseApiUrl();
       if (!apiUrl) return api.sendMessage("Base API URL could not be loaded.", event.threadID, event.messageID);
 
-      const res = await axios.post(`${apiUrl}/api/fluxpro`, { prompt });
+      const res = await axios.post(`${apiUrl}/api/xlnub`, { prompt });
 
       if (!res.data?.imageUrl) return api.sendMessage("Failed to generate image.", event.threadID, event.messageID);
 
       const imageStream = await global.utils.getStreamFromURL(res.data.imageUrl);
 
-      const message = await api.sendMessage({
-        body: "✅ Here is your generated image",
+      setTimeout(() => {
+        api.unsendMessage(waitingMessage.messageID);
+      }, 1000);
+
+      const messageSent = await api.sendMessage({
+        body: "✅ | Here's is your image",
         attachment: imageStream
       }, event.threadID, event.messageID);
 
-      api.setMessageReaction("🪽", message.messageID, () => {}, true);
+      api.setMessageReaction("🪽", messageSent.messageID, () => {}, true);
 
     } catch (err) {
       return api.sendMessage("An error occurred while generating the image.", event.threadID, event.messageID);

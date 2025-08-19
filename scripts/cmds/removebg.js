@@ -1,45 +1,57 @@
 const axios = require("axios");
-const { shorten } = require('tinyurl');
-const baseApiUrl = async () => {
-  const base = await axios.get(
-    `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`
-  );
-  return base.data.api;
+const fs = require("fs");
+const path = require("path");
+
+const mahmud = async () => {
+  const base = await axios.get("https://raw.githubusercontent.com/mahmudx7/exe/main/baseApiUrl.json");
+  return base.data.mahmud;
 };
 
-(async () => {
-  global.apis = {
-    diptoApi: await baseApiUrl()
-  };
-})();
-
 module.exports = {
-config: {
-name: "removebg",
-aliases: ["rbg"],
-version: "1.0",
-role: 0,
-author: "Mesbah Saxx", // khing Aryan and Aiyan mahi fan
-category: "utility",
-cooldowns: 5,
-countDown: 5,
-guide: {
-en: "removebg reply with a image"
-}
-},
-onStart: async ({ api, event }) => {
-try {
-if (event.messageReply && event.messageReply.attachments[0]?.url) {
-const imageUrl = event.messageReply.attachments[0].url;
-const response = await axios.get(`${global.apis.diptoApi}/rmbg?url=${await shorten(imageUrl)}`, { responseType: 'stream' });
-api.sendMessage({
-attachment: response.data
-}, event.threadID, event.messageID);
-} else {
-api.sendMessage("Please reply to an image to remove its background.", event.threadID);
-}
-} catch (e) {
-api.sendMessage("An error occurred while processing the command.", event.threadID);
-}
-}
+  config: {
+    name: "removebg",
+    aliases: ["rmbg", "rbg"],
+    version: "1.7",
+    author: "MahMUD",
+    countDown: 10,
+    role: 0,
+    category: "media",
+    guide: "{pn} [Reply to image]",
+  },
+
+  onStart: async function ({ message, event }) {
+    try {
+      if (event.type !== "message_reply")
+        return message.reply("❌ | Please reply to an image.");
+
+      if (!event.messageReply.attachments || event.messageReply.attachments[0].type !== "photo")
+        return message.reply("No image found, reply to an image.");
+
+      const imageUrl = event.messageReply.attachments[0].url;
+      const apiUrl = await mahmud();
+
+      const response = await axios.post(
+        `${apiUrl}/api/rmbg`,
+        { imageUrl },
+        { responseType: "stream" }
+      );
+
+      const outputPath = path.resolve(__dirname, "cache", `${Date.now()}_rmbg.png`);
+      const writer = fs.createWriteStream(outputPath);
+
+      response.data.pipe(writer);
+
+      writer.on("finish", () => {
+        message.reply({ attachment: fs.createReadStream(outputPath) }).then(() => fs.unlinkSync(outputPath));
+      });
+
+      writer.on("error", (err) => {
+        console.error("Error saving image:", err);
+        message.reply("Error occurred while saving the image.");
+      });
+    } catch (error) {
+      console.error("Error calling API:", error);
+      message.reply("An error occurred while contacting the API.");
+    }
+  },
 };

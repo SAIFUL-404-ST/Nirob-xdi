@@ -1,29 +1,52 @@
-module.exports.config = {
-	name: "say",
-	version: "1.6.9",
-	role: 0,
-	author: "♡ Nazrul ♡",
-	description: "Get Bangla Voice",
-	category: "media",
-	guide: {
-   en: " {pn} text"
-   },
-	countDowns: 5,
-	dependencies: {
-		"path": "",
-		"fs-extra": ""
-	}
+const axios = require("axios");
+
+const baseApiUrl = async () => {
+  const base = await axios.get("https://raw.githubusercontent.com/mahmudx7/exe/main/baseApiUrl.json");
+  return base.data.mahmud
 };
 
-module.exports.onStart = async function({ api, event, args }) {
-	try {
-		const { createReadStream, unlinkSync } = require('fs-extra');
-		const { resolve } = require('path');
-		var content = (event.type == "message_reply") ? event.messageReply.body : args.join(" ");
-		var languageToSay = (["bn",].some(item => content.indexOf(item) == 0)) ? content.slice(0, content.indexOf(" ")) : global.GoatBot.config.language;
-		var msg = (languageToSay != global.GoatBot.config.language) ? content.slice(3, content.length) : content;
-		const path = resolve(__dirname, 'cache', `${event.threadID}_${event.senderID}.mp3`);
-		await global.utils.downloadFile(`https://translate.google.com/translate_tts?ie=UTF-8&q=${encodeURIComponent(msg)}&tl=bn&client=tw-ob`, path);
-		return api.sendMessage({ attachment: createReadStream(path)}, event.threadID, () => unlinkSync(path));
-	} catch (e) { return console.log(e) };
-				       }
+module.exports = {
+  config: {
+    name: "say",
+    version: "1.7",
+    author: "MahMUD",
+    countDown: 5,
+    role: 0,
+    category: "media",
+    guide: "{pn} <text> (or reply to a message)",
+  },
+
+  onStart: async function ({ api, message, args, event }) {
+    let text = args.join(" ");
+
+    if (event.type === "message_reply" && event.messageReply.body) {
+      text = event.messageReply.body;
+    }
+
+    if (!text) {
+      return message.reply("⚠️ দয়া করে কিছু লিখুন বা একটি মেসেজে রিপ্লাই দিন!");
+    }
+
+    try {
+      const baseUrl = await baseApiUrl();
+      const response = await axios.get(`${baseUrl}/api/say`, {
+        params: { text },
+        headers: { "Author": module.exports.config.author },
+        responseType: "stream",
+      });
+
+      if (response.data.error) {
+        return message.reply(`${response.data.error}`);
+      }
+
+      message.reply({
+        body: "",
+        attachment: response.data,
+      });
+
+    } catch (e) {
+      console.error("API Error:", e.response ? e.response.data : e.message);
+      message.reply("🥹error, contact MahMUD.\n" + (e.response?.data?.error || e.message));
+    }
+  },
+};
