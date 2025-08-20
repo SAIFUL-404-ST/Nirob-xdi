@@ -85,25 +85,25 @@ socketIO.connected= 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙴𝙳 𝚃𝙾 𝚂𝙾𝙲�
 socketIO.error= 𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝚆𝙷𝙴𝙽 𝙲𝙾𝙽𝙽𝙴𝙲𝚃𝙸𝙽𝙶 𝚃𝙾 𝚃𝙷𝙴 𝚂𝙾𝙲𝙺𝙴𝚃.𝙸𝙾 𝚂𝙴𝚁𝚅𝙴𝚁
 
 # bot/handler/handlerCheckData.js
-handlerCheckData.cantCreateThread=𝙶𝚁𝙾𝚄𝙿𝚂 𝚆𝙸𝚃𝙷 𝙸𝙳 '%1' 𝙲𝙰𝙽𝙽𝙾𝚃 𝙱𝙴 𝚆𝚁𝙸𝚃𝚃𝙴𝙽 𝚃𝙾 𝚃𝙷𝙴 BÄŸĴÏĐ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 !
-handlerCheckData.cantCreateUser=𝚄𝚂𝙴𝚁 𝚆𝙸𝚃𝙷 𝙸𝙳 '%1'  𝙲𝙰𝙽𝙽𝙾𝚃 𝙱𝙴 𝚆𝚁𝙸𝚃𝚃𝙴𝙽 𝚃𝙾 𝚃𝙷𝙴 BÄŸĴÏĐ 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴!
+handlerCheckData.cantCreateThread=𝙶𝚁𝙾𝚄𝙿𝚂 𝚆𝙸𝚃𝙷 𝙸𝙳 '%1' 𝙲𝙰𝙽𝙽𝙾𝚃 𝙱𝙴 𝚆𝚁𝙸𝚃𝚃𝙴𝙽 𝚃𝙾 𝚃𝙷𝙴 Alisa Bby 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴 !
+handlerCheckData.cantCreateUser=𝚄𝚂𝙴𝚁 𝚆𝙸𝚃𝙷 𝙸𝙳 '%1'  𝙲𝙰𝙽𝙽𝙾𝚃 𝙱𝙴 𝚆𝚁𝙸𝚃𝚃𝙴𝙽 𝚃𝙾 𝚃𝙷𝙴 Alisa Bby 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴!
 
 # bot/handler/handlerEvents.js
 handlerEvents.userBanned= ★彡[ জীবনের সবচেয়ে খারাপ সময় মানুষ জাতি আমাকে দূরে ঠেলে দিলেও, আমার আল্লাহ আমাকে কখনো দূরে ঠেলে দেন নাই। আলহামদুল্লিলাহ।
  ]彡★
 handlerEvents.threadBanned= *ੈ✩‧₊˚༺ ❝ আল্লাহ তোমাদের চেহারা ও সম্পদের দিকে তাকান না, বরং তিনি তোমাদের অন্তর ও কর্মের দিকে তাকান। ❞(সহিহ মুসলিম: ২৫৬৪) ༻*ੈ✩‧₊˚
-handlerEvents.onlyAdminBox= 𝚃𝙷𝙸𝚂 𝙶𝚁𝙾𝚄𝙿 𝙸𝚂 𝙲𝚄𝚁𝚁𝙴𝙽𝚃𝙻𝚈 𝙾𝙽 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙾𝙳 𝙽𝙾𝚆 SAIF-BOT ❤︎ 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙾𝙽𝙻𝚈 𝙵𝙾𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽
+handlerEvents.onlyAdminBox= 𝚃𝙷𝙸𝚂 𝙶𝚁𝙾𝚄𝙿 𝙸𝚂 𝙲𝚄𝚁𝚁𝙴𝙽𝚃𝙻𝚈 𝙾𝙽 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙾𝙳 𝙽𝙾𝚆 Alisa Bby ❤︎ 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙾𝙽𝙻𝚈 𝙵𝙾𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽
 handlerEvents.onlyAdminBot=📛 | 𝙲𝚄𝚁𝚁𝙴𝙽𝚃𝙻𝚈 𝙾𝙽𝙻𝚈 SAIFUL 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙱𝙾𝚃
-handlerEvents.commandNotFound=𝙲𝙼𝙳 "%1" 𝙳𝙾𝙴𝚂 𝙽𝙾𝚃 𝙴𝚇𝙸𝚂𝚃, 𝚃𝚈𝙿𝙴 %2𝙷𝙴𝙻𝙿 𝚃𝙾 𝚅𝙸𝙴𝚆 SAIF-BOT ❤︎ 𝙰𝙻𝙻 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙲𝙼𝙳
-handlerEvents.commandNotFound2= 𝚃𝙷𝙴 𝙲𝙼𝙳 𝚈𝙾𝚄 𝙰𝚁𝙴 𝚄𝚂𝙸𝙽𝙶 𝙳𝙾𝙴𝚂 𝙽𝙾𝚃 𝙴𝚇𝙸𝚂𝚃, 𝚃𝚈𝙿𝙴%1𝙷𝙴𝙻𝙿 𝚃𝙾 𝚅𝙸𝙴𝚆 SAIF-BOT ❤︎ 𝙰𝙻𝙻 𝙲𝙼𝙳
-handlerEvents.commandSyntaxError= 𝚃𝙷𝙴 SAIF-BOT ❤︎ 𝙲𝙼𝙳 𝙰𝚁𝙴 𝚈𝙾𝚄 𝚄𝚂𝙸𝙽𝙶 𝙸𝚂 𝚆𝚁𝙾𝙽𝙶 𝚂𝚈𝙽𝚃𝙰𝚇, 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚈𝙿𝙴 %1𝙷𝙴𝙻𝙿 %2 𝚃𝙾 𝚂𝙴𝙴 𝚃𝙷𝙴 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 𝙾𝙵 SAIF-BOT ❤︎ 𝙰𝙻𝙻 𝙲𝙼𝙳𝚂 𝙰𝙽𝙳 𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴 𝙲𝙼𝙳
+handlerEvents.commandNotFound=𝙲𝙼𝙳 "%1" 𝙳𝙾𝙴𝚂 𝙽𝙾𝚃 𝙴𝚇𝙸𝚂𝚃, 𝚃𝚈𝙿𝙴 %2𝙷𝙴𝙻𝙿 𝚃𝙾 𝚅𝙸𝙴𝚆 Alisa Bby ❤︎ 𝙰𝙻𝙻 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙲𝙼𝙳
+handlerEvents.commandNotFound2= 𝚃𝙷𝙴 𝙲𝙼𝙳 𝚈𝙾𝚄 𝙰𝚁𝙴 𝚄𝚂𝙸𝙽𝙶 𝙳𝙾𝙴𝚂 𝙽𝙾𝚃 𝙴𝚇𝙸𝚂𝚃, 𝚃𝚈𝙿𝙴%1𝙷𝙴𝙻𝙿 𝚃𝙾 𝚅𝙸𝙴𝚆 Alisa Bby ❤︎ 𝙰𝙻𝙻 𝙲𝙼𝙳
+handlerEvents.commandSyntaxError= 𝚃𝙷𝙴 Alisa Bby ❤︎ 𝙲𝙼𝙳 𝙰𝚁𝙴 𝚈𝙾𝚄 𝚄𝚂𝙸𝙽𝙶 𝙸𝚂 𝚆𝚁𝙾𝙽𝙶 𝚂𝚈𝙽𝚃𝙰𝚇, 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚈𝙿𝙴 %1𝙷𝙴𝙻𝙿 %2 𝚃𝙾 𝚂𝙴𝙴 𝚃𝙷𝙴 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 𝙾𝙵 SAIF-BOT ❤︎ 𝙰𝙻𝙻 𝙲𝙼𝙳𝚂 𝙰𝙽𝙳 𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴 𝙲𝙼𝙳
 handlerEvents.onlyAdmin=📛 |𝙾𝙽𝙻𝚈 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
 handlerEvents.onlyAdminToUseOnReply=📛 | 𝙾𝙽𝙻𝚈 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙲𝚁𝚁𝙿𝙻𝚈 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
 handlerEvents.onlyAdminToUseOnReaction=📛 | 𝙾𝙽𝙻𝚈 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝚁𝚁𝙰𝙲𝚃𝙸𝙾𝙼 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳  "%1"
-handlerEvents.onlyAdminBot2=📛 |𝙷𝙰𝙷𝙰𝙷𝙰 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝚄𝚂𝙸𝙽𝙶 𝙾𝙽𝙻𝚈 SAIF 𝙰𝙳𝙼𝙸𝙽 "%1"
-handlerEvents.onlyAdminBot2ToUseOnReply=📛 | 𝙷𝙰𝙷𝙰𝙷𝙰 𝙾𝙽𝙻𝚈 SAIF-BOT ❤︎ 𝙰𝙳𝙼𝙸𝙽 𝚇𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝚁𝙴𝙿𝙻𝚈 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
-handlerEvents.onlyAdminBot2ToUseOnReaction=📛 | 𝙷𝙰𝙷𝙰𝙷𝙷𝙰 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝚄𝚂𝙸𝙽𝙶 𝙾𝙽𝙻𝚈 SAIF 𝙰𝙳𝙼𝙸𝙽 "%1"
-handlerEvents.waitingForCommand=⏱ 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙸𝙽 𝚃𝙷𝙴 𝚆𝙰𝙸𝚃𝙸𝙽𝙶 𝚃𝙸𝙼𝙴 𝚃𝙾 𝚄𝚂𝙴 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝙿𝙻𝙴𝙰𝚂𝙴 𝙲𝙾𝙼𝙴 𝙱𝙰𝙲𝙺 𝙰𝙵𝚃𝙴𝚁 %1\ - 𝗦𝗽𝗮𝗺 𝗸𝗼𝗿𝗹𝗲 𝘁𝗼𝗶 𝗴𝗮𝘆/𝗹𝗲𝘀𝗯𝗶𝗮𝗻 😡
+handlerEvents.onlyAdminBot2=📛 |𝙷𝙰𝙷𝙰𝙷𝙰 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝚄𝚂𝙸𝙽𝙶 𝙾𝙽𝙻𝚈 Alisa Bby'z 𝙰𝙳𝙼𝙸𝙽 "%1"
+handlerEvents.onlyAdminBot2ToUseOnReply=📛 | 𝙷𝙰𝙷𝙰𝙷𝙰 𝙾𝙽𝙻𝚈 Alisa Bby ❤︎ 𝙰𝙳𝙼𝙸𝙽 𝚇𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝚁𝙴𝙿𝙻𝚈 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
+handlerEvents.onlyAdminBot2ToUseOnReaction=📛 | 𝙷𝙰𝙷𝙰𝙷𝙷𝙰 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝚄𝚂𝙸𝙽𝙶 𝙾𝙽𝙻𝚈 Alisa Bby'z 𝙰𝙳𝙼𝙸𝙽 "%1"
+handlerEvents.waitingForCommand=⏱ 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙸𝙽 𝚃𝙷𝙴 𝚆𝙰𝙸𝚃𝙸𝙽𝙶 𝚃𝙸𝙼𝙴 𝚃𝙾 𝚄𝚂𝙴 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝙿𝙻𝙴𝙰𝚂𝙴 𝙲𝙾𝙼𝙴 𝙱𝙰𝙲𝙺 𝙰𝙵𝚃𝙴𝚁 %1\ - Spam koro na Bby 🐇💝
 handlerEvents.errorOccurred=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
 handlerEvents.errorOccurred2=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝙰𝚃 𝙲𝙼𝙳 𝙾𝙽𝙲𝙷𝙰𝚃 "%2"\n\n%3
 handlerEvents.errorOccurred3=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝚁𝙴𝙿𝙻𝚈 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
