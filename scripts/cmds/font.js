@@ -1,43 +1,38 @@
-const axios = require("axios");
-
-const mahmud = async () => {
-  const base = await axios.get("https://raw.githubusercontent.com/mahmudx7/exe/main/baseApiUrl.json");
-  return base.data.mahmud;
+const axios = require('axios');
+const baseApiUrl = async () => {
+  const base = await axios.get(
+    `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`,
+  );
+  return base.data.api;
 };
-
 module.exports.config = {
-  name: "style",
-  aliases: ["font"],
-  version: "1.7",
-  role: 0,
-  countDowns: 5,
-  author: "MahMUD",
-  category: "general",
-  guide: { en: "[number] [text] or list" }
-};
-
-module.exports.onStart = async function ({ message, args }) {
-  const apiUrl = await mahmud();
-
-  if (args[0] === "list") {
+    name: 'font',
+    aliases: ['style'],
+    version: '1.0',
+    role: 0,
+    countDowns: 5,
+    author: 'dipto',
+    description: 'This command transforms text with different fonts',
+    category: 'command',
+    guide: { en: '[numder] [text]' }
+  },
+module.exports.onStart = async function ({ message,args}) {
+  const t = encodeURIComponent(args.slice(1).join(" "));
+  const number = args[0];
+ if(args[0] === 'list'){
+      const response = await axios.get(`${await baseApiUrl()}/font?list=all`);
+      const result = response.data;
+      await message.reply(result); 
+   return
+    } else if (!t || isNaN(number)) {
+      return message.reply('Invalid command. Usage: font <number> <text> ');
+ }
     try {
-      const fontList = (await axios.get(`${apiUrl}/api/font/list`)).data.replace("Available Font Styles:", "").trim();
-      return fontList ? message.reply(`Available Font Styles:\n${fontList}`) : message.reply("No font styles found.");
-    } catch {
-      return message.reply("Error fetching font styles.");
+      const response = await axios.get(`${await baseApiUrl()}/font?message=${t}&number=${number}`);
+      const result = response.data;
+      await message.reply(result.data);
+    } catch (error) {
+      console.error('Error:', error);
+      message.reply('An error occurred while processing your request.');
     }
-  }
-
-  const [number, ...textParts] = args;
-  const text = textParts.join(" ");
-  if (!text || isNaN(number)) return message.reply("Invalid usage. Format: style <number> <text>");
-
-  try {
-    const { data: { data: fontData } } = await axios.post(`${apiUrl}/api/font`, { number, text });
-    const fontStyle = fontData[number];
-    const convertedText = text.split("").map(char => fontStyle[char] || char).join("");
-    return message.reply(convertedText);
-  } catch {
-    return message.reply("Error processing your request.");
-  }
-};
+  };
