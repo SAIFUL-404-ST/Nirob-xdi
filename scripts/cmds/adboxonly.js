@@ -6,27 +6,15 @@ module.exports = {
 		author: "SAIF",
 		countDown: 5,
 		role: 2,
-		description: {
-			vi: "bật/tắt chế độ chỉ quản trị của viên nhóm mới có thể sử dụng bot",
-			en: "turn on/off only admin box can use bot"
-		},
-		category: "𝗕𝗢𝗫 𝗖𝗛𝗔𝗧",
+		description: "Turn on/off only admin of group can use bot",
+		category: "BOX CHAT",
 		guide: {
-			vi: "   {pn} [on | off]: bật/tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot"
-				+ "\n   {pn} noti [on | off]: bật/tắt thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
 			en: "   {pn} [on | off]: turn on/off the mode only admin of group can use bot"
 				+ "\n   {pn} noti [on | off]: turn on/off the notification when user is not admin of group use bot"
 		}
 	},
 
 	langs: {
-		vi: {
-			turnedOn: "Đã bật chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot",
-			turnedOff: "Đã tắt chế độ chỉ quản trị viên nhóm mới có thể sử dụng bot",
-			turnedOnNoti: "Đã bật thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
-			turnedOffNoti: "Đã tắt thông báo khi người dùng không phải là quản trị viên nhóm sử dụng bot",
-			syntaxError: "Sai cú pháp, chỉ có thể dùng {pn} on hoặc {pn} off"
-		},
 		en: {
 			turnedOn: "Turned on the mode only admin of group can use bot",
 			turnedOff: "Turned off the mode only admin of group can use bot",
