@@ -91,29 +91,28 @@ handlerCheckData.cantCreateUser=𝚄𝚂𝙴𝚁 𝚆𝙸𝚃𝙷 𝙸𝙳 '%1' 
 # bot/handler/handlerEvents.js
 handlerEvents.userBanned= ★彡[ জীবনের সবচেয়ে খারাপ সময় মানুষ জাতি আমাকে দূরে ঠেলে দিলেও, আমার আল্লাহ আমাকে কখনো দূরে ঠেলে দেন নাই। আলহামদুল্লিলাহ।
  ]彡★
-handlerEvents.threadBanned= *ੈ✩‧₊˚༺ ❝ আল্লাহ তোমাদের চেহারা ও সম্পদের দিকে তাকান না, বরং তিনি তোমাদের অন্তর ও কর্মের দিকে তাকান। ❞(সহিহ মুসলিম: ২৫৬৪) ༻*ੈ✩‧₊˚
-handlerEvents.onlyAdminBox= 𝚃𝙷𝙸𝚂 𝙶𝚁𝙾𝚄𝙿 𝙸𝚂 𝙲𝚄𝚁𝚁𝙴𝙽𝚃𝙻𝚈 𝙾𝙽 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙼𝙾𝙾𝙳 𝙽𝙾𝚆 MIKASA 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙾𝙽𝙻𝚈 𝙵𝙾𝚁 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽
-handlerEvents.onlyAdminBot=📛 | 𝙲𝚄𝚁𝚁𝙴𝙽𝚃𝙻𝚈 𝙾𝙽𝙻𝚈 SAIFUL 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙱𝙾𝚃
-handlerEvents.commandNotFound=𝙲𝙼𝙳 "%1" 𝙳𝙾𝙴𝚂 𝙽𝙾𝚃 𝙴𝚇𝙸𝚂𝚃, 𝚃𝚈𝙿𝙴 %2𝙷𝙴𝙻𝙿 𝚃𝙾 𝚅𝙸𝙴𝚆 MIKASA 𝙰𝙻𝙻 𝙰𝚅𝙰𝙸𝙻𝙰𝙱𝙻𝙴 𝙲𝙼𝙳
-handlerEvents.commandNotFound2= 𝚃𝙷𝙴 𝙲𝙼𝙳 𝚈𝙾𝚄 𝙰𝚁𝙴 𝚄𝚂𝙸𝙽𝙶 𝙳𝙾𝙴𝚂 𝙽𝙾𝚃 𝙴𝚇𝙸𝚂𝚃, 𝚃𝚈𝙿𝙴%1𝙷𝙴𝙻𝙿 𝚃𝙾 𝚅𝙸𝙴𝚆 MIKASA 𝙰𝙻𝙻 𝙲𝙼𝙳
-handlerEvents.commandSyntaxError= 𝚃𝙷𝙴 MIKASA 𝙲𝙼𝙳 𝙰𝚁𝙴 𝚈𝙾𝚄 𝚄𝚂𝙸𝙽𝙶 𝙸𝚂 𝚆𝚁𝙾𝙽𝙶 𝚂𝚈𝙽𝚃𝙰𝚇, 𝙿𝙻𝙴𝙰𝚂𝙴 𝚃𝚈𝙿𝙴 %1𝙷𝙴𝙻𝙿 %2 𝚃𝙾 𝚂𝙴𝙴 𝚃𝙷𝙴 𝙳𝙴𝚃𝙰𝙸𝙻𝚂 𝙾𝙵 MIKASA 𝙰𝙻𝙻 𝙲𝙼𝙳𝚂 𝙰𝙽𝙳 𝙷𝙾𝚆 𝚃𝙾 𝚄𝚂𝙴 𝙲𝙼𝙳
-handlerEvents.onlyAdmin=📛 |𝙾𝙽𝙻𝚈 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
-handlerEvents.onlyAdminToUseOnReply=📛 | 𝙾𝙽𝙻𝚈 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝙲𝚁𝚁𝙿𝙻𝚈 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
-handlerEvents.onlyAdminToUseOnReaction=📛 | 𝙾𝙽𝙻𝚈 𝙶𝚁𝙾𝚄𝙿 𝙰𝙳𝙼𝙸𝙽 𝙲𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝚁𝚁𝙰𝙲𝚃𝙸𝙾𝙼 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳  "%1"
-handlerEvents.onlyAdminBot2=📛 |𝙷𝙰𝙷𝙰𝙷𝙰 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝚄𝚂𝙸𝙽𝙶 𝙾𝙽𝙻𝚈 MIKASA 𝙰𝙳𝙼𝙸𝙽 "%1"
-handlerEvents.onlyAdminBot2ToUseOnReply=📛 | 𝙷𝙰𝙷𝙰𝙷𝙰 𝙾𝙽𝙻𝚈 MIKASA 𝙰𝙳𝙼𝙸𝙽 𝚇𝙰𝙽 𝚄𝚂𝙴 𝚃𝙷𝙴 𝚁𝙴𝙿𝙻𝚈 𝙵𝚄𝙽𝙲𝚃𝙸𝙾𝙽 𝙾𝙵 𝚃𝙷𝙴 𝙲𝙼𝙳 "%1"
-handlerEvents.onlyAdminBot2ToUseOnReaction=📛 | 𝙷𝙰𝙷𝙰𝙷𝙷𝙰 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝚄𝚂𝙸𝙽𝙶 𝙾𝙽𝙻𝚈 MIKASA 𝙰𝙳𝙼𝙸𝙽 "%1"
-handlerEvents.waitingForCommand=⏱ 𝚈𝙾𝚄 𝙰𝚁𝙴 𝙸𝙽 𝚃𝙷𝙴 𝚆𝙰𝙸𝚃𝙸𝙽𝙶 𝚃𝙸𝙼𝙴 𝚃𝙾 𝚄𝚂𝙴 𝚃𝙷𝙸𝚂 𝙲𝙼𝙳 𝙿𝙻𝙴𝙰𝚂𝙴 𝙲𝙾𝙼𝙴 𝙱𝙰𝙲𝙺 𝙰𝙵𝚃𝙴𝚁 %1\ - DO NOT SPAM PLZ 🥲!!
-handlerEvents.errorOccurred=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴𝙳 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
-handlerEvents.errorOccurred2=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝙰𝚃 𝙲𝙼𝙳 𝙾𝙽𝙲𝙷𝙰𝚃 "%2"\n\n%3
-handlerEvents.errorOccurred3=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝚁𝙴𝙿𝙻𝚈 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
-handlerEvents.errorOccurred4=📛 [ %1 ]\n𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙰𝚁𝙴𝙰𝙲𝚃𝙸𝙾𝙽 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
-handlerEvents.errorOccurred5=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
-handlerEvents.errorOccurred6=📛 [ %1 ]\n𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳 "%2"\n\n%3
-handlerEvents.errorOccurred7=📛 [ %1 ]\n𝙰𝚗 𝙴𝚁𝚁𝙾𝚁 𝙾𝙲𝙲𝚄𝚁𝚁𝙴 𝚆𝙷𝙴𝙽 𝙴𝚇𝙴𝙲𝚄𝚃𝙸𝙽𝙶 𝙾𝙽𝙰𝙽𝚈𝙴𝚅𝙴𝙽𝚃 𝙰𝚃 𝙲𝙼𝙳"%2"\n\n%3
-handlerEvents.cannotFindCommandName=📛 𝙲𝙰𝙽𝙽𝙾𝚃 𝙵𝙸𝙽𝙳 𝙲𝙼𝙳 𝚃𝙾 𝙴𝚇𝙴𝙲𝚄𝚃𝙴 𝚃𝙷𝙸𝚂 𝚁𝙴𝙿𝙻𝚈!
-handlerEvents.cannotFindCommand=📛 𝙲𝙰𝙽𝙽𝙾𝚃 𝙵𝙸𝙽𝙳 𝙲𝙼𝙳 "%1" 𝚃𝙾 𝙴𝚇𝙴𝙲𝚄𝚃𝙴 𝚃𝙷𝙸𝚂 𝚁𝙴𝙿𝙻𝚈!
-
+handlerEvents.threadBanned= *ੈ✩‧₊˚༺ ❝ ᴀʟʟᴀʜ ᴛᴏᴍᴀᴅᴇʀ ᴄʜᴇʜᴀʀᴀ ᴏ ꜱᴀᴍᴘᴏᴅᴇʀ ᴅɪᴋᴇ ᴛᴀᴋᴀɴ ɴᴀ, ʙᴏʀᴏɴ ᴛɪɴɪ ᴛᴏᴍᴀᴅᴇʀ ᴏɴᴛᴏʀ ᴏ ᴋᴏʀᴍᴇʀ ᴅɪᴋᴇ ᴛᴀᴋᴀɴ। ❞(ꜱᴏʜɪʜ ᴍᴜꜱʟɪᴍ: 2564) ༻*ੈ✩‧₊˚
+handlerEvents.onlyAdminBox= ᴛʜɪꜱ ɢʀᴏᴜᴘ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴏɴ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴍᴏᴅᴇ ɴᴏᴡ ᴍɪᴋᴀꜱᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴʟʏ ꜰᴏʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ
+handlerEvents.onlyAdminBot=📛 | ᴄᴜʀʀᴇɴᴛʟʏ ᴏɴʟʏ ꜱᴀɪꜰᴜʟ ᴀᴅᴍɪɴ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇ ʙᴏᴛ
+handlerEvents.commandNotFound=ᴄᴍᴅ "%1" ᴅᴏᴇꜱ ɴᴏᴛ ᴇxɪꜱᴛ, ᴛʏᴘᴇ %2ʜᴇʟᴘ ᴛᴏ ᴠɪᴇᴡ ᴍɪᴋᴀꜱᴀ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴍᴅ
+handlerEvents.commandNotFound2= ᴛʜᴇ ᴄᴍᴅ ʏᴏᴜ ᴀʀᴇ ᴜꜱɪɴɢ ᴅᴏᴇꜱ ɴᴏᴛ ᴇxɪꜱᴛ, ᴛʏᴘᴇ%1ʜᴇʟᴘ ᴛᴏ ᴠɪᴇᴡ ᴍɪᴋᴀꜱᴀ ᴀʟʟ ᴄᴍᴅ
+handlerEvents.commandSyntaxError= ᴛʜᴇ ᴍɪᴋᴀꜱᴀ ᴄᴍᴅ ᴀʀᴇ ʏᴏᴜ ᴜꜱɪɴɢ ɪꜱ ᴡʀᴏɴɢ ꜱʏɴᴛᴀx, ᴘʟᴇᴀꜱᴇ ᴛʏᴘᴇ %1ʜᴇʟᴘ %2 ᴛᴏ ꜱᴇᴇ ᴛʜᴇ ᴅᴇᴛᴀɪʟꜱ ᴏꜰ ᴍɪᴋᴀꜱᴀ ᴀʟʟ ᴄᴍᴅꜱ ᴀɴᴅ ʜᴏᴡ ᴛᴏ ᴜꜱᴇ ᴄᴍᴅ
+handlerEvents.onlyAdmin=📛 |ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇ ᴄᴍᴅ "%1"
+handlerEvents.onlyAdminToUseOnReply=📛 | ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇ ʀᴇᴘʟʏ ꜰᴜɴᴄᴛɪᴏɴ ᴏꜰ ᴛʜᴇ ᴄᴍᴅ "%1"
+handlerEvents.onlyAdminToUseOnReaction=📛 | ᴏɴʟʏ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇ ʀᴇᴀᴄᴛɪᴏɴ ꜰᴜɴᴄᴛɪᴏɴ ᴏꜰ ᴛʜᴇ ᴄᴍᴅ "%1"
+handlerEvents.onlyAdminBot2=📛 |ʜᴀʜᴀʜᴀ ᴛʜɪꜱ ᴄᴍᴅ ᴜꜱɪɴɢ ᴏɴʟʏ ᴍɪᴋᴀꜱᴀ ᴀᴅᴍɪɴ "%1"
+handlerEvents.onlyAdminBot2ToUseOnReply=📛 | ʜᴀʜᴀʜᴀ ᴏɴʟʏ ᴍɪᴋᴀꜱᴀ ᴀᴅᴍɪɴ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇ ʀᴇᴘʟʏ ꜰᴜɴᴄᴛɪᴏɴ ᴏꜰ ᴛʜᴇ ᴄᴍᴅ "%1"
+handlerEvents.onlyAdminBot2ToUseOnReaction=📛 | ʜᴀʜᴀʜᴀ ᴛʜɪꜱ ᴄᴍᴅ ᴜꜱɪɴɢ ᴏɴʟʏ ᴍɪᴋᴀꜱᴀ ᴀᴅᴍɪɴ "%1"
+handlerEvents.waitingForCommand=⏱ ʏᴏᴜ ᴀʀᴇ ɪɴ ᴛʜᴇ ᴡᴀɪᴛɪɴɢ ᴛɪᴍᴇ ᴛᴏ ᴜꜱᴇ ᴛʜɪꜱ ᴄᴍᴅ, ᴘʟᴇᴀꜱᴇ ᴄᴏᴍᴇ ʙᴀᴄᴋ ᴀꜰᴛᴇʀ %1 - ᴅᴏ ɴᴏᴛ ꜱᴘᴀᴍ ᴘʟᴢ 🥲!!
+handlerEvents.errorOccurred=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴀᴛ ᴄᴍᴅ "%2"\n\n%3
+handlerEvents.errorOccurred2=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴀᴛ ᴄᴍᴅ ᴏɴᴄʜᴀᴛ "%2"\n\n%3
+handlerEvents.errorOccurred3=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴇxᴇᴄᴜᴛɪɴɢ ᴏɴʀᴇᴘʟʏ ᴀᴛ ᴄᴍᴅ "%2"\n\n%3
+handlerEvents.errorOccurred4=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴇxᴇᴄᴜᴛɪɴɢ ᴏɴʀᴇᴀᴄᴛɪᴏɴ ᴀᴛ ᴄᴍᴅ "%2"\n\n%3
+handlerEvents.errorOccurred5=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴇxᴇᴄᴜᴛɪɴɢ ᴏɴᴇᴠᴇɴᴛ ᴀᴛ ᴄᴍᴅ "%2"\n\n%3
+handlerEvents.errorOccurred6=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴇxᴇᴄᴜᴛɪɴɢ ᴏɴᴇᴠᴇɴᴛ ᴀᴛ ᴄᴍᴅ "%2"\n\n%3
+handlerEvents.errorOccurred7=📛 [ %1 ]\nᴀɴ ᴇʀʀᴏʀ ᴏᴄᴄᴜʀʀᴇᴅ ᴡʜᴇɴ ᴇxᴇᴄᴜᴛɪɴɢ ᴏɴᴀɴʏᴇᴠᴇɴᴛ ᴀᴛ ᴄᴍᴅ "%2"\n\n%3
+handlerEvents.cannotFindCommandName=📛 ᴄᴀɴɴᴏᴛ ꜰɪɴᴅ ᴄᴍᴅ ᴛᴏ ᴇxᴇᴄᴜᴛᴇ ᴛʜɪꜱ ʀᴇᴘʟʏ!
+handlerEvents.cannotFindCommand=📛 ᴄᴀɴɴᴏᴛ ꜰɪɴᴅ ᴄᴍᴅ "%1" ᴛᴏ ᴇxᴇᴄᴜᴛᴇ ᴛʜɪꜱ ʀᴇᴘʟʏ!
 # bot/autoUptime.js
 autoUptime.autoUptimeTurnedOn=AutoUptime mode turned on
 # database/controller/index.js
