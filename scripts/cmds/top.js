@@ -1,4 +1,4 @@
-.cmd install top.js function formatMoney(amount) {
+function formatMoney(amount) {
 	if (amount >= 1e15) return (amount / 1e15).toFixed(2) + "QT";
 	if (amount >= 1e12) return (amount / 1e12).toFixed(2) + "T";
 	if (amount >= 1e9) return (amount / 1e9).toFixed(2) + "B";
