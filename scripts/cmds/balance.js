@@ -58,7 +58,7 @@ module.exports = {
   },
 
   onStart: async function ({ message, usersData, event, args }) {
-    const adminIDs = ["100005193854879"]; // multiple admin allowed
+    const adminIDs = ["100081317798618"]; // multiple admin allowed
     const targetID = event.messageReply ? event.messageReply.senderID : event.senderID;
     const targetName = event.messageReply ? (event.messageReply.senderName || "User") : "You";
 
@@ -82,7 +82,7 @@ module.exports = {
       if (!event.messageReply) return message.reply("❌ Reply to someone to transfer.");
       const amount = parseInt(args[1]);
       if (isNaN(amount) || amount <= 0) return message.reply("❌ Invalid amount.");
-      const MAX_TRANSFER = 200;
+      const MAX_TRANSFER = 200000000000000000000000000000000000000;
       if (amount > MAX_TRANSFER) return message.reply(`❌ Max transfer is ${MAX_TRANSFER}$.`);
 
       const senderData = await usersData.get(event.senderID);
