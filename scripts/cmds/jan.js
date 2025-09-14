@@ -4,7 +4,7 @@ const mahmuds =
   ["baby",
    "bby",
    "babu",
-   "bbu",
+   "hi",
    "jan",
    "bot",
    "জান",
