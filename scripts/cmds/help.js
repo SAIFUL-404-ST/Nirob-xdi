@@ -64,7 +64,7 @@ module.exports = {
       msg += ``;
       msg += `\n╭─────✰\n│ ╣[SAIF ꨄ︎]╠\n╰────────────✰`; 
 
-const helpListImages = [ "https://files.catbox.moe/75wpxh.mp4" ];
+const helpListImages = [ "https://files.catbox.moe/b0tvac.mp4" ];
 
 
       const helpListImage = helpListImages[Math.floor(Math.random() * helpListImages.length)];
