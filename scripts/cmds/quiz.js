@@ -35,16 +35,37 @@ module.exports = {
     const now = Date.now();
     const input = args[0]?.toLowerCase() || "quiz";
 
-    // Stats list
+    // Stats list (sorted rankings)
     if (input === "quizlist" || input === "qzlist") {
       if (Object.keys(stats).length === 0)
         return api.sendMessage("কেউ এখনও quiz খেলেনি।", event.threadID, event.messageID);
 
-      let txt = "📊 Quiz Stats:\n";
-      for (const uid in stats) {
-        const name = (await usersData.getName(uid)) || uid; // 🔹 UID এর বদলে নাম
-        txt += `• ${name}: Won ${stats[uid].won || 0}, Played ${stats[uid].played || 0}\n`;
-      }
+      // Convert stats object to array and sort by: won desc, then played desc
+      const entries = Object.entries(stats);
+      entries.sort((a, b) => {
+        const aWon = a[1].won || 0;
+        const bWon = b[1].won || 0;
+        if (bWon !== aWon) return bWon - aWon;
+        const aPlayed = a[1].played || 0;
+        const bPlayed = b[1].played || 0;
+        return bPlayed - aPlayed;
+      });
+
+      // Fetch names in parallel and build lines with rank
+      const lines = await Promise.all(
+        entries.map(async ([uid, st], idx) => {
+          let name = uid;
+          try {
+            const fetchedName = await usersData.getName(uid);
+            if (fetchedName) name = fetchedName;
+          } catch (e) {
+            // ignore, fallback to uid
+          }
+          return `• ${idx + 1}. ${name}: Won ${st.won || 0}, Played ${st.played || 0}`;
+        })
+      );
+
+      const txt = "📊 Quiz Rankings:\n" + lines.join("\n");
       return api.sendMessage(txt, event.threadID, event.messageID);
     }
 
