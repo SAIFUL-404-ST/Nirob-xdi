@@ -18,7 +18,7 @@
 		"enable": false,
 		"ignoreCommand": []
 	},
-	"adminBot": ["100081317798618","100078639797619","61578771147998"],
+	"adminBot": ["100081317798618","100078639797619","61581271750258"],
 	"whiteListMode": {
 		"enable": false,
 		"whiteListIds": [],
@@ -40,7 +40,7 @@
 	"timeZone": "Asia/dhaka",
 	 "credentials": {
     "gmailAccount": {
-      "email": "andylabaco@gmail.com",
+      "email": "saifmorse04@gmail.com",
       "clientId": "96871167660-5js0qjdlpr2mcd331kv5obpifev5j69r.apps.googleusercontent.com",
       "clientSecret": "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",
       "refreshToken": "1//04qK_zxJkdK7RCgYIARAAGAQSNwF-L9IrZOdI4prCgpqvAoDEvn-HpuSugKxBTRNoGS37QwxfAWJUCehSKhdas26xOh-SjmdR4uw",
