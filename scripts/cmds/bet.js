@@ -18,7 +18,7 @@ const emojis = ["❤️","💙","💚","💛","🖤"];
 module.exports = {
   config: {
     name: "bet",
-    version: "2.1",
+    version: "2.2",
     author: "SAIF",
     shortDescription: { en: "One-click emoji bet with 45/55 chance" },
     longDescription: { en: "User gives amount, bot selects emoji, result is automatic." },
@@ -42,21 +42,37 @@ module.exports = {
     if (isNaN(amount) || amount <= 0) return message.reply(getLang("invalid_amount"));
     if (amount > userData.money) return message.reply(getLang("not_enough_money"));
 
-    // Bot automatically select emoji
-    const userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    // Determine if user wins this round (45% chance)
+    const isWin = Math.random() < 0.45;
 
-    // Spinning animation simulation
+    // Bot selects user emoji
+    let userEmoji;
+    if (isWin) {
+      // Winning: user emoji = winning emoji
+      userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    } else {
+      // Losing: pick random emoji not equal to winning emoji
+      let winningEmoji;
+      do {
+        winningEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+      } while (emojis.length > 1 && Math.random() < 0.9); // ensure different sometimes
+      userEmoji = emojis.filter(e => e !== winningEmoji)[Math.floor(Math.random() * (emojis.length - 1))];
+    }
+
+    // Winning emoji always
+    const winningEmoji = isWin ? userEmoji : emojis.filter(e => e !== userEmoji)[Math.floor(Math.random() * (emojis.length - 1))];
+
+    // Simulate spinning
     await message.reply(getLang("spin_message"));
     await new Promise(r => setTimeout(r, 1500));
 
-    // Determine winning emoji (random)
-    const winningEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-    const isWin = Math.random() < 0.45; // 45% chance win
+    // Calculate winnings
     const winnings = isWin ? amount : -amount;
 
     // Update balance
     await usersData.set(senderID, { money: userData.money + winnings, data: userData.data });
 
+    // Result message
     const resultMsg = `
 ✨ 𝗠𝗶𝗸𝗮𝘀𝗮 𝗕𝗲𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 🎀
 ━━━━━━━━━━━━━━━
