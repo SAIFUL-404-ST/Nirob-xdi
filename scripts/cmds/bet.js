@@ -18,7 +18,7 @@ const emojis = ["❤️","💙","💚","💛","🖤"];
 module.exports = {
   config: {
     name: "bet",
-    version: "2.2",
+    version: "2.3",
     author: "SAIF",
     shortDescription: { en: "One-click emoji bet with 45/55 chance" },
     longDescription: { en: "User gives amount, bot selects emoji, result is automatic." },
@@ -28,7 +28,6 @@ module.exports = {
     en: {
       invalid_amount: "⚠️ 𝐞𝐧𝐭𝐞𝐫 𝐚 𝐯𝐚𝐥𝐢𝐝 𝐚𝐦𝐨𝐮𝐧𝐭 𝐭𝐨 𝐛𝐞𝐭.",
       not_enough_money: "💰 𝐲𝐨𝐮 𝐝𝐨𝐧'𝐭 𝐡𝐚𝐯𝐞 𝐞𝐧𝐨𝐮𝐠𝐡 𝐛𝐚𝐥𝐚𝐧𝐜𝐞.",
-      spin_message: "🎲 𝐬𝐩𝐢𝐧𝐧𝐢𝐧𝐠...",
       win_message: "🎉 𝐘𝐎𝐔 𝐖𝐎𝐍 $%1!",
       lose_message: "💔 𝐘𝐎𝐔 𝐋𝐎𝐒𝐓 $%1."
     }
@@ -42,47 +41,36 @@ module.exports = {
     if (isNaN(amount) || amount <= 0) return message.reply(getLang("invalid_amount"));
     if (amount > userData.money) return message.reply(getLang("not_enough_money"));
 
-    // Determine if user wins this round (45% chance)
+    // Decide win/lose (45% win chance)
     const isWin = Math.random() < 0.45;
 
-    // Bot selects user emoji
-    let userEmoji;
-    if (isWin) {
-      // Winning: user emoji = winning emoji
-      userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-    } else {
-      // Losing: pick random emoji not equal to winning emoji
-      let winningEmoji;
-      do {
-        winningEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-      } while (emojis.length > 1 && Math.random() < 0.9); // ensure different sometimes
-      userEmoji = emojis.filter(e => e !== winningEmoji)[Math.floor(Math.random() * (emojis.length - 1))];
-    }
+    // Emoji selection
+    let userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
+    let winningEmoji = isWin ? userEmoji : emojis.filter(e => e !== userEmoji)[Math.floor(Math.random() * (emojis.length - 1))];
 
-    // Winning emoji always
-    const winningEmoji = isWin ? userEmoji : emojis.filter(e => e !== userEmoji)[Math.floor(Math.random() * (emojis.length - 1))];
-
-    // Simulate spinning
-    await message.reply(getLang("spin_message"));
-    await new Promise(r => setTimeout(r, 1500));
+    // Spinning message with bet info
+    await message.reply(`
+💵 𝐁𝐞𝐭𝐭𝐢𝐧𝐠 𝐨𝐧 𝐞𝐦𝐨𝐣𝐢: ${args[0]} on ${userEmoji}
+🎯 𝐖𝐢𝐧𝐧𝐢𝐧𝐠 𝐄𝐦𝐨𝐣𝐢: ${winningEmoji}
+🔄 𝐂𝐚𝐥𝐜𝐮𝐥𝐚𝐭𝐢𝐧𝐠 𝐫𝐞𝐬𝐮𝐥𝐭...
+`);
+    await new Promise(r => setTimeout(r, 1500)); // delay for effect
 
     // Calculate winnings
     const winnings = isWin ? amount : -amount;
-
-    // Update balance
     await usersData.set(senderID, { money: userData.money + winnings, data: userData.data });
 
     // Result message
     const resultMsg = `
 ✨ 𝗠𝗶𝗸𝗮𝘀𝗮 𝗕𝗲𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 🎀
 ━━━━━━━━━━━━━━━
-👤 𝐩𝐥𝐚𝐲𝐞𝐫: ${userData.name || "Unknown"}
-💵 𝐛𝐞𝐭: ${args[0]} on ${userEmoji}
-🎯 𝐰𝐢𝐧𝐧𝐢𝐧𝐠 𝐞𝐦𝐨𝐣𝐢: ${winningEmoji}
+👤 𝐏𝐥𝐚𝐲𝐞𝐫: ${userData.name || "Unknown"}
+💵 𝐁𝐞𝐭: ${args[0]} on ${userEmoji}
+🎯 𝐖𝐢𝐧𝐧𝐢𝐧𝐠 𝐄𝐦𝐨𝐣𝐢: ${winningEmoji}
 
 ${isWin ? getLang("win_message", args[0]) : getLang("lose_message", args[0])}
 
-🏦 𝐛𝐚𝐥𝐚𝐧𝐜𝐞: ${userData.money + winnings}
+🏦 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${userData.money + winnings}
 ━━━━━━━━━━━━━━━
 `;
     return message.reply(resultMsg);
