@@ -1,103 +1,58 @@
-module.exports = {
-  config: {
-    name: "spin",
-    version: "4.2",
-    author: "SAIF",
-    countDown: 5,
-    role: 0,
-    description: "Premium Mikasa Spin System with bold text & jackpot!",
-    category: "game",
-    guide: {
-      en: "{p}spin <amount>\n{p}spin top"
-    }
-  },
+const parseShorthand = (str) => {
+  if (!str) return NaN;
+  str = str.toLowerCase();
+  const map = { k:1e3, m:1e6, b:1e9, t:1e12, qd:1e15, qt:1e18, sx:1e21, sp:1e24, oc:1e27, no:1e30, dc:1e33 };
+  let suffix = Object.keys(map).sort((a,b)=>b.length-a.length).find(s=>str.endsWith(s));
+  let multiplier = suffix ? map[suffix] : 1;
+  if(suffix) str=str.slice(0,-suffix.length);
+  const number=parseFloat(str);
+  return isNaN(number)?NaN:number*multiplier;
+};
 
-  onStart: async function ({ message, event, args, usersData }) {
-    const senderID = event.senderID;
-    const subCommand = args[0];
+const smallBoldNumbers={"0":"𝟎","1":"𝟏","2":"𝟐","3":"𝟑","4":"𝟒","5":"𝟓","6":"𝟔","7":"𝟕","8":"𝟖","9":"𝟗",".":"."};
+function toSmallBoldNumber(num){return num.toString().split("").map(c=>smallBoldNumbers[c]||c).join("");}
+function formatMoney(num){
+  const suffixes=[{value:1e33,symbol:"𝐃𝐂"},{value:1e30,symbol:"𝐍𝐎"},{value:1e27,symbol:"𝐎𝐂"},{value:1e24,symbol:"𝐒𝐏"},{value:1e21,symbol:"𝐒𝐗"},{value:1e18,symbol:"𝐐𝐍"},{value:1e15,symbol:"𝐐𝐃"},{value:1e12,symbol:"𝐓"},{value:1e9,symbol:"𝐁"},{value:1e6,symbol:"𝐌"},{value:1e3,symbol:"𝐊"}];
+  for(const s of suffixes){if(num>=s.value) return toSmallBoldNumber((num/s.value).toFixed(2))+s.symbol;}
+  return toSmallBoldNumber(num);
+}
 
-    // 🏆 Top Spin Winners
-    if (subCommand === "top") {
-      const allUsers = await usersData.getAll();
-      const top = allUsers
-        .filter(u => typeof u.data?.totalSpinWin === "number" && u.data.totalSpinWin > 0)
-        .sort((a, b) => b.data.totalSpinWin - a.data.totalSpinWin)
-        .slice(0, 10);
+module.exports={
+  config:{name:"spin",version:"5.0",author:"SAIF",category:"🎮 Game",shortDescription:{en:"Stylish bullet spin game"}},
 
-      if (!top.length) return message.reply("❌ No spin winners yet.");
+  onStart: async({args,message,event,usersData})=>{
+    const user=event.senderID;
+    const userData=await usersData.get(user);
+    const betAmount=parseShorthand(args[0]);
 
-      const result = top.map((user, i) => {
-        const name = user.name || `User ${user.userID?.slice(-4) || "??"}`;
-        return `✨ 𝗧𝗼𝗽 ${i + 1}. 𝗡𝗮𝗺𝗲: ${name} – 💸 ${user.data.totalSpinWin} coins`;
-      }).join("\n");
+    if(isNaN(betAmount)||betAmount<=0) return message.reply("⚠️ 𝗘𝗡𝗧𝗘𝗥 𝗔 𝗩𝗔𝗟𝗜𝗗 𝗕𝗘𝗧 𝗔𝗠𝗢𝗨𝗡𝗧.");
+    if(betAmount>userData.money) return message.reply("💰 𝗡𝗢𝗧 𝗘𝗡𝗢𝗨𝗚𝗛 𝗕𝗔𝗟𝗔𝗡𝗖𝗘.");
 
-      return message.reply(`🏆 𝗠𝗶𝗸𝗮𝘀𝗮 𝗦𝗽𝗶𝗻 𝗧𝗼𝗽 𝗪𝗶𝗻𝗻𝗲𝗿𝘀:\n\n${result}`);
-    }
+    const slots=["❤️","💛","💙","💚"];
+    const slot1=slots[Math.floor(Math.random()*slots.length)];
+    const slot2=slots[Math.floor(Math.random()*slots.length)];
+    const slot3=slots[Math.floor(Math.random()*slots.length)];
 
-    // 💰 /spin <amount>
-    const betAmount = parseInt(subCommand);
-    if (isNaN(betAmount) || betAmount <= 0) return message.reply("⚠️ Usage:\n/spin <amount>\n/spin top");
+    const winnings=calculateWinnings(slot1,slot2,slot3,betAmount);
+    userData.money+=winnings;
+    await usersData.set(user,{money:userData.money,data:userData.data});
 
-    const userData = await usersData.get(senderID) || {};
-    userData.money = userData.money || 0;
-    userData.data = userData.data || {};
-    userData.data.totalSpinWin = userData.data.totalSpinWin || 0;
+    const resultMsg=`🎀
+• 𝐁𝐚𝐛𝐲, 𝐘𝐨𝐮 ${winnings>0?"𝐖𝐨𝐧":"𝐋𝐨𝐬𝐭"} ${formatMoney(Math.abs(winnings))}!
+• 𝐆𝐚𝐦𝐞 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: [ ${slot1} | ${slot2} | ${slot3} ]
+• 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${formatMoney(userData.money)}`;
 
-    if (userData.money < betAmount) return message.reply(`💸 𝗡𝗼𝘁 𝗲𝗻𝗼𝘂𝗴𝗵 𝗯𝗮𝗹𝗮𝗻𝗰𝗲.\n💰 𝗬𝗼𝘂𝗿 𝗯𝗮𝗹𝗮𝗻𝗰𝗲: ${userData.money}`);
-
-    // Deduct bet
-    userData.money -= betAmount;
-
-    // 🎰 Spin emojis
-    const slots = ["💚", "💛", "💙"];
-    const slot1 = slots[Math.floor(Math.random() * slots.length)];
-    const slot2 = slots[Math.floor(Math.random() * slots.length)];
-    const slot3 = slots[Math.floor(Math.random() * slots.length)];
-
-    // Calculate winnings
-    const winnings = calculateWinnings(slot1, slot2, slot3, betAmount);
-
-    // Update money & totalSpinWin
-    userData.money += winnings;
-    if (winnings > betAmount) userData.data.totalSpinWin += winnings - betAmount;
-
-    await usersData.set(senderID, userData);
-
-    // Build stylish Mikasa message
-    const resultMessage = buildStylishMessage(slot1, slot2, slot3, winnings, betAmount);
-
-    return message.reply(resultMessage);
+    return message.reply(resultMsg);
   }
 };
 
-// 💎 Calculate winnings function
-function calculateWinnings(slot1, slot2, slot3, bet) {
-  if (slot1 === slot2 && slot2 === slot3) {
-    if (slot1 === "💙") return bet * 10;  // Jackpot
-    if (slot1 === "💚") return bet * 5;
-    if (slot1 === "💛") return bet * 3;
-    return bet * 2;
-  } else if (slot1 === slot2 || slot1 === slot3 || slot2 === slot3) {
-    return bet * 1.5;
-  } else {
-    return -bet;
+function calculateWinnings(s1,s2,s3,bet){
+  if(s1===s2&&s2===s3){
+    if(s1==="💙") return bet*15;
+    if(s1==="💚") return bet*10;
+    if(s1==="💛") return bet*5;
+    return bet*3;
   }
+  if(s1===s2||s1===s3||s2===s3) return bet*2;
+  return -bet;
 }
-
-// 🎀 Stylish Mikasa message
-function buildStylishMessage(s1, s2, s3, winnings, bet) {
-  const header = `✨ 𝗠𝗶𝗸𝗮𝘀𝗮 𝗦𝗽𝗶𝗻 𝗦𝘆𝘀𝘁𝗲𝗺 🎀\n═✦════════════✦═\n`;
-  const slotsLine = `🎰 [ ${s1} | ${s2} | ${s3} ] 🎰\n`;
-  const betInfo = `💵 𝗕𝗲𝘁: $${bet}\n💸 𝗪𝗼𝗻: ${winnings > 0 ? winnings : 0}$\n💰 𝗡𝗲𝘄 𝗕𝗮𝗹𝗮𝗻𝗰𝗲: ${winnings > 0 ? bet + winnings : 0}$\n`;
-
-  let outcome;
-  if (winnings > 0) {
-    outcome = winnings >= bet * 10 ? `🎉 𝗝𝗔𝗖𝗞𝗣𝗢𝗧!!! 10x reward!` :
-              winnings >= bet * 5 ? `✨ Big win!` :
-              `🟢 You won!`;
-  } else {
-    outcome = `💥 You lost!`;
-  }
-
-  return `${header}${slotsLine}${betInfo}📌 Result: ${outcome}\n═✦════════════✦═`;
-   }
