@@ -1,7 +1,7 @@
 const axios = require('axios');
 const baseApiUrl = async () => {
   const base = await axios.get(
-    `https://raw.githubusercontent.com/Blankid018/D1PT0/main/baseApiUrl.json`,
+    `https://raw.githubusercontent.com/Mostakim0978/D1PT0/refs/heads/main/baseApiUrl.json`,
   );
   return base.data.api;
 };
@@ -9,7 +9,7 @@ module.exports.config = {
     name: 'font',
     aliases: ['style'],
     version: '1.0',
-    role: 2,
+    role: 0,
     countDowns: 5,
     author: 'dipto',
     description: 'This command transforms text with different fonts',
