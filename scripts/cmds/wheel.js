@@ -13,14 +13,53 @@ const parseAmount = (str) => {
   return isNaN(num) ? NaN : num * multiplier;
 };
 
+const smallBoldNumbers = {
+  "0": "𝟎", "1": "𝟏", "2": "𝟐", "3": "𝟑", "4": "𝟒",
+  "5": "𝟓", "6": "𝟔", "7": "𝟕", "8": "𝟖", "9": "𝟗", ".": "."
+};
+
+function toSmallBoldNumber(num) {
+  return num.toString().split("").map(c => smallBoldNumbers[c] || c).join("");
+}
+
+function formatMoney(num) {
+  const suffixes = [
+    { value: 1e33, symbol: "𝐃𝐂" },
+    { value: 1e30, symbol: "𝐍𝐎" },
+    { value: 1e27, symbol: "𝐎𝐂" },
+    { value: 1e24, symbol: "𝐒𝐏" },
+    { value: 1e21, symbol: "𝐒𝐗" },
+    { value: 1e18, symbol: "𝐐𝐈" },
+    { value: 1e15, symbol: "𝐐𝐃" },
+    { value: 1e12, symbol: "𝐓" },
+    { value: 1e9, symbol: "𝐁" },
+    { value: 1e6, symbol: "𝐌" },
+    { value: 1e3, symbol: "𝐊" }
+  ];
+  for (const s of suffixes) {
+    if (num >= s.value) {
+      return toSmallBoldNumber((num / s.value).toFixed(2)) + s.symbol;
+    }
+  }
+  return toSmallBoldNumber(num);
+}
+
+const wheelEmojis = [
+  { emoji: "🍒", multiplier: 0.5, weight: 20 },
+  { emoji: "🍋", multiplier: 1, weight: 30 },
+  { emoji: "🍊", multiplier: 2, weight: 25 },
+  { emoji: "🍇", multiplier: 3, weight: 15 },
+  { emoji: "💎", multiplier: 5, weight: 7 },
+  { emoji: "💰", multiplier: 10, weight: 3 }
+];
+
 module.exports = {
   config: {
     name: "wheel",
-    version: "3.3",
-    author: "xnil6x + Modify by saif",
+    version: "5.3",
+    author: "Saif",
+    category: "🎮 Game",
     shortDescription: "🎡 𝐔𝐋𝐓𝐑𝐀-𝐒𝐓𝐀𝐁𝐋𝐄 𝐖𝐇𝐄𝐄𝐋 𝐆𝐀𝐌𝐄",
-    longDescription: "𝐆𝐔𝐀𝐑𝐀𝐍𝐓𝐄𝐄𝐃 𝐒𝐌𝐎𝐎𝐓𝐇 𝐒𝐏𝐈𝐍𝐍𝐈𝐍𝐆 𝐄𝐗𝐏𝐄𝐑𝐈𝐄𝐍𝐂𝐄 𝐖𝐈𝐓𝐇 𝐀𝐔𝐓𝐎𝐌𝐀𝐓𝐈𝐂 𝐅𝐀𝐈𝐋-𝐒𝐀𝐅𝐄𝐒",
-    category: "Game",
     guide: {
       en: "{p}wheel <amount>"
     }
@@ -28,102 +67,41 @@ module.exports = {
 
   onStart: async function ({ api, event, args, usersData }) {
     const { senderID, threadID } = event;
-    let betAmount = 0;
-
-    try {
-      betAmount = parseAmount(args[0]);
-      if (!betAmount) {
-        return api.sendMessage(
-          `❌ 𝐈𝐍𝐕𝐀𝐋𝐈𝐃 𝐁𝐄𝐓 𝐀𝐌𝐎𝐔𝐍𝐓! 𝐔𝐒𝐀𝐆𝐄: ${global.GoatBot.config.prefix}wheel 500`,
-          threadID
-        );
-      }
-
-      const user = await usersData.get(senderID);
-      if (!user || typeof user.money !== "number" || user.money < 0) {
-        return api.sendMessage(
-          "🔒 𝐀𝐂𝐂𝐎𝐔𝐍𝐓 𝐕𝐄𝐑𝐈𝐅𝐈𝐂𝐀𝐓𝐈𝐎𝐍 𝐅𝐀𝐈𝐋𝐄𝐃. 𝐏𝐋𝐄𝐀𝐒𝐄 𝐂𝐎𝐍𝐓𝐀𝐂𝐓 𝐒𝐔𝐏𝐏𝐎𝐑𝐓.",
-          threadID
-        );
-      }
-
-      if (betAmount > user.money) {
-        return api.sendMessage(
-          `❌ 𝐈𝐍𝐒𝐔𝐅𝐅𝐈𝐂𝐈𝐄𝐍𝐓 𝐁𝐀𝐋𝐀𝐍𝐂𝐄! 𝐘𝐎𝐔 𝐇𝐀𝐕𝐄: ${this.formatMoney(user.money)}`,
-          threadID
-        );
-      }
-
-      const { result, winAmount } = await this.executeSpin(api, threadID, betAmount);
-      const newBalance = user.money + winAmount;
-
-      await usersData.set(senderID, { money: newBalance });
-
-      return api.sendMessage(
-        this.generateResultText(result, winAmount, betAmount, newBalance),
-        threadID
-      );
-
-    } catch (error) {
-      console.error("Wheel System Error:", error);
-      return api.sendMessage(
-        `🎡 𝐒𝐘𝐒𝐓𝐄𝐌 𝐑𝐄𝐂𝐎𝐕𝐄𝐑𝐄𝐃! 𝐘𝐎𝐔𝐑 ${this.formatMoney(betAmount)} 𝐂𝐎𝐈𝐍𝐒 𝐀𝐑𝐄 𝐒𝐀𝐅𝐄. 𝐓𝐑𝐘 𝐒𝐏𝐈𝐍𝐍𝐈𝐍𝐆 𝐀𝐆𝐀𝐈𝐍.`,
-        threadID
-      );
-    }
-  },
-
-  async executeSpin(api, threadID, betAmount) {
-    const wheelSegments = [
-      { emoji: "🍒", multiplier: 0.5, weight: 20 },
-      { emoji: "🍋", multiplier: 1, weight: 30 },
-      { emoji: "🍊", multiplier: 2, weight: 25 },
-      { emoji: "🍇", multiplier: 3, weight: 15 },
-      { emoji: "💎", multiplier: 5, weight: 7 },
-      { emoji: "💰", multiplier: 10, weight: 3 }
-    ];
-
-    await api.sendMessage(`🎰 𝐒𝐏𝐈𝐍𝐍𝐈𝐍𝐆 𝐓𝐇𝐄 𝐖𝐇𝐄𝐄𝐋 𝐒𝐘𝐒𝐓𝐄𝐌 🎀\n💵 𝐁𝐄𝐓 𝐀𝐌𝐎𝐔𝐍𝐓: ${this.formatMoney(betAmount)}`, threadID);
-    await new Promise(resolve => setTimeout(resolve, 1500));
-
-    const totalWeight = wheelSegments.reduce((sum, seg) => sum + seg.weight, 0);
-    const randomValue = Math.random() * totalWeight;
-    let cumulativeWeight = 0;
-
-    const result = wheelSegments.find(segment => {
-      cumulativeWeight += segment.weight;
-      return randomValue <= cumulativeWeight;
-    }) || wheelSegments[0];
-
-    const winAmount = Math.floor(betAmount * result.multiplier) - betAmount;
-
-    return { result, winAmount };
-  },
-
-  generateResultText(result, winAmount, betAmount, newBalance) {
-    return [
-      `🎰 𝐖𝐇𝐄𝐄𝐋 𝐒𝐓𝐎𝐏𝐏𝐄𝐃 𝐎𝐍: ${result.emoji}`,
-      "",
-      this.getOutcomeText(result.multiplier, winAmount, betAmount),
-      `💰 𝐍𝐄𝐖 𝐁𝐀𝐋𝐀𝐍𝐂𝐄: ${this.formatMoney(newBalance)}`
-    ].join("\n");
-  },
-
-  getOutcomeText(multiplier, winAmount, betAmount) {
-    if (multiplier < 1) return `❌ 𝐋𝐎𝐒𝐓: ${this.formatMoney(betAmount * 0.5)}`;
-    if (multiplier === 1) return "➖ 𝐁𝐑𝐎𝐊𝐄 𝐄𝐕𝐄𝐍";
-    return `✅ 𝐖𝐎𝐍 ${multiplier}X! (+${this.formatMoney(winAmount)})`;
-  },
-
-  formatMoney(amount) {
-    const units = ["", "k", "m", "b", "t", "qt", "qd", "qi", "sx", "sp"];
-    let unitIndex = 0;
-
-    while (amount >= 1000 && unitIndex < units.length - 1) {
-      amount /= 1000;
-      unitIndex++;
+    let betAmount = parseAmount(args[0]);
+    if (!betAmount || betAmount <= 0) {
+      return api.sendMessage(`❌ 𝐈𝐍𝐕𝐀𝐋𝐈𝐃 𝐁𝐄𝐓 𝐀𝐌𝐎𝐔𝐍𝐓!\n𝐔𝐒𝐀𝐆𝐄: ${global.GoatBot.config.prefix}wheel 500`, threadID);
     }
 
-    return amount.toFixed(amount % 1 ? 2 : 0) + units[unitIndex];
+    const user = await usersData.get(senderID);
+    if (!user || user.money < betAmount) {
+      return api.sendMessage(`💰 𝐈𝐍𝐒𝐔𝐅𝐅𝐈𝐂𝐈𝐄𝐍𝐓 𝐁𝐀𝐋𝐀𝐍𝐂𝐄! 𝐘𝐎𝐔 𝐇𝐀𝐕𝐄: ${formatMoney(user?.money || 0)}`, threadID);
+    }
+
+    await api.sendMessage(`🎰 𝐒𝐏𝐈𝐍𝐍𝐈𝐍𝐆 𝐓𝐇𝐄 𝐖𝐇𝐄𝐄𝐋 🎀\n💵 𝐁𝐄𝐓: ${formatMoney(betAmount)}`, threadID);
+    await new Promise(r => setTimeout(r, 1500));
+
+    // Random weighted spin
+    const totalWeight = wheelEmojis.reduce((sum, e) => sum + e.weight, 0);
+    const rand = Math.random() * totalWeight;
+    let cumulative = 0;
+    const spinResult = wheelEmojis.find(e => (cumulative += e.weight) >= rand) || wheelEmojis[0];
+
+    const winAmount = Math.floor(betAmount * spinResult.multiplier) - betAmount;
+    const newBalance = user.money + winAmount;
+    await usersData.set(senderID, { money: newBalance });
+
+    const outcomeText = spinResult.multiplier < 1
+      ? `❌ 𝐋𝐎𝐒𝐓: ${formatMoney(betAmount * 0.5)}`
+      : spinResult.multiplier === 1
+        ? "➖ 𝐁𝐑𝐎𝐊𝐄 𝐄𝐕𝐄𝐍"
+        : `✅ 𝐖𝐎𝐍 ${spinResult.multiplier}X! (+${formatMoney(winAmount)})`;
+
+    return api.sendMessage(`
+🎰 𝐖𝐇𝐄𝐄𝐋 𝐒𝐓𝐎𝐏𝐏𝐄𝐃 𝐎𝐍: ${spinResult.emoji}
+
+${outcomeText}
+
+💰 𝐍𝐄𝐖 𝐁𝐀𝐋𝐀𝐍𝐂𝐄: ${formatMoney(newBalance)}
+    `.trim(), threadID);
   }
 };
