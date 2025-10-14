@@ -1,107 +1,57 @@
-module.exports = {
-  config: {
-    name: "slot",
-    version: "3.2",
-    author: "SAIF",
-    shortDescription: {
-      en: "Premium Stylish Slot game",
-    },
-    longDescription: {
-      en: "A premium stylish slot machine game with bold text and jackpot system.",
-    },
-    category: "Game",
-  },
-  langs: {
-    en: {
-      invalid_amount: "⚠️ 𝗘𝗻𝘁𝗲𝗿 𝗮 𝘃𝗮𝗹𝗶𝗱 𝗮𝗻𝗱 𝗽𝗼𝘀𝗶𝘁𝗶𝘃𝗲 𝗮𝗺𝗼𝘂𝗻𝘁 𝘁𝗼 𝗽𝗹𝗮𝘆.",
-      not_enough_money: "💰 𝗬𝗼𝘂 𝗱𝗼𝗻'𝘁 𝗵𝗮𝘃𝗲 𝗲𝗻𝗼𝘂𝗴𝗵 𝗯𝗮𝗹𝗮𝗻𝗰𝗲 𝘁𝗼 𝗯𝗲𝘁 𝘁𝗵𝗮𝘁 𝗮𝗺𝗼𝘂𝗻𝘁.",
-      spin_message: "🎰 𝗦𝗽𝗶𝗻𝗻𝗶𝗻𝗴 𝘁𝗵𝗲 𝗠𝗶𝗸𝗮𝘀𝗮 𝗦𝗹𝗼𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 🎀 ...",
-      win_message: "✨ 𝗖𝗼𝗻𝗴𝗿𝗮𝘁𝘂𝗹𝗮𝘁𝗶𝗼𝗻𝘀! 𝗬𝗼𝘂 𝘄𝗼𝗻 $%1!",
-      lose_message: "😔 𝗢𝗼𝗽𝘀! 𝗬𝗼𝘂 𝗹𝗼𝘀𝘁 $%1.",
-      jackpot_message: "💎 𝗝𝗔𝗖𝗞𝗣𝗢𝗧!!! 𝗬𝗼𝘂 𝘄𝗼𝗻 $%1 𝘄𝗶𝘁𝗵 𝘁𝗵𝗿𝗲𝗲 %2 𝘀𝘆𝗺𝗯𝗼𝗹𝘀!",
-    },
-  },
-
-  onStart: async function ({ args, message, event, usersData, getLang }) {
-    const { senderID } = event;
-    const userData = await usersData.get(senderID);
-    const amount = parseInt(args[0]);
-
-    // Invalid bet check
-    if (isNaN(amount) || amount <= 0) {
-      return message.reply(getLang("invalid_amount"));
-    }
-
-    // Balance check
-    if (amount > userData.money) {
-      return message.reply(getLang("not_enough_money"));
-    }
-
-    // Send spinning message
-    await message.reply(getLang("spin_message"));
-
-    // Delay
-    await new Promise(resolve => setTimeout(resolve, 2000));
-
-    // Slots setup
-    const slots = ["💚", "💛", "💙"];
-    const slot1 = slots[Math.floor(Math.random() * slots.length)];
-    const slot2 = slots[Math.floor(Math.random() * slots.length)];
-    const slot3 = slots[Math.floor(Math.random() * slots.length)];
-
-    // Calculate winnings
-    const winnings = calculateWinnings(slot1, slot2, slot3, amount);
-
-    // Update balance
-    await usersData.set(senderID, {
-      money: userData.money + winnings,
-      data: userData.data,
-    });
-
-    // Final result styled
-    const messageText = buildStylishMessage(slot1, slot2, slot3, winnings, getLang, amount);
-
-    return message.reply(messageText);
-  },
+const parseShorthand = (str) => {
+  if (!str) return NaN;
+  str = str.toLowerCase();
+  const map = { k:1e3, m:1e6, b:1e9, t:1e12, qd:1e15, qt:1e18, sx:1e21, sp:1e24, oc:1e27, no:1e30, dc:1e33 };
+  let suffix = Object.keys(map).sort((a,b)=>b.length-a.length).find(s=>str.endsWith(s));
+  let multiplier = suffix ? map[suffix] : 1;
+  if(suffix) str=str.slice(0,-suffix.length);
+  const number=parseFloat(str);
+  return isNaN(number)?NaN:number*multiplier;
 };
 
-// Function to calculate winnings
-function calculateWinnings(slot1, slot2, slot3, betAmount) {
-  if (slot1 === "💚" && slot2 === "💚" && slot3 === "💚") {
-    return betAmount * 10;
-  } else if (slot1 === "💛" && slot2 === "💛" && slot3 === "💛") {
-    return betAmount * 5;
-  } else if (slot1 === "💙" && slot2 === "💙" && slot3 === "💙") {
-    return betAmount * 15; // Jackpot
-  } else if (slot1 === slot2 && slot2 === slot3) {
-    return betAmount * 3;
-  } else if (slot1 === slot2 || slot1 === slot3 || slot2 === slot3) {
-    return betAmount * 2;
-  } else {
-    return -betAmount;
-  }
+const smallBoldNumbers={"0":"𝟎","1":"𝟏","2":"𝟐","3":"𝟑","4":"𝟒","5":"𝟓","6":"𝟔","7":"𝟕","8":"𝟖","9":"𝟗",".":"."};
+function toSmallBoldNumber(num){return num.toString().split("").map(c=>smallBoldNumbers[c]||c).join("");}
+function formatMoney(num){
+  const suffixes=[{value:1e33,symbol:"𝐃𝐂"},{value:1e30,symbol:"𝐍𝐎"},{value:1e27,symbol:"𝐎𝐂"},{value:1e24,symbol:"𝐒𝐏"},{value:1e21,symbol:"𝐒𝐗"},{value:1e18,symbol:"𝐐𝐍"},{value:1e15,symbol:"𝐐𝐃"},{value:1e12,symbol:"𝐓"},{value:1e9,symbol:"𝐁"},{value:1e6,symbol:"𝐌"},{value:1e3,symbol:"𝐊"}];
+  for(const s of suffixes){if(num>=s.value) return toSmallBoldNumber((num/s.value).toFixed(2))+s.symbol;}
+  return toSmallBoldNumber(num);
 }
 
-// Stylish bold + premium design message
-function buildStylishMessage(slot1, slot2, slot3, winnings, getLang, betAmount) {
-  const result = `🎰 [ ${slot1} | ${slot2} | ${slot3} ] 🎰`;
-  const header = `✨ 𝗠𝗶𝗸𝗮𝘀𝗮 𝗦𝗹𝗼𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 🎀\n═✦════════════✦═\n\n`;
-  const betInfo = `💵 𝗕𝗲𝘁 𝗔𝗺𝗼𝘂𝗻𝘁: $${betAmount}\n`;
+module.exports={
+  config:{name:"slot",version:"5.0",author:"SAIF",category:"🎮 Game",shortDescription:{en:"Stylish bullet slot game"}},
 
-  let outcome;
-  if (winnings > 0) {
-    if (slot1 === "💙" && slot2 === "💙" && slot3 === "💙") {
-      outcome = getLang("jackpot_message", winnings, "💙");
-    } else if (slot1 === "💚" && slot2 === "💚" && slot3 === "💚") {
-      outcome = getLang("jackpot_message", winnings, "💚");
-    } else if (slot1 === "💛" && slot2 === "💛" && slot3 === "💛") {
-      outcome = getLang("jackpot_message", winnings, "💛");
-    } else {
-      outcome = getLang("win_message", winnings);
-    }
-  } else {
-    outcome = getLang("lose_message", -winnings);
-  }
+  onStart: async({args,message,event,usersData})=>{
+    const user=event.senderID;
+    const userData=await usersData.get(user);
+    const betAmount=parseShorthand(args[0]);
+    if(isNaN(betAmount)||betAmount<=0) return message.reply("⚠️ 𝗘𝗡𝗧𝗘𝗥 𝗔 𝗩𝗔𝗟𝗜𝗗 𝗕𝗘𝗧 𝗔𝗠𝗢𝗨𝗡𝗧.");
+    if(betAmount>userData.money) return message.reply("💰 𝗡𝗢𝗧 𝗘𝗡𝗢𝗨𝗚𝗛 𝗕𝗔𝗟𝗔𝗡𝗖𝗘.");
 
-  return `${header}${result}\n\n${betInfo}📌 𝗥𝗲𝘀𝘂𝗹𝘁: ${outcome}\n\n═✦════════════✦═`;
+    const slots=["❤️","💛","💙","💚"];
+    const slot1=slots[Math.floor(Math.random()*slots.length)];
+    const slot2=slots[Math.floor(Math.random()*slots.length)];
+    const slot3=slots[Math.floor(Math.random()*slots.length)];
+
+    const winnings=calculateWinnings(slot1,slot2,slot3,betAmount);
+    userData.money+=winnings;
+    await usersData.set(user,{money:userData.money,data:userData.data});
+
+    const resultMsg=`🎀
+• 𝐁𝐚𝐛𝐲, 𝐘𝐨𝐮 ${winnings>0?"𝐖𝐨𝐧":"𝐋𝐨𝐬𝐭"} ${formatMoney(Math.abs(winnings))}!
+• 𝐆𝐚𝐦𝐞 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: [ ${slot1} | ${slot2} | ${slot3} ]
+• 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${formatMoney(userData.money)}`;
+
+    return message.reply(resultMsg);
   }
+};
+
+function calculateWinnings(s1,s2,s3,bet){
+  if(s1===s2&&s2===s3){
+    if(s1==="💙") return bet*15;
+    if(s1==="💚") return bet*10;
+    if(s1==="💛") return bet*5;
+    return bet*3;
+  }
+  if(s1===s2||s1===s3||s2===s3) return bet*2;
+  return -bet;
+}
