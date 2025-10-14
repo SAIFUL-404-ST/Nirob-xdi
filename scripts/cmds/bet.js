@@ -13,66 +13,87 @@ const parseAmount = (str) => {
   return isNaN(num) ? NaN : num * multiplier;
 };
 
-const emojis = ["❤️","💙","💚","💛","🖤"];
+const smallBoldNumbers = {
+  "0": "𝟎", "1": "𝟏", "2": "𝟐", "3": "𝟑", "4": "𝟒",
+  "5": "𝟓", "6": "𝟔", "7": "𝟕", "8": "𝟖", "9": "𝟗", ".": "."
+};
+
+function toSmallBoldNumber(num) {
+  return num.toString().split("").map(c => smallBoldNumbers[c] || c).join("");
+}
+
+function formatMoney(num) {
+  const suffixes = [
+    { value: 1e33, symbol: "𝐃𝐂" },
+    { value: 1e30, symbol: "𝐍𝐎" },
+    { value: 1e27, symbol: "𝐎𝐂" },
+    { value: 1e24, symbol: "𝐒𝐏" },
+    { value: 1e21, symbol: "𝐒𝐗" },
+    { value: 1e18, symbol: "𝐐𝐍" },
+    { value: 1e15, symbol: "𝐐𝐃" },
+    { value: 1e12, symbol: "𝐓" },
+    { value: 1e9, symbol: "𝐁" },
+    { value: 1e6, symbol: "𝐌" },
+    { value: 1e3, symbol: "𝐊" }
+  ];
+  for (const s of suffixes) {
+    if (num >= s.value) {
+      return toSmallBoldNumber((num / s.value).toFixed(2)) + s.symbol;
+    }
+  }
+  return toSmallBoldNumber(num);
+}
+
+// ❤️💙💚💛 user emoji pool
+const emojis = ["❤️", "💙", "💚", "💛"];
 
 module.exports = {
   config: {
     name: "bet",
-    version: "2.3",
-    author: "SAIF",
-    shortDescription: { en: "One-click emoji bet with 45/55 chance" },
-    longDescription: { en: "User gives amount, bot selects emoji, result is automatic." },
-    category: "Game"
-  },
-  langs: {
-    en: {
-      invalid_amount: "⚠️ 𝐞𝐧𝐭𝐞𝐫 𝐚 𝐯𝐚𝐥𝐢𝐝 𝐚𝐦𝐨𝐮𝐧𝐭 𝐭𝐨 𝐛𝐞𝐭.",
-      not_enough_money: "💰 𝐲𝐨𝐮 𝐝𝐨𝐧'𝐭 𝐡𝐚𝐯𝐞 𝐞𝐧𝐨𝐮𝐠𝐡 𝐛𝐚𝐥𝐚𝐧𝐜𝐞.",
-      win_message: "🎉 𝐘𝐎𝐔 𝐖𝐎𝐍 $%1!",
-      lose_message: "💔 𝐘𝐎𝐔 𝐋𝐎𝐒𝐓 $%1."
-    }
+    version: "5.2",
+    author: "Saif",
+    category: "🎮 Game"
   },
 
-  onStart: async function({ args, message, event, usersData, getLang }) {
+  onStart: async function ({ args, message, event, usersData }) {
     const { senderID } = event;
     const userData = await usersData.get(senderID);
 
     const amount = parseAmount(args[0]);
-    if (isNaN(amount) || amount <= 0) return message.reply(getLang("invalid_amount"));
-    if (amount > userData.money) return message.reply(getLang("not_enough_money"));
+    if (isNaN(amount) || amount <= 0)
+      return message.reply("⚠️ 𝐄𝐍𝐓𝐄𝐑 𝐀 𝐕𝐀𝐋𝐈𝐃 𝐀𝐌𝐎𝐔𝐍𝐓.");
+    if (amount > userData.money)
+      return message.reply("💰 𝐍𝐎𝐓 𝐄𝐍𝐎𝐔𝐆𝐇 𝐁𝐀𝐋𝐀𝐍𝐂𝐄.");
 
-    // Decide win/lose (45% win chance)
-    const isWin = Math.random() < 0.45;
+    // Decide win/lose (55% win chance)
+    const isWin = Math.random() < 0.55;
 
-    // Emoji selection
-    let userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-    let winningEmoji = isWin ? userEmoji : emojis.filter(e => e !== userEmoji)[Math.floor(Math.random() * (emojis.length - 1))];
+    // Select user emoji randomly
+    const userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
 
-    // Spinning message with bet info
-    await message.reply(`
-💵 𝐁𝐞𝐭𝐭𝐢𝐧𝐠 𝐨𝐧 𝐞𝐦𝐨𝐣𝐢: ${args[0]} on ${userEmoji}
-🎯 𝐖𝐢𝐧𝐧𝐢𝐧𝐠 𝐄𝐦𝐨𝐣𝐢: ${winningEmoji}
-🔄 𝐂𝐚𝐥𝐜𝐮𝐥𝐚𝐭𝐢𝐧𝐠 𝐫𝐞𝐬𝐮𝐥𝐭...
-`);
-    await new Promise(r => setTimeout(r, 1500)); // delay for effect
+    // Bot emoji fixed 🖤 if lose
+    const winEmoji = isWin ? userEmoji : "🖤";
 
-    // Calculate winnings
-    const winnings = isWin ? amount : -amount;
-    await usersData.set(senderID, { money: userData.money + winnings, data: userData.data });
+    await message.reply(`🎰 𝐁𝐄𝐓𝐓𝐈𝐍𝐆 𝐎𝐍 ${userEmoji}...`);
+    await new Promise(r => setTimeout(r, 1500));
 
-    // Result message
-    const resultMsg = `
-✨ 𝗠𝗶𝗸𝗮𝘀𝗮 𝗕𝗲𝘁 𝗦𝘆𝘀𝘁𝗲𝗺 🎀
-━━━━━━━━━━━━━━━
-👤 𝐏𝐥𝐚𝐲𝐞𝐫: ${userData.name || "Unknown"}
-💵 𝐁𝐞𝐭: ${args[0]} on ${userEmoji}
-🎯 𝐖𝐢𝐧𝐧𝐢𝐧𝐠 𝐄𝐦𝐨𝐣𝐢: ${winningEmoji}
+    const change = isWin ? amount : -amount;
+    const newBalance = userData.money + change;
+    await usersData.set(senderID, { money: newBalance, data: userData.data });
 
-${isWin ? getLang("win_message", args[0]) : getLang("lose_message", args[0])}
+    const result = isWin
+      ? ` 𝐘𝐎𝐔 𝐖𝐎𝐍 ${formatMoney(amount)}!`
+      : ` 𝐘𝐎𝐔 𝐋𝐎𝐒𝐓 ${formatMoney(amount)}.`;
 
-🏦 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${userData.money + winnings}
-━━━━━━━━━━━━━━━
+    const output = `
+𝐘𝐎𝐔𝐑 𝐄𝐌𝐎𝐉𝐈: ${userEmoji}
+𝐖𝐈𝐍𝐍𝐈𝐍𝐆 𝐄𝐌𝐎𝐉𝐈: ${winEmoji}
+
+${result}
+
+𝐁𝐀𝐋𝐀𝐍𝐂𝐄: ${formatMoney(newBalance)}
 `;
-    return message.reply(resultMsg);
+
+    return message.reply(output.trim());
   }
 };
