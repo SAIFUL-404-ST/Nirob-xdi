@@ -54,7 +54,7 @@ module.exports = {
       // Footer
       msg += `⚒️ ${smallBold("TOTAL COMMANDS")}: ${smallBold(commands.size.toString())}\n`;
       msg += `🛸 ${smallBold("PREFIX")}: ${smallBold(prefix)}\n`;
-      msg += `👑 ${smallBold("OWNER")}: ${smallBold("Saif")}\n`;
+      msg += `👑 ${smallBold("OWNER")}: ${smallBold("𝐌𝐢𝐤𝐚𝐬𝐚 𝐁𝐚𝐛𝐲 🎀")}\n`;
 
       return message.reply(msg.trim());
     } else {
