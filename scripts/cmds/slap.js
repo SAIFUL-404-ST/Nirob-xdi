@@ -20,7 +20,7 @@ module.exports = {
     en: {
       noTarget: "You must tag, reply, or use random to choose someone 😼",
       activating: "👊 𝐀𝐜𝐭𝐢𝐯𝐚𝐭𝐢𝐧𝐠 𝐑𝐚𝐧𝐝𝐨𝐦 𝐒𝐥𝐚𝐩 𝐌𝐨𝐝𝐞...",
-      done: "Bópppp 😵‍💫😵"
+      done: "boom  😵‍💫😵"
     }
   },
 
@@ -66,7 +66,7 @@ module.exports = {
 
     // send message
     message.reply({
-      body: `🎬 ${(content.match(/random|rnd|rndm/i) ? "" : content) || getLang("done")}`,
+      body: `🎬 ${(content.match(/random|rnd|r/i) ? "" : content) || getLang("done")}`,
       attachment: fs.createReadStream(pathSave)
     }, () => fs.unlinkSync(pathSave));
   }
