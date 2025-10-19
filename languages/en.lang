@@ -89,9 +89,9 @@ handlerCheckData.cantCreateThread=𝙶𝚁𝙾𝚄𝙿𝚂 𝚆𝙸𝚃𝙷 𝙸
 handlerCheckData.cantCreateUser=𝚄𝚂𝙴𝚁 𝚆𝙸𝚃𝙷 𝙸𝙳 '%1'  𝙲𝙰𝙽𝙽𝙾𝚃 𝙱𝙴 𝚆𝚁𝙸𝚃𝚃𝙴𝙽 𝚃𝙾 𝚃𝙷𝙴 Alisa Bby 𝙳𝙰𝚃𝙰𝙱𝙰𝚂𝙴!
 
 # bot/handler/handlerEvents.js
-handlerEvents.userBanned= ★彡[ জীবনের সবচেয়ে খারাপ সময় মানুষ জাতি আমাকে দূরে ঠেলে দিলেও, আমার আল্লাহ আমাকে কখনো দূরে ঠেলে দেন নাই। আলহামদুল্লিলাহ।
+handlerEvents.userBanned= ★[ জীবনের সবচেয়ে খারাপ সময় মানুষ জাতি আমাকে দূরে ঠেলে দিলেও, আমার আল্লাহ আমাকে কখনো দূরে ঠেলে দেন নাই। আলহামদুল্লিলাহ।
  ]彡★
-handlerEvents.threadBanned= *ੈ✩‧₊˚༺ ❝ ᴀʟʟᴀʜ ᴛᴏᴍᴀᴅᴇʀ ᴄʜᴇʜᴀʀᴀ ᴏ ꜱᴀᴍᴘᴏᴅᴇʀ ᴅɪᴋᴇ ᴛᴀᴋᴀɴ ɴᴀ, ʙᴏʀᴏɴ ᴛɪɴɪ ᴛᴏᴍᴀᴅᴇʀ ᴏɴᴛᴏʀ ᴏ ᴋᴏʀᴍᴇʀ ᴅɪᴋᴇ ᴛᴀᴋᴀɴ। ❞(ꜱᴏʜɪʜ ᴍᴜꜱʟɪᴍ: 2564) ༻*ੈ✩‧₊˚
+handlerEvents.threadBanned= 🚫 𝗪𝗔𝗥𝗡𝗜𝗡𝗚: 𝗧𝗛𝗜𝗦 𝗚𝗥𝗢𝗨𝗣 𝗜𝗦 𝗕𝗔𝗡𝗡𝗘𝗗 𝗕𝗬 𝗔𝗗𝗠𝗜𝗡 𝗦𝗔𝗜𝗙 ⚔️ 𝗖𝗢𝗡𝗧𝗔𝗖𝗧 𝗛𝗜𝗠 𝗧𝗢 𝗨𝗡𝗕𝗔𝗡 • 𝗚𝗥𝗢𝗨𝗣 𝗟𝗜𝗡𝗞: https://m.me/j/Abb2V26Y_VIYh_OM/
 handlerEvents.onlyAdminBox= ᴛʜɪꜱ ɢʀᴏᴜᴘ ɪꜱ ᴄᴜʀʀᴇɴᴛʟʏ ᴏɴ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ ᴍᴏᴅᴇ ɴᴏᴡ ᴍɪᴋᴀꜱᴀ ᴀᴠᴀɪʟᴀʙʟᴇ ᴏɴʟʏ ꜰᴏʀ ɢʀᴏᴜᴘ ᴀᴅᴍɪɴ
 handlerEvents.onlyAdminBot=📛 | ᴄᴜʀʀᴇɴᴛʟʏ ᴏɴʟʏ ꜱᴀɪꜰᴜʟ ᴀᴅᴍɪɴ ᴄᴀɴ ᴜꜱᴇ ᴛʜᴇ ʙᴏᴛ
 handlerEvents.commandNotFound=ᴄᴍᴅ "%1" ᴅᴏᴇꜱ ɴᴏᴛ ᴇxɪꜱᴛ, ᴛʏᴘᴇ %2ʜᴇʟᴘ ᴛᴏ ᴠɪᴇᴡ ᴍɪᴋᴀꜱᴀ ᴀʟʟ ᴀᴠᴀɪʟᴀʙʟᴇ ᴄᴍᴅ
