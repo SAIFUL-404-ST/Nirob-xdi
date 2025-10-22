@@ -4,7 +4,7 @@ const { utils } = global;
 module.exports = {
 	config: {
 		name: "prefix",
-		version: "3.0",
+		version: "3.3",
 		author: "Saif",
 		countDown: 5,
 		role: 0,
@@ -25,10 +25,6 @@ module.exports = {
 	},
 
 	onStart: async function ({ message, role, args, commandName, event, threadsData, getLang }) {
-		const adminName = "‎𝐊𝐚𝐠𝐮𝐲𝐚 Ō𝐭𝐬𝐮𝐭𝐬𝐮𝐤𝐢";
-		const fbLink = "https://www.facebook.com/profile.php?id=61581271750258";
-		const timeNow = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
-
 		if (!args[0]) return message.SyntaxError();
 
 		if (args[0] == 'reset') {
@@ -74,18 +70,27 @@ module.exports = {
 
 	onChat: async function ({ event, message, getLang }) {
 		if (event.body && event.body.toLowerCase() === "prefix") {
-			const adminName = "‎𝐊𝐚𝐠𝐮𝐲𝐚 Ō𝐭𝐬𝐮𝐭𝐬𝐮𝐤𝐢";
-			const fbLink = "https://www.facebook.com/profile.php?id=61581271750258";
+			const adminName = " 𝐒𝐀𝐈𝐅 ";
+			const fbLink = "m.me/muhammed.saiful.islam873645485";
+			const globalPrefix = global.GoatBot.config.prefix;
+			const groupPrefix = utils.getPrefix(event.threadID);
 			const timeNow = new Date().toLocaleString("en-US", { timeZone: "Asia/Dhaka" });
 
 			return message.reply(
-`${getLang("myPrefix", global.GoatBot.config.prefix, utils.getPrefix(event.threadID))}
+`🌎 𝐆𝐋𝐎𝐁𝐀𝐋 𝐏𝐑𝐄𝐅𝐈𝐗: ${globalPrefix}
+📚 𝐘𝐎𝐔𝐑 𝐆𝐑𝐎𝐔𝐏 𝐏𝐑𝐄𝐅𝐈𝐗: ${groupPrefix}
 
-━━━━━━━━━━━━━
-𝐀𝐝𝐦𝐢𝐧: ${adminName}
-𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤: ${fbLink}
-𝐓𝐢𝐦𝐞: ${timeNow}
-𝐄𝐧𝐣𝐨𝐲`
+╭‣ 𝐀𝐃𝐌𝐈𝐍 👑
+╰‣ ${adminName}
+
+╭‣ 𝐅𝐀𝐂𝐄𝐁𝐎𝐎𝐊 ⓕ
+╰‣ ${fbLink}
+
+╭‣ 🕒 𝐓𝐈𝐌𝐄
+╰‣ ${timeNow}
+
+━━━━━━━━━━━━━━━
+🪄 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐌𝐈𝐊𝐀𝐒𝐀 🎀`
 			);
 		}
 	}
