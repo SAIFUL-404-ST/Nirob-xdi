@@ -6,8 +6,8 @@ module.exports = {
   config: {
     name: "bear",
     version: "1.0",
-    author: "Chitron Bhattacharjee",
-    countDown: 5,
+    author: "Saif",
+    countDown: 10,
     role: 0,
     shortDescription: { en: "Random bear image" },
     longDescription: { en: "Sends a random bear image" },
