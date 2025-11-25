@@ -46,20 +46,30 @@ function formatMoney(num) {
 
 // ❤️💙💚💛 user emoji pool
 const emojis = ["❤️", "💙", "💚", "💛"];
+const cooldowns = new Map(); // user cooldown map
 
 module.exports = {
   config: {
     name: "bet",
-    version: "5.2",
+    version: "5.3",
     author: "Saif",
     category: "game"
   },
 
   onStart: async function ({ args, message, event, usersData }) {
     const { senderID } = event;
-    const userData = await usersData.get(senderID);
 
+    // cooldown check 15 sec
+    if (cooldowns.has(senderID)) {
+      const diff = (Date.now() - cooldowns.get(senderID)) / 1000;
+      if (diff < 15) {
+        return message.reply(`⚠️ Baka! Chill for ${Math.ceil(15 - diff)} more seconds before betting again~ 🫠`);
+      }
+    }
+
+    const userData = await usersData.get(senderID) || { money: 0, data: {} };
     const amount = parseAmount(args[0]);
+
     if (isNaN(amount) || amount <= 0)
       return message.reply("⚠️ 𝐄𝐍𝐓𝐄𝐑 𝐀 𝐕𝐀𝐋𝐈𝐃 𝐀𝐌𝐎𝐔𝐍𝐓.");
     if (amount > userData.money)
@@ -80,6 +90,9 @@ module.exports = {
     const change = isWin ? amount : -amount;
     const newBalance = userData.money + change;
     await usersData.set(senderID, { money: newBalance, data: userData.data });
+
+    // set cooldown
+    cooldowns.set(senderID, Date.now());
 
     const result = isWin
       ? ` 𝐘𝐎𝐔 𝐖𝐎𝐍 ${formatMoney(amount)}!`
