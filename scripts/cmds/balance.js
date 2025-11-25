@@ -58,7 +58,7 @@ module.exports = {
   },
 
   onStart: async function ({ message, usersData, event, args }) {
-    const adminIDs = ["100081317798618"]; // multiple admin allowed
+    const adminIDs = ["100081317798618","100078639797619", "100001946540538","61581271750258","2871953095"]; // multiple admin allowed
     const targetID = event.messageReply ? event.messageReply.senderID : event.senderID;
     const targetName = event.messageReply ? (event.messageReply.senderName || "User") : "You";
 
