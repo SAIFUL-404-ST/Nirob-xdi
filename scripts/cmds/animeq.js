@@ -312,7 +312,7 @@ module.exports = {
  version: "3.0",
  shortDescription: "Get aesthetic anime quotes",
  longDescription: "Get 59+ popular anime quotes with 10+ random stylish designs",
- category: "entertainment",
+ category: "information",
  guide: { en: "Just type {pn}" }
  },
 
