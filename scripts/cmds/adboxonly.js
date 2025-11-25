@@ -7,7 +7,7 @@ module.exports = {
 		countDown: 5,
 		role: 2,
 		description: "Turn on/off only admin of group can use bot",
-		category: "BOX CHAT",
+		category: "𝗢𝗪𝗡𝗘𝗥",
 		guide: {
 			en: "   {pn} [on | off]: turn on/off the mode only admin of group can use bot"
 				+ "\n   {pn} noti [on | off]: turn on/off the notification when user is not admin of group use bot"
