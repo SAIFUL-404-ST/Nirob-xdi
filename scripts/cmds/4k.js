@@ -5,11 +5,11 @@ const path = require("path");
 module.exports = {
   config: {
     name: "4k",
-    version: "2.0",
+    version: "2.1",
     role: 0,
-    author: "Aryan Chauhan",
+    author: "Saif",
     countDown: 5,
-    longDescription: "Upscale images to 4K resolution using iHancer AI.",
+    longDescription: "Upscale images to 4K resolution!! ",
     category: "image",
     guide: {
       en: "{pn} reply to an image to upscale it (default: type=2, level=low)."
