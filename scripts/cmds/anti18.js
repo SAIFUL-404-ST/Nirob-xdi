@@ -65,12 +65,12 @@ module.exports = {
  config: {
   name: "anti18",
   version: "1.1",
-  author: "Chitron Bhattacharjee",
-  role: 1,
+  author: "Saif",
+  role: 2,
   description: {
    en: "Auto-detects 18+ words and sends a warning image (toggleable)"
   },
-  category: "protection",
+  category: "utility",
   guide: {
    en: "Use +anti18 on/off to toggle detection\nUse +anti18 to check status"
   }
