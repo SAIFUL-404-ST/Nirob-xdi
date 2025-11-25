@@ -5,7 +5,7 @@ module.exports = {
     name:"countryinfo",
     aliases: ["country"],
     version: "1.0",
-		category: "𝗕𝗢𝗫 𝗖𝗛𝗔𝗧",
+		category: "box chat",
     author: "Lahatra"
   },
 

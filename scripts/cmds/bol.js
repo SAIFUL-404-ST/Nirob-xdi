@@ -16,7 +16,7 @@ module.exports = {
     longDescription: {
       en: "text to speech language",
     },
-    category: "𝗙𝗨𝗡𝗡𝗬",
+    category: "fun",
     guide: {
       en: "/say [language] [text]: Convert text to speech. Default language is English.\nExample usages:\n/say hi\n/say ja こんにちは"
     },

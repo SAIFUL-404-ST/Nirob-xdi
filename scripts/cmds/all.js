@@ -9,7 +9,7 @@ module.exports = {
 			vi: "Tag tất cả thành viên trong nhóm chat của bạn",
 			en: "Tag all members in your group chat"
 		},
-		category: "𝗕𝗢𝗫 𝗖𝗛𝗔𝗧",
+		category: "box chat",
 		guide: {
 			vi: "   {pn} [nội dung | để trống]",
 			en: "   {pn} [content | empty]"

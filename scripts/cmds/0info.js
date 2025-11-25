@@ -10,7 +10,7 @@ module.exports = {
     role: 0,
     shortDescription: { vi: "", en: "" },
     longDescription: { vi: "", en: "" },
-    category: "𝗢𝗪𝗡𝗘𝗥",
+    category: "owner",
     guide: { en: "" },
     envConfig: {}
   },

@@ -10,7 +10,7 @@ module.exports = {
     role: 0,
     shortDescription: "Batslap image",
     longDescription: "Create Batslap meme with tagged, replied or random user",
-    category: "image",
+    category: "fun",
     guide: {
       en: "{pn} @tag\n{pn} random | rnd | rndm\nOr reply to a user's message"
     }

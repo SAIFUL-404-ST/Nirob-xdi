@@ -52,7 +52,7 @@ module.exports = {
     name: "bet",
     version: "5.2",
     author: "Saif",
-    category: " Game"
+    category: "game"
   },
 
   onStart: async function ({ args, message, event, usersData }) {

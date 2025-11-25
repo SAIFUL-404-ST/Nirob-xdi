@@ -12,7 +12,7 @@ module.exports = {
     role: 0,
     shortdescription: "Make fun of your friends",
     longDescription: "Make fun of your friends using crazy condom fails",
-    category: "𝗙𝗨𝗡𝗡𝗬",
+    category: "fun",
     guide: ""
   },
 

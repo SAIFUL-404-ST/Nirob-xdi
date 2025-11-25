@@ -11,7 +11,7 @@ module.exports = {
 			vi: "Sao lưu dữ liệu của bot (threads, users, dashboard, globalData)",
 			en: "Backup data of bot (threads, users, dashboard, globalData)"
 		},
-		category: "𝗢𝗪𝗡𝗘𝗥",
+		category: "owner",
 		guide: {
 			en: "   {pn}"
 		}

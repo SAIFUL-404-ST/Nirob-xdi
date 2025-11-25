@@ -38,7 +38,7 @@ module.exports = {
 		author: "Saif",
 		shortDescription: "💰 Top Money Leaderboard",
 		longDescription: "🏆 Displays users with highest balances in stylish bold font with mentions",
-		category: "Balance",
+		category: "Bank",
 		guide: {
 			en: "{p}top [number]"
 		}

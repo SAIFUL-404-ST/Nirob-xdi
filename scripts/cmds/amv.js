@@ -19,7 +19,7 @@ module.exports = {
     role: 0,
     shortDescription: "",
     longDescription: "Get a random animes amv.",
-    category: "𝗠𝗘𝗗𝗜𝗔",
+    category: "media",
     guide: "{p}amv",
   },
 

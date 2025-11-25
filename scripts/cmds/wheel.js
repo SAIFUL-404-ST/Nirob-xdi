@@ -58,7 +58,7 @@ module.exports = {
     name: "wheel",
     version: "5.3",
     author: "Saif",
-    category: " Game",
+    category: "game",
     shortDescription: "🎡 𝐔𝐋𝐓𝐑𝐀-𝐒𝐓𝐀𝐁𝐋𝐄 𝐖𝐇𝐄𝐄𝐋 𝐆𝐀𝐌𝐄",
     guide: {
       en: "{p}wheel <amount>"

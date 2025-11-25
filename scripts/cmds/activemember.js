@@ -10,7 +10,7 @@ module.exports = {
 		role: 0,
 		shortDescription: "Get the top 15 users by message count in the current chat",
 		longDescription: "Get the top 15 users by message count in the current chat",
-		category: "𝗕𝗢𝗫 𝗖𝗛𝗔𝗧",
+		category: "box chat",
 		guide: "{p}{n}",
 	},
 	onStart: async function ({ api, event }) {

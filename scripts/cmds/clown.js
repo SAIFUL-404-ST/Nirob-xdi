@@ -16,7 +16,7 @@ module.exports = {
  vi: "",
  en: ""
  },
- category: "𝗙𝗨𝗡𝗡𝗬",
+ category: "fun",
  guide: ""
  },
 

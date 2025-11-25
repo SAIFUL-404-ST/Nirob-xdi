@@ -13,7 +13,7 @@ module.exports = {
     author: "MahMUD",
     countDown: 5,
     role: 0,
-    category: "funny",
+    category: "fun",
     shortDescription: {
       en: "Get a random joke"
     },

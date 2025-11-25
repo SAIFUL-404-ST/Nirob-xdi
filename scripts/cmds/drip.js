@@ -6,7 +6,7 @@ module.exports = {
     author: "kshitiz",
     shortDescription: "",
     longDescription: "",
-    category: "𝗙𝗨𝗡𝗡𝗬",
+    category: "fun",
     guide: "{pn} @mention/reply"
   },
 

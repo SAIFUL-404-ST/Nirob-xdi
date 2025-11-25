@@ -4,7 +4,7 @@ module.exports = {
 		version: "1.0",
 		author: "Samir",
 		role: 0,
-		category: "𝗙𝗨𝗡𝗡𝗬",
+		category: "fun",
 		guide: {
 			vi: "Just For Fun",
 			en: "Calculate Your Beautiness"

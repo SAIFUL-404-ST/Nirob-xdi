@@ -6,7 +6,7 @@ module.exports = {
     name: "bank",
     version: "1.3",
     description: "🎀 𝐌𝐢𝐤𝐚𝐬𝐚 𝐁𝐚𝐧𝐤 🎀 deposit, withdraw, transfer, interest & richlist system",
-    category: "Balance",
+    category: "Bank",
     author: "Saif",
     countDown: 10
   },
