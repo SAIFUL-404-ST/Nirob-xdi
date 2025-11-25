@@ -10,7 +10,7 @@ module.exports = {
 		role: 0,
 		shortDescription: "Trigger image",
 		longDescription: "Trigger image",
-		category: "image",
+		category: "funny",
 		guide: {
 			vi: "{pn} [@tag | để trống]",
 			en: "{pn} [@tag | empty]"

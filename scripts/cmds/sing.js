@@ -15,7 +15,7 @@ module.exports = {
     name: "sing",
     version: "1.0.2",
     author: "bayjid+saif",
-    category: "🎵 Youtube Song Downloader",
+    category: "music",
     shortDescription: "🎧 Download or play YouTube song.",
     longDescription: "Play or download YouTube music by typing the song name or link.",
     guide: "{pn} <song name or YouTube link>"

@@ -7,7 +7,7 @@ const config = {
     role: 0,
     hasPermission: 0,
     description: "Tag user(s) by reply/mention/search name",
-    category: "tag",
+    category: "box chat",
     commandCategory: "tag",
     guide: "{pn} [reply/mention/name]",
     usages: "reply, mention or search name"

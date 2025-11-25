@@ -10,7 +10,7 @@ module.exports = {
 				author: "Jonell Magallanes",
 				shortDescription: "EDUCATIONAL",
 				countDown: 0,
-				category: "other",
+				category: "funny",
 				guide: {
 						en: '[question]'
 				}

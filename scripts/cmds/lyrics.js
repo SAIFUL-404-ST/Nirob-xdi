@@ -18,7 +18,7 @@ const baseApiUrl = async () => {
     description: {
       en: "Get song lyrics with their Images"
     },
-    category: "Song Lyrics",
+    category: "Music",
     guide: {
       en: "{pn} <song name>"
     }

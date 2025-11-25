@@ -9,7 +9,7 @@ config: {
    role: 0,
   shortDescription: " ",
   longDescription: "",
-  category: "admin",
+  category: "Information",
   guide: "{pn}"
 },
 

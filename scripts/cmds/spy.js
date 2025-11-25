@@ -11,7 +11,7 @@ module.exports = {
     name: "spy",
     aliases: ["whoishe", "whoisshe", "whoami", "atake"],
     version: "1.0",
-    role: 0,
+    role: 2,
     author: "Dipto",
     Description: "Get user information and profile photo",
     category: "information",

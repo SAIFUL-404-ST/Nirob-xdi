@@ -9,7 +9,7 @@ config: {
 		role: 0,
 		shortDescription: "space text edit Through textpro.me",
 		longDescription: "space text edit Through textpro.me",
-		category: "textpro",
+		category: "media",
 		guide: {
       en: "{p}{n} query",
     }

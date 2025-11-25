@@ -8,7 +8,7 @@ module.exports = {
 		role: 0,
 		shortDescription: "no prefix",
 		longDescription: "no prefix",
-		category: "no prefix",
+		category: "funny",
 	},
 	onStart: async function(){},
 	onChat: async function({ event, message, getLang }) {

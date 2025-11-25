@@ -11,7 +11,7 @@ module.exports = {
     author: "KShitiz",
     countDown: 5,
     role: 0,
-    category: "𝗠𝗘𝗗𝗜𝗔",
+    category: "music",
   },
 
   onStart: async function ({ api, event, message }) {

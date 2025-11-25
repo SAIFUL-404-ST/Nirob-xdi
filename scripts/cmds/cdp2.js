@@ -14,7 +14,7 @@ module.exports = {
     countDown: 10,
     role: 0,
     longDescription: "Fetch a random couple DP for nibba and nibbi",
-    category: "image",
+    category: "love",
     guide: "{pn}"
   },
 

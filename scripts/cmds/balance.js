@@ -49,7 +49,7 @@ module.exports = {
     countDown: 5,
     role: 0,
     description: "View balance or transfer money in a stylish way",
-    category: "economy",
+    category: "Bank",
     guide: {
       en: "   Reply with `.bal` to see balance\n"
         + "   `.bal transfer <amount>` to transfer (reply to user)\n"

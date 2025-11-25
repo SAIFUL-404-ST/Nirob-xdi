@@ -9,7 +9,7 @@ module.exports = {
     author: 'Siam the frog>🐸',
     countDown: 0,
     role: 0,
-    category: 'date-system',
+    category: 'Utility',
     shortDescription: 'display the current date and time some country and Uptime', 
     longDescription: 'Check the current time and date of some countries + Uptime',
     guide: {

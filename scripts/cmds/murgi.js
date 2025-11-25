@@ -6,7 +6,7 @@ module.exports = {
     role: 2,
     shortDescription: "chodo",
     longDescription: "Gen Z Roast",
-    category: "fun",
+    category: "owner",
     guide: {
       bn: "{pn} @mention"
     }

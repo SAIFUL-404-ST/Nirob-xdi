@@ -15,7 +15,7 @@ module.exports = {
     author: "MahMUD",
     countDown: 10,
     role: 0,
-    category: "media",
+    category: "image",
     guide: "{pn} [Reply to image]",
   },
 

@@ -11,7 +11,7 @@ module.exports = {
     role: 0,
     shortDescription: "Send a kiss image 💋",
     longDescription: "Random, reply or mention kiss with correct gender orientation",
-    category: "𝗙𝗨𝗡",
+    category: "love",
     guide: "{pn} [@tag/reply/rnd]"
   },
 

@@ -7,7 +7,7 @@ module.exports = {
 		version: "1.0",
 		shortDescription: "Generate a QR code to share links/text easily",
 		longDescription: "Generate a QR code to share links/text easily. Any text after the qr command will be encoded in the QR code. For multi-coloured QR codes, use the qr+ command instead.",
-		category: "search",
+		category: "utility",
 		guide: "-qr {text}",
 		envConfig: {}
 	},

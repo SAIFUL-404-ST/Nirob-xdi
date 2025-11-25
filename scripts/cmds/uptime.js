@@ -11,7 +11,7 @@ module.exports = {
     author: "SAIF",
     countDown: 0,
     role: 0,
-    category: "system",
+    category: "information",
     longDescription: {
       en: "Get System Information",
     },

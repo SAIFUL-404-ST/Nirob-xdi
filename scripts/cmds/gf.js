@@ -10,7 +10,7 @@ module.exports = {
         description: {
             en: "Find GF"
         },
-        category: "Fun",
+        category: "love",
         guide: {
             en: "{n}"
         }

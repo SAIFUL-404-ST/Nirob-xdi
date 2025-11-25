@@ -18,7 +18,7 @@ module.exports = {
         role: 0,
         shortDescription: "Pinterest Image Search",
         longDescription: "Pinterest Image Search",
-        category: "download",
+        category: "image",
         guide: {
             en: "{pn} query",
         },

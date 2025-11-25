@@ -10,7 +10,7 @@ module.exports = {
 		role: 0,
 		shortDescription: "Make bed meme",
 		longDescription: "Bed meme by tag",
-		category: "image",
+		category: "𝗙𝗨𝗡𝗡𝗬",
 		guide: {
 			en: "{pn} @tag1 |{pn} @tag1 @tag2"
 		}

@@ -14,7 +14,7 @@ module.exports.config = {
   author: "dipto",
   usePrefix: true,
   description: "Convert code into link",
-  category: "goatbot",
+  category: "Owner",
   guide: { en: "[filename]/[reply and file name]" },
   countDown: 1,
 };

@@ -14,7 +14,7 @@ module.exports = {
     countDown: 5,
     role: 0,
     guide: "{pn} <emoji1> <emoji2>\nExample: {pn} 🙂 😘",
-    category: "fun"
+    category: "𝗙𝗨𝗡𝗡𝗬"
   },
 
   langs: {

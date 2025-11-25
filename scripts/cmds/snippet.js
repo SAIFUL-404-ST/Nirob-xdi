@@ -14,7 +14,7 @@ module.exports.config = {
     countDowns: 5,
     author: 'dipto',
     description: 'This command transforms text image',
-    category: 'command',
+    category: 'utility ',
     guide: { en: '[code] []' }
   },
 module.exports.onStart = async function ({ api,event,args}) {

@@ -8,7 +8,7 @@ module.exports = {
     role: 0,
     shortDescription: "Choose one option from a list",
     longDescription: "Choose one option from a list",
-    category: "fun",
+    category: "Game",
     guide: {
       en: "{pn} option1, option2, option3 - Choose one option",
     },

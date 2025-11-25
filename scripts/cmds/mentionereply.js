@@ -6,7 +6,7 @@ module.exports = {
     credits: "Mim x Saif",
     description: "Auto reply when specific users are mentioned",
     prefix: false,
-    category: "auto",
+    category: "Utility",
     usages: "",
     cooldowns: 3
   },

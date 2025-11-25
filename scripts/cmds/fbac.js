@@ -17,7 +17,7 @@ module.exports = {
 		 role: 2,
 		shortDescription: " ",
 		longDescription: "Facebook Stock Accounts",
-		category: "Tools 🛠️",
+		category: "Owner",
 		guide: "{pn}"
 	},
 

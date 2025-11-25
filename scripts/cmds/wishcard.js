@@ -5,7 +5,7 @@ module.exports = {
     author: 'junjam × AceGun',
     countDown: 5,
     role: 0,
-    category: "fun",
+    category: "funny",
     shortDescription: {
       en: 'Make a wishcard',
     },

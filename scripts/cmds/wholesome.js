@@ -12,7 +12,7 @@ module.exports = {
     role: 0,
     shortdescription: "wholesome",
     longDescription: "wholesome avatar for crush/lover",
-    category: "fun",
+    category: "funny",
     guide: ""
   },
 

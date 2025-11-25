@@ -10,7 +10,7 @@ module.exports = {
 		role: 2,
 		shortDescription: { en: "Catch Pastebin" },
 		longDescription: { en: "Use this to catch pastebin" },
-		category: "𝗜𝗡𝗙𝗢",
+		category: "owner",
 		guide: { en: "{pn}" }
 	},
 	onStart: async function ({ api, args, message, event, usersData }) {

@@ -14,7 +14,7 @@ module.exports.config = {
   role: 0,
   author: "Dipto",
   description: "Facebook cover",
-  category: "Cover",
+  category: "Image",
   guide: {
     en: "name - title - address - email - phone - color (default = white)",
   },

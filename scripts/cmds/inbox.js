@@ -12,7 +12,7 @@ module.exports = {
     longDescription: {
       en: ""
     },
-    category: "fun",
+    category: "Owner",
     guide: {
       en: ""
     }

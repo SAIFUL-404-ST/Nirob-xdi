@@ -27,7 +27,7 @@ module.exports = {
     role: 0,
     shortDescription: "animagine xl 3.1.",
     longDescription: "Generates an image based on animagine xl 3.1.",
-    category: "fun",
+    category: "image",
     guide: "{p}xl <prompt> [--ar <ratio>] [-- <style>]"
   },
   onStart: async function ({ message, args, api, event }) {

@@ -21,7 +21,7 @@ module.exports = {
       vi: "",
       en: "Get images from text.",
     },
-    category: "Image~Create",
+    category: "Image",
     guide: {
       vi: "",
       en: "Type {pn} with your prompts | (model name)\nHere are the Supported models:\n" + models.map((item, index) => `${index + 1}. ${item}`).join('\n'),

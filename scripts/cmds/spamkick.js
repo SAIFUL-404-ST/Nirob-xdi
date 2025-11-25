@@ -7,7 +7,7 @@ module.exports.config = {
   description: { 
       en: "Kick spammers automatically (admins are safe)."
   },
-  category: "𝗚𝗥𝗢𝗨𝗣 𝗠𝗔𝗡𝗔𝗚𝗘𝗠𝗘𝗡𝗧",
+  category: "box chat",
   guide: { en:"[on/off]"},
   countDown: 5
 };

@@ -12,7 +12,7 @@ module.exports = {
     longDescription: {
       en: "Get random pickup lines.",
     },
-    category: "fun",
+    category: "funny",
     guide: {
       en: "{prefix}pickuplines",
     },

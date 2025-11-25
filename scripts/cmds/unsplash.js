@@ -13,7 +13,7 @@ module.exports = {
     aliases: ["uph"],
     version: "1.7",
     author: "MahMUD",
-    category: "media",
+    category: "image",
     guide: "Example: {pn} cat - 10"
   },
 

@@ -18,7 +18,7 @@ function formatMoney(num){
 }
 
 module.exports={
-  config:{name:"spin",version:"5.0",author:"SAIF",category:"🎮 Game",shortDescription:{en:"Stylish bullet spin game"}},
+  config:{name:"spin",version:"5.0",author:"SAIF",category:" Game",shortDescription:{en:"Stylish bullet spin game"}},
 
   onStart: async({args,message,event,usersData})=>{
     const user=event.senderID;

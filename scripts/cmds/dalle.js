@@ -12,7 +12,7 @@ module.exports = {
     countDown: 15,
     role: 0,
     description: "Generate images by Unofficial Dalle3",
-    category: "download",
+    category: "image",
     guide: { en: "{pn} prompt" }
   }, 
   onStart: async({ api, event, args }) => {

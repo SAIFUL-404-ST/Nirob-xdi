@@ -13,7 +13,7 @@ module.exports.config = {
     countDowns: 5,
     author: 'dipto',
     description: 'This command transforms text with different fonts',
-    category: 'command',
+    category: 'Utility',
     guide: { en: '[numder] [text]' }
   },
 module.exports.onStart = async function ({ message,args}) {

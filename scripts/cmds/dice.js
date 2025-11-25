@@ -61,7 +61,7 @@ module.exports = {
     aliases: [],
     version: "2.0",
     author: "SAIF",
-    category: "🎮 Game",
+    category: "Game",
     shortDescription: "🎲 roll a dice automatically with bet amount",
     longDescription: "User gives amount, bot rolls dice automatically to see if user wins",
     guide: { en: "{pn} <amount> - roll dice and bet automatically" },

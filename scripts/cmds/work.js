@@ -14,7 +14,7 @@ module.exports = {
       vi: "Thực hiện công việc và nhận tiền thưởng.",
       en: "Perform tasks and earn rewards."
     },
-    category: "economy", 
+    category: "game", 
     guide: {
       vi: "   {pn} levelUp: balance reward: ?\n"
         + "   {pn} guessingGame: balance reward: ?\n"

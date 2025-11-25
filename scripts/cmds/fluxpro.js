@@ -12,7 +12,7 @@ module.exports = {
     author: "MahMUD",
     countDown: 10,
     role: 0,
-    category: "Image gen",
+    category: "Image",
     guide: "{pn} [prompt]"
   },
 
