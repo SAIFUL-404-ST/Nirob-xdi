@@ -12,7 +12,7 @@ module.exports = {
     role: 0,
     shortDescription: "AI Anime art",
     longDescription: "Generate Anime style art from an image using AI",
-    category: "BOX CHAT",
+    category: "image",
     guide: {
       en: "{pn} (reply with image) | {pn} <image_url> [style_number]"
     }
