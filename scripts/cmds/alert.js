@@ -6,7 +6,7 @@ module.exports = {
   config: {
     name: "alert",
     version: "1.0",
-    author: "Chitron Bhattacharjee",
+    author: "Saif",
     countDown: 5,
     role: 0,
     shortDescription: {
