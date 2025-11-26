@@ -5,7 +5,7 @@ module.exports = {
     author: 'MahMUD',
     countDown: 1,
     role: 0,
-    category: 'Owner',
+    category: 'owner',
     guide: {
       en: '{pn}: Check if the bot is media banned.'
     }
