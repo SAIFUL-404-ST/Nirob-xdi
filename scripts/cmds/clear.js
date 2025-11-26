@@ -5,14 +5,14 @@ module.exports = {
     author: "kshitiz",  
     version: "2.0",
     cooldowns: 5,
-    role: 0,
+    role: 2,
     shortDescription: {
       en: ""
     },
     longDescription: {
       en: "unsent all messages sent by bot"
     },
-    category: "Owner",
+    category: "owner",
     guide: {
       en: "{p}{n}"
     }
