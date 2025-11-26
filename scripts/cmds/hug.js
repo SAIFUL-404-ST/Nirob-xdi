@@ -1,103 +1,126 @@
 const axios = require("axios");
 const fs = require("fs-extra");
+const path = require("path");
 
 module.exports = {
-		config: {
-				name: "hug",
-				version: "1.0",
-				author: "SiAM",
-				countDown: 5,
-				role: 0,
-				shortDescription: {
-						en: "Send a hug gif to one or two mentioned users.",
-				},
-				longDescription: {
-						en: "This command sends a hug gif to one or two mentioned users.",
-				},
-				category: "love",
-				guide: {
-						en: "To use this command, type /hug followed by one or two user mentions.",
-				},
-		}, 
+  config: {
+    name: "hug",
+    aliases: ["hugs"],
+    version: "3.0",
+    author: "Saif → Upgraded by Mikasa Bby",
+    countDown: 3,
+    role: 0,
+    shortDescription: "Send anime-style hug",
+    category: "love",
+  },
 
-		onStart: async function ({
-				api,
-				args,
-				message,
-				event,
-				threadsData,
-				usersData,
-				dashBoardData,
-				globalData,
-				threadModel,
-				userModel,
-				dashBoardModel,
-				globalModel,
-				role,
-				commandName,
-				getLang,
-		}) {
+  onStart: async function ({ api, event, args, usersData }) {
+    try {
+      const COST = 300;
+      const sender = event.senderID;
 
+      // ===== BALANCE CHECK =====
+      let user = await usersData.get(sender);
+      let balance = user.money || 0;
 
-			const { getPrefix } = global.utils;
-			 const p = getPrefix(event.threadID);
-		const approvedmain = JSON.parse(fs.readFileSync(`${__dirname}/assist_json/approved_main.json`));
-		const bypassmain = JSON.parse(fs.readFileSync(`${__dirname}/assist_json/bypass_id.json`));
-		const bypassmUid = event.senderID;
-		if (bypassmain.includes(bypassmUid)) {
-			console.log(`User ${bypassmUid} is in bypass list. Skipping the main approval check.`);
-		} else {
-			const threadmID = event.threadID;
-			if (!approvedmain.includes(threadmID)) {
-				const msgSend = message.reply(`cmd 'hug' is locked 🔒...\n Reason : Bot's main cmd \nyou need permission to use all main cmds.\n\nType ${p}requestMain to send a request to admin`);
-				setTimeout(async () => {
-					message.unsend((await msgSend).messageID);
-				}, 40000);
-				return;
-			}
-		}  
+      if (balance < COST) {
+        return api.sendMessage(
+          `🥺 Senpai… you need **${COST} coins** for a warm hug.\n💳 Balance: ${balance} coins`,
+          event.threadID,
+          event.messageID
+        );
+      }
 
-				let uid1 = null,
-						uid2 = null;
-				const input = args.join(" ");
-				if (event.mentions && Object.keys(event.mentions).length === 2) {
-						uid1 = Object.keys(event.mentions)[0];
-						uid2 = Object.keys(event.mentions)[1];
-				} else if (event.mentions && Object.keys(event.mentions).length === 1) {
-						uid1 = event.senderID;
-						uid2 = Object.keys(event.mentions)[0];
-				} else {
-						return message.reply("Please mention one or two users to send a hug gif.");
-				}
+      // Deduct and update
+      await usersData.set(sender, { ...user, money: balance - COST });
+      const remaining = balance - COST;
 
-			if ((uid1 === '100045644423035' || uid2 === '') && (uid1 !== '' && uid2 !== '')) {
-	uid1 = '';
-	uid2 = '';
-	message.reply("sorry🥱💁\n\nI only hug SiAM 😌💗");
-							}
+      let target;
+      let targetName;
 
-				const userInfo1 = await api.getUserInfo(uid1);
-				const userInfo2 = await api.getUserInfo(uid2);
-				const userName1 = userInfo1[uid1].name.split(' ').pop();
-				const userName2 = userInfo2[uid2].name.split(' ').pop();
+      // ======== RANDOM MODE ========
+      if (["r", "rnd", "random"].includes(args[0]?.toLowerCase())) {
+        const info = await api.getThreadInfo(event.threadID);
+        const list = info.participantIDs.filter(
+          id => id !== sender && id !== api.getCurrentUserID()
+        );
+        if (list.length === 0)
+          return api.sendMessage("Nyaa~ No one found for random hug!", event.threadID);
 
-				const apiUrl = "https://nekos.best/api/v2/hug?amount=1";
-				axios
-						.get(apiUrl) 
-						.then(async (response) => {
-								const gifUrl = response.data.results[0].url;
-								const imageResponse = await axios.get(gifUrl, { responseType: "arraybuffer" });
-								const outputBuffer = Buffer.from(imageResponse.data, "binary");
-								fs.writeFileSync(`${uid1}_${uid2}_hug.gif`, outputBuffer);
+        target = list[Math.floor(Math.random() * list.length)];
+        targetName = await usersData.getName(target);
+      }
 
-								message.reply({
-										body: `${userName1} 🤗 ${userName2}`,
-										attachment: fs.createReadStream(`${uid1}_${uid2}_hug.gif`),
-								}, () => fs.unlinkSync(`${uid1}_${uid2}_hug.gif`));
-						})
-						.catch((error) => {
-								console.log(error);
-								message.reply("There was an error processing the hug gif.");
-						});
-		},
+      // ======== TAG MODE ========
+      else if (Object.keys(event.mentions)[0]) {
+        target = Object.keys(event.mentions)[0];
+        targetName = event.mentions[target];
+      }
+
+      // ======== REPLY MODE ========
+      else if (event.type === "message_reply") {
+        target = event.messageReply.senderID;
+        targetName = await usersData.getName(target);
+      }
+
+      // ======== LAST ACTIVE USER FALLBACK ========
+      else {
+        const info = await api.getThreadInfo(event.threadID);
+        const msgs = await api.getThreadMessages(event.threadID, 40);
+
+        for (let msg of msgs) {
+          if (msg.senderID !== sender && msg.senderID !== api.getCurrentUserID()) {
+            target = msg.senderID;
+            targetName = await usersData.getName(target);
+            break;
+          }
+        }
+
+        if (!target)
+          return api.sendMessage("No one available to hug right now~ 💗", event.threadID);
+      }
+
+      // Self-block
+      if (target === sender)
+        return api.sendMessage("Ara ara~ you can't hug yourself b-baka! (>///<)", event.threadID);
+
+      // ======== GET USER NAMES ========
+      const senderName = await usersData.getName(sender);
+
+      // ======== FETCH GIF ========
+      const res = await axios.get("https://nekos.best/api/v2/hug?amount=1");
+      const gifUrl = res.data.results[0].url;
+      const gif = await axios.get(gifUrl, { responseType: "arraybuffer" });
+
+      // TEMP PATH
+      const filePath = path.join(__dirname, `${sender}_${target}_hug.gif`);
+      fs.writeFileSync(filePath, Buffer.from(gif.data));
+
+      // RANDOM REPLIES
+      const replies = [
+        `💞 ${senderName} hugged ${targetName}!`,
+        `🤗 ${senderName} gave a warm hug to ${targetName}!`,
+        `✨ ${targetName} received a cozy hug from ${senderName}!`,
+        `UwU~ ${senderName} wrapped ${targetName} in a soft hug!`,
+        `💗 ${targetName} got hugged tightly by ${senderName}!`,
+        `(>///<) ${senderName} hugged ${targetName} gently…`
+      ];
+
+      const chosen = replies[Math.floor(Math.random() * replies.length)];
+
+      // SEND
+      await api.sendMessage(
+        {
+          body: `${chosen}\n\n💸 **${COST} coins deducted**\n💳 Remaining: ${remaining}`,
+          attachment: fs.createReadStream(filePath)
+        },
+        event.threadID,
+        () => fs.unlinkSync(filePath)
+      );
+
+    } catch (e) {
+      console.log(e);
+      return api.sendMessage("Uwuuu~ something broke while hugging (>_<)💦", event.threadID);
+    }
+  }
 };
