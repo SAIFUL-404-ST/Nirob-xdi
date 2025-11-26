@@ -12,27 +12,22 @@ module.exports = {
     longDescription: {
       en: "Know your destiny and know who you will complete your life with",
     },
-    category: "LOVE",
+    category: "love",
     guide: {
       en: "{pn}",
     },
   },
 
-  onStart: async function ({ api, event, usersData }) {
-    const COST = 500; // Coin cost
+  onStart: async function ({ api, event, usersData, message }) {
+    const COST = 500;
     const senderID = event.senderID;
 
-    // --- Balance check ---
+    // ---- Check balance ----
     let user = await usersData.get(senderID);
-    let balance = user.money || 0;
-    if (balance < COST)
-      return api.sendMessage(
-        `🌸 Senpai… you need **${COST} coins**!\n💰 Your balance: ${balance} coins`,
-        event.threadID,
-        event.messageID
-      );
+    let balance = user?.money || 0;
+    if (balance < COST) return message.reply(`🌸 Senpai… you need **${COST} coins** to use this command!\n💰 Your balance: ${balance} coins`);
 
-    // Deduct balance
+    // Deduct coins
     await usersData.set(senderID, { ...user, money: balance - COST });
     const remaining = balance - COST;
 
@@ -89,7 +84,7 @@ module.exports = {
     const resultPool = [rand1, rand1, rand1, rand2, rand1, rand1, rand1, rand1, rand1];
     const percentage = resultPool[Math.floor(Math.random() * resultPool.length)];
 
-    // Random anime-style note
+    // Random note
     const loveNotes = [
       "𝐘𝐨𝐮𝐫 𝐥𝐨𝐯𝐞 𝐬𝐭𝐨𝐫𝐲 𝐣𝐮𝐬𝐭 𝐛𝐞𝐠𝐚𝐧, 𝐚𝐧𝐝 𝐢𝐭'𝐬 𝐛𝐞𝐚𝐮𝐭𝐢𝐟𝐮𝐥. 🌹",
       "𝐃𝐞𝐬𝐭𝐢𝐧𝐲 𝐜𝐡𝐨𝐬𝐞 𝐲𝐨𝐮 𝐭𝐰𝐨 𝐭𝐨 𝐛𝐞 𝐭𝐨𝐠𝐞𝐭𝐡𝐞𝐫. 💞",
@@ -105,22 +100,28 @@ module.exports = {
     const note = loveNotes[Math.floor(Math.random() * loveNotes.length)];
 
     // Get avatars
-    const avt1 = (await axios.get(`https://graph.facebook.com/${id1}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
+    const avt1 = (
+      await axios.get(
+        `https://graph.facebook.com/${id1}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+        { responseType: "arraybuffer" }
+      )
+    ).data;
     fs.writeFileSync(pathAvt1, Buffer.from(avt1));
 
-    const avt2 = (await axios.get(`https://graph.facebook.com/${id2}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`, { responseType: "arraybuffer" })).data;
+    const avt2 = (
+      await axios.get(
+        `https://graph.facebook.com/${id2}/picture?width=720&height=720&access_token=6628568379%7Cc1e620fa708a1d5696fb991c1bde5662`,
+        { responseType: "arraybuffer" }
+      )
+    ).data;
     fs.writeFileSync(pathAvt2, Buffer.from(avt2));
 
-    // Random background
-    const bgUrls = [
-      "https://i.ibb.co/RBRLmRt/Pics-Art-05-14-10-47-00.jpg",
-      "https://i.ibb.co/lfVEjdH.jpeg",
-      "https://i.ibb.co/vScJzGt.jpeg"
-    ];
-    const bgBuffer = (await axios.get(bgUrls[Math.floor(Math.random() * bgUrls.length)], { responseType: "arraybuffer" })).data;
+    // Get background and load image to get size
+    const bgBuffer = (await axios.get("https://i.ibb.co/RBRLmRt/Pics-Art-05-14-10-47-00.jpg", { responseType: "arraybuffer" })).data;
     fs.writeFileSync(pathImg, Buffer.from(bgBuffer));
 
     const bgImage = await loadImage(pathImg);
+
     const canvas = createCanvas(bgImage.width, bgImage.height);
     const ctx = canvas.getContext("2d");
 
@@ -128,10 +129,14 @@ module.exports = {
     ctx.drawImage(await loadImage(pathAvt1), 111, 175, 330, 330);
     ctx.drawImage(await loadImage(pathAvt2), 1018, 173, 330, 330);
 
+    // Write canvas to file AFTER drawing everything
     fs.writeFileSync(pathImg, canvas.toBuffer());
+
+    // Delete avatar images ASAP (not the background)
     fs.removeSync(pathAvt1);
     fs.removeSync(pathAvt2);
 
+    // Prepare mention tags exactly matching the text in body
     const mention1 = { tag: `@${name1}`, id: id1 };
     const mention2 = { tag: `@${name2}`, id: id2 };
 
@@ -139,9 +144,10 @@ module.exports = {
       `💞 𝐋𝐨𝐯𝐞 𝐏𝐚𝐢𝐫 𝐀𝐥𝐞𝐫𝐭 💞\n\n` +
       `💑 Congratulations ${mention1.tag} & ${mention2.tag}\n` +
       `💌 ${note}\n` +
-      `🔗 Love Connection: ${percentage}% 💖\n` +
-      `💸 Deducted: ${COST} coins | 💰 Remaining Balance: ${remaining} coins`;
+      `🔗 Love Connection: ${percentage}% 💖\n\n` +
+      `💸 Coins Deducted: ${COST}\n💰 Remaining Balance: ${remaining}`;
 
+    // Send message with attachment
     return api.sendMessage(
       {
         body: bodyText,
@@ -149,7 +155,9 @@ module.exports = {
         attachment: fs.createReadStream(pathImg),
       },
       event.threadID,
-      () => fs.unlinkSync(pathImg),
+      () => {
+        fs.unlinkSync(pathImg);
+      },
       event.messageID
     );
   },
