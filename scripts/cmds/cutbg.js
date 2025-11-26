@@ -8,9 +8,9 @@ module.exports = {
  aliases: ["cutbg"],
  version: "1.1",
  role: 0,
- author: "Chitron Bhattacharjee",
+ author: "saif",
  category: "utility",
- cooldowns: 5,
+ cooldowns: 15,
  countDown: 5,
  guide: {
  en: "cutout [reply to image or provide image URL] - remove background using Cutout Pro API"
