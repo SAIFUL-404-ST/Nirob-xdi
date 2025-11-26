@@ -5,8 +5,8 @@ const path = require("path");
 module.exports = {
   config: {
     name: "pikachu",
-    version: "1.0",
-    author: "Chitron Bhattacharjee",
+    version: "1.1",
+    author: "saif",
     countDown: 5,
     role: 0,
     shortDescription: {
@@ -28,7 +28,19 @@ module.exports = {
     }
   },
 
-  onStart: async function ({ message, args, getLang }) {
+  onStart: async function ({ message, args, getLang, usersData, event }) {
+    const COST = 300;
+    const senderID = event.senderID;
+
+    // ---- Check balance ----
+    let user = await usersData.get(senderID);
+    let balance = user.money || 0;
+    if (balance < COST) return message.reply(`❌ Senpai, you need **${COST} coins** to generate a Pikachu image! 💸\nYour balance: ${balance}`);
+
+    // ---- Deduct coins ----
+    await usersData.set(senderID, { ...user, money: balance - COST });
+    const remaining = balance - COST;
+
     if (!args.length) return message.reply(getLang("missing"));
 
     const text = encodeURIComponent(args.join(" "));
@@ -42,7 +54,7 @@ module.exports = {
       fs.writeFileSync(filePath, res.data);
 
       message.reply({
-        body: `⚡ Here's your Pikachu image!`,
+        body: `⚡ Nyaa~ Here's your Pikachu image!\n💸 Coins deducted: ${COST}\n💳 Remaining: ${remaining}`,
         attachment: fs.createReadStream(filePath)
       }, () => fs.unlinkSync(filePath));
     } catch (err) {
