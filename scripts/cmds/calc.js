@@ -4,7 +4,7 @@ module.exports = {
  config: {
  name: "calc",
  version: "2.1",
- author: "Chitron Bhattacharjee",
+ author: "Saif",
  countDown: 5,
  role: 0,
  shortDescription: {
