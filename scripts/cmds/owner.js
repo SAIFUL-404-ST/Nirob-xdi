@@ -9,7 +9,7 @@ config: {
    role: 0,
   shortDescription: " ",
   longDescription: "",
-  category: "Information",
+  category: "information",
   guide: "{pn}"
 },
 
@@ -17,7 +17,7 @@ config: {
   try {
     const ownerInfo = {
       name: 'SAIFUL ISLAM',
-      gender: 'MaLe',
+      gender: 'Male',
       age: '20+',
       height: '6.1',
       choise: '',
