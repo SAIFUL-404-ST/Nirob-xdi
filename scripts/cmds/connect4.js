@@ -3,7 +3,7 @@ module.exports = {
  name: "connect4",
  aliases: ["4inarow", "c4"],
  version: "2.2",
- author: "Chitron Bhattacharjee",
+ author: "saif",
  countDown: 30,
  role: 0,
  category: "game",
