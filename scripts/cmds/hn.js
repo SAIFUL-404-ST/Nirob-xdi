@@ -7,13 +7,13 @@ module.exports = {
   config: {
     name: "hn",
     version: "1.0",
-    author: "Chitron Bhattacharjee",
+    author: "saif",
     countDown: 5,
-    role: 0,
+    role: 2,
     shortDescription: { en: "Send safe cute anime illustration" },
     longDescription: { en: "Fetches safe (non-R18) anime images from lolicon API" },
     category: "fun",
-    guide: { en: "+hentai" }
+    guide: { en: "!hn" }
   },
 
   onStart: async function({ message }) {
