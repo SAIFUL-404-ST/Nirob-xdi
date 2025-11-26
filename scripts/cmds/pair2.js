@@ -13,7 +13,7 @@ module.exports = {
     longDescription: {
       en: "Automatically matches sender with someone of opposite gender, or uses reply/tag user.",
     },
-    category: "LOVE",
+    category: "love",
     guide: {
       en: "{pn} [reply or tag someone]",
     },
