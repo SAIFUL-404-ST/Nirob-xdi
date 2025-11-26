@@ -15,7 +15,7 @@ module.exports = {
     role: 0,
     author: "Dipto", //Don't Change Author name.
     description: "Displays album options for selection.",
-    category: "Media",
+    category: "media",
     countDown: 5,
     guide: {
       en: "{p}{n} or add [cartoon/photo/lofi/sad/islamic/funny/horny/anime]",
