@@ -3,10 +3,10 @@ module.exports = {
     name: "mentionreply",
     version: "1.4.0",
     permission: 0,
-    credits: "Mim x Saif",
+    credits: " Saif",
     description: "Auto reply when specific users are mentioned",
     prefix: false,
-    category: "Utility",
+    category: "utility",
     usages: "",
     cooldowns: 3
   },
