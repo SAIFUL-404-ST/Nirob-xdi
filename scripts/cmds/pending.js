@@ -1,16 +1,15 @@
-const axios = require("axios");
 const fs = require("fs");
 
 module.exports = {
   config: {
     name: "pending",
     aliases: ["pen", "pend", "pe"],
-    version: "1.6.9",
-    author: "♡ Nazrul ♡",
+    version: "1.7",
+    author: "♡ SAIF ♡",
     countDown: 5,
     role: 1,
-    shortDescription: "handle pending requests",
-    longDescription: "Approve orreject pending users or group requests",
+    shortDescription: "Handle pending requests kawaii style",
+    longDescription: "Approve or reject pending users/groups in fun anime style",
     category: "utility",
   },
 
@@ -23,10 +22,7 @@ module.exports = {
     if (body.trim().toLowerCase() === "c") {
       try {
         await api.unsendMessage(messageID);
-        return api.sendMessage(
-          ` Operation has been canceled!`,
-          threadID
-        );
+        return api.sendMessage(`❌ Nyaa~ Operation canceled! 🐇`, threadID);
       } catch {
         return;
       }
@@ -35,20 +31,18 @@ module.exports = {
     const indexes = body.split(/\s+/).map(Number);
 
     if (isNaN(indexes[0])) {
-      return api.sendMessage(`⚠ Invalid input! Please try again.`, threadID);
+      return api.sendMessage(`⚠ Baka! Invalid input! Try again 🦋`, threadID);
     }
 
     let count = 0;
 
     for (const idx of indexes) {
- 
       if (idx <= 0 || idx > pending.length) continue;
-
       const group = pending[idx - 1];
 
       try {
         await api.sendMessage(
-          `✅ Group has been Successfully Approved by SAIF!\n\n📜 Type ${global.GoatBot.config.prefix}help to See Cmds!`,
+          `✅ Sugoi~ Group approved by Senpai! 🐇💌\n✨ Enjoy your new adventure! 🦄`,
           group.threadID
         );
 
@@ -60,7 +54,6 @@ module.exports = {
 
         count++;
       } catch {
-  
         count++;
       }
     }
@@ -72,7 +65,7 @@ module.exports = {
     }
 
     return api.sendMessage(
-      `✅ | [ Successfully ] 🎉 Approved ${count} Groups✨!`,
+      `🎉 Nyaa~ Successfully approved ${count} group(s)/user(s)! 🐇💖`,
       threadID
     );
   },
@@ -82,22 +75,14 @@ module.exports = {
     const adminBot = global.GoatBot.config.adminBot;
 
     if (!adminBot.includes(event.senderID)) {
-      return api.sendMessage(
-        `⚠ you have no permission to use this command!`,
-        threadID
-      );
+      return api.sendMessage(`⚠ Nyaa~ You have no permission baka! 🐇`, threadID);
     }
 
     const type = args[0]?.toLowerCase();
     if (!type) {
-      return api.sendMessage(
-        `Usage: pending [user/thread/all]`,
-        threadID
-      );
+      return api.sendMessage(`Usage: pending [user/thread/all] 🦋`, threadID);
     }
 
-    let msg = "",
-      index = 1;
     try {
       const spam = (await api.getThreadList(100, null, ["OTHER"])) || [];
       const pending = (await api.getThreadList(100, null, ["PENDING"])) || [];
@@ -108,21 +93,20 @@ module.exports = {
       if (type.startsWith("t")) filteredList = list.filter((t) => t.isGroup);
       if (type === "all") filteredList = list;
 
+      let msg = "";
+      let index = 1;
       for (const single of filteredList) {
         const name =
           single.name || (await usersData.getName(single.threadID)) || "Unknown";
-
-        msg += `[ ${index} ]  ${name}\n`;
+        msg += `[${index}] ${name}\n`;
         index++;
       }
 
-      msg += `🦋 SAIF please Reply with the correct group number to approve!\n`;
-      msg += `✨ Reply with "c" to Cancel.\n`;
+      msg += `\n✨ Reply with the correct number(s) to approve kawaii~ 🐇\n`;
+      msg += `❌ Reply with "c" to cancel, senpai 💌`;
 
       return api.sendMessage(
-        `✨ | [ Pending Groups & Users ${type
-          .charAt(0)
-          .toUpperCase()}${type.slice(1)} List ✨ ]\n\n${msg}`,
+        `🎀 Pending Groups & Users (${type.toUpperCase()}) List 🎀\n\n${msg}`,
         threadID,
         (error, info) => {
           global.GoatBot.onReply.set(info.messageID, {
@@ -135,10 +119,7 @@ module.exports = {
         messageID
       );
     } catch (error) {
-      return api.sendMessage(
-        `⚠ Failed to retrieve pending list. Please try again later.`,
-        threadID
-      );
+      return api.sendMessage(`⚠ Failed to retrieve pending list! Baka 🐇`, threadID);
     }
   },
 };
