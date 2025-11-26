@@ -1,41 +1,66 @@
 const fs = require("fs-extra");
 const path = require("path");
-const https = require("https");
+const axios = require("axios");
 
 module.exports = {
   config: {
     name: "neko",
-    version: "1.0",
-    author: "Chitron Bhattacharjee",
+    version: "1.1",
+    author: "Saif",
     countDown: 5,
     role: 0,
-    role: 0,
-    shortDescription: { en: "Send neko image" },
-    longDescription: { en: "Sends a cute neko girl image" },
+    shortDescription: { en: "Send a cute neko girl image 💸" },
+    longDescription: { en: "Sends a random cute neko girl image from API with coins system" },
     category: "fun",
     guide: { en: "+neko" }
   },
 
-  onStart: async function({ message }) {
-    const imgUrl = "https://api.waifu.pics/sfw/neko";
-    const filePath = path.join(__dirname, "cache/neko.jpg");
+  onStart: async function({ message, usersData, event }) {
+    const COST = 500;
+    const senderID = event.senderID;
 
-    https.get(imgUrl, res => {
-      let data = "";
-      res.on("data", chunk => (data += chunk));
-      res.on("end", () => {
-        const image = JSON.parse(data).url;
-        const file = fs.createWriteStream(filePath);
-        https.get(image, imgRes => {
-          imgRes.pipe(file);
-          file.on("finish", () => {
-            message.reply({
-              body: "🐱 𝗡𝗲𝗸𝗼 𝗖𝗮𝘁𝗴𝗶𝗿𝗹 𝗔𝗹𝗲𝗿𝘁",
-              attachment: fs.createReadStream(filePath)
-            });
-          });
-        });
-      });
-    });
+    // 1️⃣ Money check
+    const userData = await usersData.get(senderID) || {};
+    const money = userData.money || 0;
+    if (money < COST) return message.reply(`💸 Baka! You need ${COST} coins to get a neko 😅\nYour balance: ${money}`);
+
+    // Deduct coins
+    await usersData.set(senderID, { ...userData, money: money - COST });
+    const remaining = money - COST;
+
+    try {
+      // 2️⃣ Fetch neko image
+      const res = await axios.get("https://api.waifu.pics/sfw/neko");
+      if (!res.data || !res.data.url) throw new Error("Failed to fetch neko image");
+
+      const imgUrl = res.data.url;
+
+      // 3️⃣ Save to temp file
+      const tmpDir = path.join(__dirname, "cache");
+      if (!fs.existsSync(tmpDir)) fs.mkdirSync(tmpDir, { recursive: true });
+      const filePath = path.join(tmpDir, `neko_${Date.now()}.jpg`);
+      const imgData = await axios.get(imgUrl, { responseType: "arraybuffer" });
+      fs.writeFileSync(filePath, Buffer.from(imgData.data));
+
+      // 4️⃣ Anime-style text lines
+      const animeLines = [
+        `Nyaa~ Senpai, a cute neko appeared! 😸`,
+        `Baka! ${money} coins spent for this neko 💥`,
+        `Ara ara~ Enjoy your neko, senpai! 🐱`,
+        `Senpai noticed your neko request 💫`,
+        `Nya~ Look at this neko, baka! 💌`
+      ];
+      const finalLine = animeLines[Math.floor(Math.random() * animeLines.length)];
+
+      // 5️⃣ Send message
+      await message.reply({
+        body: `${finalLine}\n💳 Coins deducted: ${COST}\n💰 Remaining: ${remaining}`,
+        attachment: fs.createReadStream(filePath)
+      }, () => fs.unlinkSync(filePath));
+
+    } catch (err) {
+      console.error("NEKO CMD ERROR:", err.stack || err.message);
+      message.reply("Oops! Something went wrong fetching the neko 😅");
+    }
   }
 };
