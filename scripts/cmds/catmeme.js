@@ -6,13 +6,13 @@ module.exports = {
  config: {
  name: "catmeme",
  version: "1.0",
- author: "Chitron Bhattacharjee",
+ author: "Saif",
  countDown: 5,
  role: 0,
  shortDescription: { en: "Generate a cat image with your text" },
  longDescription: { en: "Get a cute cat image with custom text on it." },
  category: "fun",
- guide: { en: "+catmeme Your funny text here" }
+ guide: { en: "!catmeme Your funny text here" }
  },
 
  onStart: async function ({ message, args }) {
