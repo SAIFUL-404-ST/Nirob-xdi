@@ -8,7 +8,7 @@ module.exports = {
     role: 2,
     shortDescription: "Show active groups and leave",
     longDescription: "Shows only the groups where the bot is currently a member. Reply with one or multiple index numbers to leave.",
-    category: "Owner",
+    category: "owner",
     guide: "{p}listgroups"
   },
 
