@@ -13,7 +13,7 @@ module.exports = {
     author: "MahMUD",
     countDown: 5,
     role: 0,
-    category: "Islamic",
+    category: "islamic",
     guide: "{pn} <city>\nExample: {pn} Dhaka"
   },
 
