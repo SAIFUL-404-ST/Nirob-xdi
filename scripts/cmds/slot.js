@@ -17,28 +17,61 @@ function formatMoney(num){
   return toSmallBoldNumber(num);
 }
 
-module.exports={
-  config:{name:"slot",version:"5.0",author:"SAIF",category:" Game",shortDescription:{en:"Stylish bullet slot game"}},
+const DAILY_LIMIT = 20;
 
-  onStart: async({args,message,event,usersData})=>{
-    const user=event.senderID;
-    const userData=await usersData.get(user);
-    const betAmount=parseShorthand(args[0]);
+module.exports = {
+  config: {
+    name: "slot",
+    version: "6.3",
+    author: "SAIF",
+    category: "game",
+    shortDescription: {en:"Stylish bullet slot game"},
+    countDown: 20 // 20 second cooldown
+  },
+
+  onStart: async ({args,message,event,usersData}) => {
+    const user = event.senderID;
+    let userData = await usersData.get(user);
+
+    if(!userData.slot) userData.slot = { daily:0, lastUsed:0, date:new Date().toDateString() };
+    const today = new Date().toDateString();
+    if(userData.slot.date !== today){
+      userData.slot.daily = 0;
+      userData.slot.date = today;
+    }
+
+    // Daily limit check
+    if(userData.slot.daily >= DAILY_LIMIT) 
+      return message.reply("⚠️ Daily limit reached! Come back tomorrow.");
+
+    // Cooldown check from cmd config
+    const now = Date.now();
+    if(userData.slot.lastUsed && now - userData.slot.lastUsed < module.exports.config.countDown*1000){
+      const wait = Math.ceil((module.exports.config.countDown*1000 - (now - userData.slot.lastUsed))/1000);
+      return message.reply(`⏱ Please wait ${wait}s before playing again!`);
+    }
+
+    const betAmount = parseShorthand(args[0]);
     if(isNaN(betAmount)||betAmount<=0) return message.reply("⚠️ 𝗘𝗡𝗧𝗘𝗥 𝗔 𝗩𝗔𝗟𝗜𝗗 𝗕𝗘𝗧 𝗔𝗠𝗢𝗨𝗡𝗧.");
     if(betAmount>userData.money) return message.reply("💰 𝗡𝗢𝗧 𝗘𝗡𝗢𝗨𝗚𝗛 𝗕𝗔𝗟𝗔𝗡𝗖𝗘.");
 
-    const slots=["❤️","💛","💙","💚"];
-    const slot1=slots[Math.floor(Math.random()*slots.length)];
-    const slot2=slots[Math.floor(Math.random()*slots.length)];
-    const slot3=slots[Math.floor(Math.random()*slots.length)];
+    const slots = ["❤️","💛","💙","💚"];
+    const slot1 = slots[Math.floor(Math.random()*slots.length)];
+    const slot2 = slots[Math.floor(Math.random()*slots.length)];
+    const slot3 = slots[Math.floor(Math.random()*slots.length)];
 
-    const winnings=calculateWinnings(slot1,slot2,slot3,betAmount);
-    userData.money+=winnings;
-    await usersData.set(user,{money:userData.money,data:userData.data});
+    const winnings = calculateWinnings(slot1,slot2,slot3,betAmount);
+    userData.money += winnings;
 
-    const resultMsg=`🎀
+    // Update slot info
+    userData.slot.daily += 1;
+    userData.slot.lastUsed = now;
+
+    await usersData.set(user,userData);
+
+    const resultMsg = `🎀
 • 𝐁𝐚𝐛𝐲, 𝐘𝐨𝐮 ${winnings>0?"𝐖𝐨𝐧":"𝐋𝐨𝐬𝐭"} ${formatMoney(Math.abs(winnings))}!
-• 𝐆𝐚𝐦𝐞 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: [ ${slot1} | ${slot2} | ${slot3} ]
+• 𝐑𝐞𝐬𝐮𝐥𝐭: [ ${slot1} | ${slot2} | ${slot3} ]
 • 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${formatMoney(userData.money)}`;
 
     return message.reply(resultMsg);
