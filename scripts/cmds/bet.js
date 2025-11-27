@@ -44,44 +44,44 @@ function formatMoney(num) {
   return toSmallBoldNumber(num);
 }
 
-// ❤️💙💚💛 user emoji pool
 const emojis = ["❤️", "💙", "💚", "💛"];
-const cooldowns = new Map(); // user cooldown map
+const cooldowns = new Map(); // 15 sec cooldown
+const dailyUsage = new Map(); // daily limit 20
 
 module.exports = {
   config: {
     name: "bet",
-    version: "5.3",
+    version: "5.4",
     author: "Saif",
-    category: "game"
+    category: "game",
+    countDown: 15
   },
 
   onStart: async function ({ args, message, event, usersData }) {
-    const { senderID } = event;
+    const user = event.senderID;
 
-    // cooldown check 15 sec
-    if (cooldowns.has(senderID)) {
-      const diff = (Date.now() - cooldowns.get(senderID)) / 1000;
-      if (diff < 15) {
-        return message.reply(`⚠️ Baka! Chill for ${Math.ceil(15 - diff)} more seconds before betting again~ 🫠`);
-      }
+    // Daily reset logic
+    const today = new Date().toDateString();
+    if (!dailyUsage.has(user) || dailyUsage.get(user).date !== today) {
+      dailyUsage.set(user, { count: 0, date: today });
+    }
+    const userDaily = dailyUsage.get(user);
+    if (userDaily.count >= 20) return message.reply("⚠️ You have reached your daily limit of 20 bets! Come back tomorrow~ 🫠");
+
+    // Cooldown check
+    const now = Date.now();
+    if (cooldowns.has(user) && now - cooldowns.get(user) < 15000) {
+      const remaining = Math.ceil((15000 - (now - cooldowns.get(user))) / 1000);
+      return message.reply(`⏳ Please wait ${remaining} more seconds before betting again.`);
     }
 
-    const userData = await usersData.get(senderID) || { money: 0, data: {} };
+    const userData = await usersData.get(user) || { money: 0, data: {} };
     const amount = parseAmount(args[0]);
+    if (isNaN(amount) || amount <= 0) return message.reply("⚠️ 𝐄𝐍𝐓𝐄𝐑 𝐀 𝐕𝐀𝐋𝐈𝐃 𝐀𝐌𝐎𝐔𝐍𝐓.");
+    if (amount > userData.money) return message.reply("💰 𝐍𝐎𝐓 𝐄𝐍𝐎𝐔𝐆𝐇 𝐁𝐀𝐋𝐀𝐍𝐂𝐄.");
 
-    if (isNaN(amount) || amount <= 0)
-      return message.reply("⚠️ 𝐄𝐍𝐓𝐄𝐑 𝐀 𝐕𝐀𝐋𝐈𝐃 𝐀𝐌𝐎𝐔𝐍𝐓.");
-    if (amount > userData.money)
-      return message.reply("💰 𝐍𝐎𝐓 𝐄𝐍𝐎𝐔𝐆𝐇 𝐁𝐀𝐋𝐀𝐍𝐂𝐄.");
-
-    // Decide win/lose (55% win chance)
     const isWin = Math.random() < 0.55;
-
-    // Select user emoji randomly
     const userEmoji = emojis[Math.floor(Math.random() * emojis.length)];
-
-    // Bot emoji fixed 🖤 if lose
     const winEmoji = isWin ? userEmoji : "🖤";
 
     await message.reply(`🎰 𝐁𝐄𝐓𝐓𝐈𝐍𝐆 𝐎𝐍 ${userEmoji}...`);
@@ -89,10 +89,12 @@ module.exports = {
 
     const change = isWin ? amount : -amount;
     const newBalance = userData.money + change;
-    await usersData.set(senderID, { money: newBalance, data: userData.data });
+    await usersData.set(user, { money: newBalance, data: userData.data });
 
-    // set cooldown
-    cooldowns.set(senderID, Date.now());
+    // Update cooldown and daily usage
+    cooldowns.set(user, now);
+    userDaily.count += 1;
+    dailyUsage.set(user, userDaily);
 
     const result = isWin
       ? ` 𝐘𝐎𝐔 𝐖𝐎𝐍 ${formatMoney(amount)}!`
@@ -105,6 +107,7 @@ module.exports = {
 ${result}
 
 𝐁𝐀𝐋𝐀𝐍𝐂𝐄: ${formatMoney(newBalance)}
+• 𝐃𝐚𝐢𝐥𝐲 𝐔𝐬𝐞: ${userDaily.count}/20
 `;
 
     return message.reply(output.trim());
