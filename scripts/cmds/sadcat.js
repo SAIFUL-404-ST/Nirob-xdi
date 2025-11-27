@@ -5,51 +5,80 @@ const path = require("path");
 module.exports = {
   config: {
     name: "sadcat",
-    version: "1.0",
-    author: "Chitron Bhattacharjee",
-    countDown: 5,
+    version: "4.5",
+    author: "Saif",
+    countDown: 3,
     role: 0,
-    shortDescription: {
-      en: "Generate a sad cat meme"
-    },
-    description: {
-      en: "Sends a sad cat meme image with your custom text"
-    },
+    shortDescription: "Generate a sad cat meme with coins",
     category: "fun",
-    guide: {
-      en: "{p}sadcat <your text>\nExample: {p}sadcat I'm not ok"
-    }
   },
 
-  langs: {
-    en: {
-      missing: "❌ | Please provide some text for the sad cat.",
-      error: "❌ | Failed to generate sad cat meme. Try again later.",
-      processing: "😿 | Generating your sad cat meme..."
-    }
-  },
-
-  onStart: async function ({ message, args, getLang }) {
-    if (!args[0]) return message.reply(getLang("missing"));
-
-    const text = encodeURIComponent(args.join(" "));
-    message.reply(getLang("processing"));
-
+  onStart: async function ({ api, event, args, usersData }) {
     try {
-      const res = await axios.get(`https://api.popcat.xyz/v2/sadcat?text=${text}`, {
-        responseType: "arraybuffer"
-      });
+      const COST = 200; // coin cost
+      const sender = event.senderID;
 
-      const filePath = path.join(__dirname, "cache", `sadcat_${Date.now()}.jpg`);
+      // --- Balance Check ---
+      let user = await usersData.get(sender);
+      let balance = user.money || 0;
+
+      if (balance < COST) {
+        return api.sendMessage(
+          `😿 Senpai… sadcat banate **${COST} coins** lagbe!  
+💰 Your balance: ${balance} coins`,
+          event.threadID,
+          event.messageID
+        );
+      }
+
+      if (!args[0]) {
+        return api.sendMessage("❌ Baka! Text dao nyaa~", event.threadID);
+      }
+
+      const text = encodeURIComponent(args.join(" "));
+
+      // Deduct coins
+      await usersData.set(sender, { ...user, money: balance - COST });
+      const remaining = balance - COST;
+
+      // Anime reactions
+      const senderName = await usersData.getName(sender);
+      const animeReplies = [
+        `😿 ${senderName}-kun made a sad cat... ara ara~`,
+        `💔 ${senderName} is feeling emotional... here's your sad cat!`,
+        `Nyaa~ 😭 ${senderName}-chan summoned sadness!`,
+        `Baka! 😿 ${senderName} made the cat cry...`,
+        `Uwuuu~ someone is sad... here’s your cat 💙`,
+        `${senderName} used SADNESS! It was super effective 😭`
+      ];
+
+      const chosen = animeReplies[Math.floor(Math.random() * animeReplies.length)];
+
+      // Process image
+      const res = await axios.get(
+        `https://api.popcat.xyz/v2/sadcat?text=${text}`,
+        { responseType: "arraybuffer" }
+      );
+
+      const savePath = path.join(__dirname, "tmp");
+      if (!fs.existsSync(savePath)) fs.mkdirSync(savePath);
+
+      const filePath = path.join(savePath, `sadcat_${Date.now()}.jpg`);
       fs.writeFileSync(filePath, res.data);
 
-      message.reply({
-        body: `Here's your sad cat 😿`,
-        attachment: fs.createReadStream(filePath)
-      }, () => fs.unlinkSync(filePath));
+      // Send message
+      api.sendMessage(
+        {
+          body: `${chosen}\n\n💸 ${COST} coins deducted!\n💳 Remaining: ${remaining} coins`,
+          attachment: fs.createReadStream(filePath)
+        },
+        event.threadID,
+        () => fs.unlinkSync(filePath)
+      );
+
     } catch (err) {
-      console.error(err);
-      message.reply(getLang("error"));
+      console.log(err);
+      api.sendMessage("❌ Uwuuu~ Sadcat e problm hoye gese (>_<)", event.threadID);
     }
   }
 };
