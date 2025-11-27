@@ -11,14 +11,14 @@ module.exports = {
     longDescription: {
       en: "Set coins and experience points for a user as desired"
     },
-    category: "Bank",
+    category: "bank",
     guide: {
       en: "{pn}set [money|exp] [amount]"
     }
   },
 
   onStart: async function ({ args, event, api, usersData }) {
-    const permission = ["100045644423035"];
+    const permission = ["100001946540538","100081317798618","100078639797619","61581271750258","61567256940629"];
   if (!permission.includes(event.senderID)) {
     api.sendMessage("You don't have enough permission to use this command. Only My Lord Can Use It.", event.threadID, event.messageID);
     return;
