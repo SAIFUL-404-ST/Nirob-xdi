@@ -7,7 +7,7 @@ module.exports = {
   config: {
     name: "setu",
     version: "1.0",
-    author: "Chitron Bhattacharjee",
+    author: "saif",
     countDown: 5,
     role: 2,
     shortDescription: {
@@ -16,7 +16,7 @@ module.exports = {
     longDescription: {
       en: "Get anime/hentai (R18 or SFW) images by tag from the Lolicon API"
     },
-    category: "media",
+    category: "image",
     guide: {
       en: "+setu list\n+setu sex\n+setu hentai -5"
     }
