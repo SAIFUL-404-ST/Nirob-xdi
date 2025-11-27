@@ -15,7 +15,7 @@ module.exports = {
 
   onStart: async function ({ api, event, args, usersData }) {
     try {
-      const COST = 200; // coin cost
+      const COST = 500; // coin cost
       const sender = event.senderID;
 
       // --- Balance Check ---
