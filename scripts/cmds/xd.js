@@ -2,9 +2,9 @@ module.exports.config = {
  name: "xd",
  version: "1.0",
  role: 2,
- author: "Chitron Bhattacharjee"e",
+ author: "saif",
  description: "5 বারের জন্য ক্রমাগত বন্ধুর ট্যাগ ট্যাগ করুন\nসেই ব্যক্তিকে আত্মা কলিং বলা যেতে পারে",
- category: "nsfw",
+ category: "owner",
  guide: " please @mention",
  coolDown: 10
 }
