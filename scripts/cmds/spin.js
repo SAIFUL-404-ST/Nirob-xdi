@@ -17,14 +17,39 @@ function formatMoney(num){
   return toSmallBoldNumber(num);
 }
 
+const cooldowns = new Map(); // 20 sec cooldown
+const dailyUsage = new Map(); // daily limit 20
+
 module.exports={
-  config:{name:"spin",version:"5.0",author:"SAIF",category:"game",shortDescription:{en:"Stylish bullet spin game"}},
+  config:{
+    name:"spin",
+    version:"5.1",
+    author:"SAIF",
+    category:"game",
+    shortDescription:{en:"Stylish bullet spin game"},
+    countDown:20 // 20 second cooldown
+  },
 
   onStart: async({args,message,event,usersData})=>{
     const user=event.senderID;
-    const userData=await usersData.get(user);
-    const betAmount=parseShorthand(args[0]);
 
+    // Daily reset logic
+    const today = new Date().toDateString();
+    if(!dailyUsage.has(user) || dailyUsage.get(user).date !== today){
+      dailyUsage.set(user,{count:0,date:today});
+    }
+    const userDaily = dailyUsage.get(user);
+    if(userDaily.count >= 20) return message.reply("⚠️ You have reached your daily limit of 20 spins!");
+
+    // Cooldown check
+    const now = Date.now();
+    if(cooldowns.has(user) && now - cooldowns.get(user) < 20000){
+      const remaining = Math.ceil((20000 - (now - cooldowns.get(user)))/1000);
+      return message.reply(`⏳ Please wait ${remaining} more seconds before spinning again.`);
+    }
+
+    const userData = await usersData.get(user);
+    const betAmount = parseShorthand(args[0]);
     if(isNaN(betAmount)||betAmount<=0) return message.reply("⚠️ 𝗘𝗡𝗧𝗘𝗥 𝗔 𝗩𝗔𝗟𝗜𝗗 𝗕𝗘𝗧 𝗔𝗠𝗢𝗨𝗡𝗧.");
     if(betAmount>userData.money) return message.reply("💰 𝗡𝗢𝗧 𝗘𝗡𝗢𝗨𝗚𝗛 𝗕𝗔𝗟𝗔𝗡𝗖𝗘.");
 
@@ -37,10 +62,16 @@ module.exports={
     userData.money+=winnings;
     await usersData.set(user,{money:userData.money,data:userData.data});
 
+    // Update cooldown and daily count
+    cooldowns.set(user,now);
+    userDaily.count += 1;
+    dailyUsage.set(user,userDaily);
+
     const resultMsg=`🎀
 • 𝐁𝐚𝐛𝐲, 𝐘𝐨𝐮 ${winnings>0?"𝐖𝐨𝐧":"𝐋𝐨𝐬𝐭"} ${formatMoney(Math.abs(winnings))}!
 • 𝐆𝐚𝐦𝐞 𝐑𝐞𝐬𝐮𝐥𝐭𝐬: [ ${slot1} | ${slot2} | ${slot3} ]
-• 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${formatMoney(userData.money)}`;
+• 𝐁𝐚𝐥𝐚𝐧𝐜𝐞: ${formatMoney(userData.money)}
+• 𝐃𝐚𝐢𝐥𝐲 𝐔𝐬𝐞: ${userDaily.count}/20`;
 
     return message.reply(resultMsg);
   }
