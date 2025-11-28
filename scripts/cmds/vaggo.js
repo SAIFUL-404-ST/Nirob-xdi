@@ -3,7 +3,7 @@ module.exports = {
     name: "vaggo",
     aliases: ["bhobisshot", "fate"],
     version: "3.0",
-    author: "Chitron Bhattacharjee + Senpai Upgrade",
+    author: "Chitron Bhattacharjee + saif",
     role: 0,
     category: "fun",
     shortDescription: { en: "🔮 ব্যক্তিগত ভাগ্য গণনা সিস্টেম" },
