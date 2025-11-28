@@ -199,7 +199,7 @@ module.exports = {
 en: "Send a random wonderful message to make people smile"},
     shortDescription: {
 en: "Send a random wonderful message to make people smile"},
-    category: "utility ",
+    category: "utility",
     guide: ["smsg"],
     countDowns: 5,
   },
