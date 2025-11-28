@@ -24,7 +24,7 @@ module.exports = {
     version: "1.7",
     author: "MahMUD",
     role: 0,
-    category: "utility ",
+    category: "utility",
     guide: { 
       en: "just type jan"
     },
