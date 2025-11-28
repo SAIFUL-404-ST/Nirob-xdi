@@ -13,7 +13,7 @@ module.exports = {
     countDown: 10,
     shortDescription: "Search or download YouTube",
     longDescription: "Search and download YouTube audio/video using API",
-    category: "media",
+    category: "music",
     guide: { en: "{pn} [-a/-v] <query or YouTube URL>" }
   },
 
