@@ -7,13 +7,13 @@ module.exports = {
 		name: "whitelistthread",
 		aliases: ["wlt", "wt"],
 		version: "1.5",
-		author: "ShAn",
+		author: "saif",
 		countDown: 5,
 		role: 2,
 		description: {
 			en: "Add, remove, edit whiteListThreadIds role"
 		},
-		category: "owner",
+		category: "admin",
 		guide: {
 			en: '   {pn} [add | -a | +] [<tid>...]: Add whiteListThreadIds role for the current thread or specified thread IDs'
 				+ '\n   {pn} [remove | -r | -] [<tid>...]: Remove whiteListThreadIds role from the current thread or specified thread IDs'
