@@ -11,7 +11,7 @@ module.exports = {
     role: 0,
     shortDescription: { en: "Send waifu image" },
     longDescription: { en: "Sends a random anime waifu photo" },
-    category: "fun",
+    category: "anime",
     guide: { en: "+waifu" }
   },
 
