@@ -1,54 +1,94 @@
 const fs = require("fs");
 const path = require("path");
-// Ensure DIG is properly imported
-const DIG = require("discord-image-generation"); 
+const DIG = require("discord-image-generation");
 
 module.exports = {
   config: {
     name: "trash",
-    version: "1.1",
-    author: "NIB",
+    version: "3.0",
+    author: "NIB + Senpai Upgrade",
     countDown: 5,
     role: 0,
-    shortDescription: "Trash image",
-    longDescription: "Trash image",
+    shortDescription: "Trash image (anime style)",
+    longDescription: "Trash effect with group-random + balance deduct + reply mode",
     category: "image",
-    guide: {
-      vi: "{pn} [@tag | để trống]",
-      en: "{pn} [@tag]"
-    }
   },
 
-  onStart: async function ({ event, message, usersData }) {
-    const uid = Object.keys(event.mentions)[0];
+  onStart: async function ({ api, event, message, usersData, args }) {
 
-    if (!uid) {
-      return message.reply("Please mention someone.");
+    const senderID = event.senderID;
+    let targetID;
+
+    const randomWords = ["r", "rnd", "random"];
+
+    // ==== RANDOM MODE (Group Members Only) ====
+    if (randomWords.includes(args[0]?.toLowerCase())) {
+      const threadInfo = await api.getThreadInfo(event.threadID);
+
+      let members = threadInfo.participantIDs;
+
+      // sender & bot remove
+      members = members.filter(id => id !== senderID && id !== api.getCurrentUserID());
+
+      if (members.length === 0) {
+        return message.reply("Nyaa~ no one available for trashing 😿");
+      }
+
+      targetID = members[Math.floor(Math.random() * members.length)];
     }
 
-    // Handle special cases for specific UIDs
-    if (uid === "100068909067279") {
-      return message.reply("You are the trash 🐸🐸.");
+    // ==== REPLY MODE ====
+    else if (event.messageReply) {
+      targetID = event.messageReply.senderID;
     }
+
+    // ==== TAG MODE ====
+    else if (Object.keys(event.mentions)[0]) {
+      targetID = Object.keys(event.mentions)[0];
+    }
+
+    // ==== DEFAULT (Self) ====
+    else {
+      targetID = senderID;
+    }
+
+    // ==== COIN SYSTEM ====
+    const cost = 500;
+    const userData = await usersData.get(senderID);
+    const balance = userData.money || 0;
+
+    if (balance < cost) {
+      return message.reply(
+        `💸 Senpai needs **${cost} coins** but only has **${balance}** 😿`
+      );
+    }
+
+    await usersData.set(senderID, { money: balance - cost });
+    const remaining = balance - cost;
 
     try {
-      const avatarURL = await usersData.getAvatarUrl(uid);
-      const img = await new DIG.Trash().getImage(avatarURL);
-      const pathSave = path.join(__dirname, "tmp", `${uid}_Trash.png`);
+      const avatar = await usersData.getAvatarUrl(targetID);
+      const img = await new DIG.Trash().getImage(avatar);
 
-      fs.writeFileSync(pathSave, Buffer.from(img));
+      const filePath = path.join(__dirname, "tmp", `${targetID}_trash.png`);
+      fs.writeFileSync(filePath, Buffer.from(img));
+
+      const targetName = await usersData.getName(targetID);
+
       await message.reply({
-        attachment: fs.createReadStream(pathSave),
+        body:
+`🗑️✨ **Trash Mode Activated!**
+Senpai threw **${targetName}** straight into the trash bin 😼🖤
+💰 Coins Deducted: **${cost}**
+💳 Remaining Balance: **${remaining}**`,
+        attachment: fs.createReadStream(filePath)
       });
-    } catch (error) {
-      console.error("Error while processing the trash2 command:", error);
-      message.reply("An error occurred while processing the image.");
-    } finally {
-      // Clean up the temporary file after use
-      const pathSave = path.join(__dirname, "tmp", `${uid}_Trash.png`);
-      if (fs.existsSync(pathSave)) {
-        fs.unlinkSync(pathSave);
-      }
+
+      fs.unlinkSync(filePath);
+
+    } catch (err) {
+      console.log(err);
+      message.reply("Uwu~ could not generate trash image 😿");
     }
   }
 };
