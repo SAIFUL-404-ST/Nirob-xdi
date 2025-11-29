@@ -20,7 +20,7 @@ module.exports = {
 
   onStart: async function ({ message, event, args, usersData, api }) {
     try {
-      const COST = 300;
+      const COST = 500;
       const sender = event.senderID;
 
       // ---- Balance check ----
