@@ -11,7 +11,7 @@ module.exports = {
     role: 0,
     shortDescription: "💞 Pair with someone in your chat!",
     longDescription: "Automatic gender pairing + anime style + balance deduction",
-    category: "LOVE",
+    category: "love",
     guide: "{pn} [reply/tag/random]"
   },
 
