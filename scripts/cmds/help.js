@@ -14,7 +14,7 @@ module.exports = {
     longDescription: {
       en: "Shows all available commands categorized or gives detailed usage info for one.",
     },
-    category: "Utility",
+    category: "box chat",
     guide: {
       en: "{pn} [command name]",
     },
