@@ -52,24 +52,24 @@ module.exports = {
 ╭─∪∪────────────⟡
 │ 𝗨𝗣𝗧𝗜𝗠𝗘 𝗜𝗡𝗙𝗢
 ├───────────────⟡
-│ ⏰ Runtime: ${uptimeFormatted}
+│  Runtime: ${uptimeFormatted}
 │ OS: ${os.type()} ${os.arch()}
 │ CPU: ${os.cpus()[0].model}
 │ Storage: ${usedMemoryGB.toFixed(2)} GB / ${totalMemoryGB.toFixed(2)} GB
 │ CPU Usage: ${cpuUsage.toFixed(1)}%
 │ RAM: ${(process.memoryUsage().heapUsed / 1024 / 1024).toFixed(1)} MB
 ├───────────────⟡
-│ 📆 Date: ${date}
-│ ⏱️ Time: ${time}
-│ 👥 Users: ${allUsers.length}
-│ 🧵 Threads: ${allThreads.length}
-│ 📡 Ping: ${ping}ms
+│  Date: ${date}
+│  Time: ${time}
+│  Users: ${allUsers.length}
+│  Threads: ${allThreads.length}
+│  Ping: ${ping}ms
 │ Status: ${pingStatus}
 ╰───────────────⟡`;
 
       // Media from catbox (video)
       let attachment = null;
-      const mediaUrl = "https://files.catbox.moe/ggr1ui.mp4";
+      const mediaUrl = "https://files.catbox.moe/trv0il.mp4";
 
       if (mediaUrl.endsWith(".jpg") || mediaUrl.endsWith(".png") || mediaUrl.endsWith(".mp4")) {
         const response = await axios.get(mediaUrl, { responseType: "stream" });
