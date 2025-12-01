@@ -18,8 +18,8 @@ module.exports = {
   onStart: async function ({ message }) {
     const authorName = "SAIF";
     const ownAge = "20+";
-    const messenger = "https://m.me/100081317798618";
-    const authorFB = "https://www.facebook.com/100081317798618";
+    const messenger = "https://m.me/61567256940629";
+    const authorFB = "https://www.facebook.com/61567256940629";
     const authorNumber = "01823772045";
     const status = "Broken";
 
@@ -58,11 +58,10 @@ Messenger Link : ${messenger}
 Bot Uptime     : ${uptimeString}
 
 Telegram       : https://t.me/@S41FUL0
-Instagram      : https://www.instagram.com/saif9xm
+Instagram      : https://www.instagram.com/saiful-404-st
 CapCut         : sorry>³
-TikTok         : heartless_saif1145
-YouTube        : wait⚠️
-===============================`,
+TikTok         : heartless_saif1
+YouTube        : unpossible     ===============================`,
       attachment: await global.utils.getStreamFromURL(link)
     });
   },
