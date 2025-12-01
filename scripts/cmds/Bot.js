@@ -54,7 +54,7 @@ module.exports = {
     const responses = [
       
 "babu khuda lagse🥺",
-      "Hop beda😾,Boss বল boss😼",  
+      "dont call me baka 😾",  
       "আমাকে ডাকলে ,আমি কিন্তূ কিস করে দেবো😘 ",  
       " 2 minute por ashtesi..ranna bosai aisi.akhoni na gele pure jabe",
       "bye",
