@@ -9,7 +9,7 @@ module.exports = {
 		countDown: 5,
 		role: 0,
 		description: "Change or check prefix",
-		category: "config",
+		category: "information",
 	},
 
 	langs: {
