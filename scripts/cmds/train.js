@@ -4,7 +4,7 @@ const fs = require("fs-extra");
 module.exports = {
   config: {
     name: "train",
-    version: "3.0",
+    version: "3.1",
     author: "milan-says",
     countDown: 5,
     role: 0,
@@ -46,6 +46,9 @@ module.exports = {
       return message.reply("baka! 😾\nTag someone, reply to someone or use r/random mode.");
     }
 
+    // 🟦 Get target user's NAME
+    const targetName = await usersData.getName(targetUID);
+
     // 💰 BALANCE CHECK
     const cost = 500;
     const userData = await usersData.get(event.senderID);
@@ -69,11 +72,11 @@ module.exports = {
     const pathSave = `${__dirname}/tmp/train_${targetUID}.png`;
     fs.writeFileSync(pathSave, img);
 
-    // ✨ Anime styled message
+    // ✨ Anime styled message (Now uses NAME instead of UID)
     const text = 
 `🚂💨 Mikasa Express Departure!
 
-Senpai just sent <@${targetUID}> flying on the train~  
+Senpai just sent ${targetName} flying on the train~  
 Hold tight, baka! 😼💗
 
 💸 500 coins deducted  
