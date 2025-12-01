@@ -33,8 +33,8 @@ module.exports = {
 
       if (balance < COST) {
         return api.sendMessage(
-          `🌸 Senpai… you need **${COST} coins** to use Anya-chan!  
-💰 Your balance: ${balance} coins`,
+          `🌸 ꜱᴇɴᴘᴀɪ… ʏᴏᴜ ɴᴇᴇᴅ ${COST} ᴄᴏɪɴꜱ! ᴛᴏ ᴜꜱᴇ ᴀɴʏᴀ-ᴄʜᴀɴ!  
+💰 ʏᴏᴜʀ ʙᴀʟᴀɴᴄᴇ: ${balance} ᴄᴏɪɴꜱ!`,
           event.threadID, event.messageID
         );
       }
@@ -54,7 +54,7 @@ module.exports = {
       }
 
       if (!textInput) {
-        const greetings = ["Konichiwa senpai~ 💖", "Hora~ uwu~", "Nyaa~ baka~ 😳"];
+        const greetings = ["ᴋᴏɴɪᴄʜɪᴡᴀ ꜱᴇɴᴘᴀɪ~ 💖", "ɴʏᴀᴀ~ ʙᴀᴋᴀ~ 🤫", "ɴʏᴀᴀ~ ʙᴀᴋᴀ~ 😳"];
         return api.sendMessage(greetings[Math.floor(Math.random() * greetings.length)], threadID, messageID);
       }
 
@@ -70,9 +70,9 @@ module.exports = {
 
       // Anime-style reply with remaining balance
       const animeReplies = [
-        `Nyaa~ Anya-chan says: "${textInput}" 😳\n💸 Coins spent: ${COST}\n💳 Remaining: ${remaining} coins`,
-        `Sugoi~ Senpai! Anya-chan whispers: "${textInput}" 💖\n💸 ${COST} coins used, ${remaining} left`,
-        `Baka! Listen: "${textInput}" uwu~ 😼\n💰 Coins left: ${remaining}`,
+        `ɴʏᴀᴀ~ ᴀɴʏᴀ-ᴄʜᴀɴ ꜱᴀʏꜱ: "${textInput}" \n💸 ᴄᴏɪɴꜱ! ꜱᴘᴇɴᴅ : ${COST}\n💳 ʀᴇᴍᴀɪɴɪɴɢ: ${remaining} ᴄᴏɪɴꜱ!`,
+        `ꜱᴜɢᴏɪ~ ꜱᴇɴᴘᴀɪ! ᴀɴʏᴀ-ᴄʜᴀɴ ᴡʜɪꜱᴘᴇʀꜱ: "${textInput}" 💖\n💸 ${COST} ᴄᴏɪɴꜱ ᴜꜱᴇᴅ, ${remaining} ʟᴇꜰᴛ`,
+        `ʙᴀᴋᴀ! ʟɪꜱᴛᴇɴ: "${textInput}" ᴜᴡᴜ \n💰 ᴄᴏɪɴꜱ! ʟᴇꜰᴛ: ${remaining}`,
       ];
       const chosenReply = animeReplies[Math.floor(Math.random() * animeReplies.length)];
 
@@ -83,7 +83,7 @@ module.exports = {
 
     } catch (error) {
       console.error(error);
-      api.sendMessage("🥹 Uwuuu~ TTS generation failed!", event.threadID, event.messageID);
+      api.sendMessage("🥹 ᴜᴡᴜᴜᴜ~ ᴛᴛꜱ ɢᴇɴᴇʀᴀᴛɪᴏɴ ꜰᴀɪʟᴇᴅ!!", event.threadID, event.messageID);
     }
   }
 };
