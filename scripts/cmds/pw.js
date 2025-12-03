@@ -1,24 +1,25 @@
 const fs = require("fs-extra");
 const path = require("path");
 
-const DATA_FILE = path.join(__dirname, "autopropose_data.json");
+const DATA_FILE = path.join(__dirname, "pw_data.json");
 
 module.exports = {
   config: {
-    name: "autopropose",
-    aliases: ["pw", "loveauto"],
-    version: "3.0",
-    author: "Saif (for Senpai)",
+    name: "pw",
+    aliases: ["autopropose"],
+    version: "7.1",
+    author: "Senpai",
     countDown: 3,
     role: 2,
-    shortDescription: "Auto love-react + Bangla propose",
-    longDescription: "Target user message korlei react + propose.",
+    shortDescription: "Auto propose system",
+    longDescription: "",
     category: "love",
-    guide: "{pn} on/off\n{pn} on @tag\nReply diye {pn} on"
+    guide: "{pn} on/off/status (reply/tag/uid supported)"
   },
 
   loadData() {
-    if (!fs.existsSync(DATA_FILE)) fs.writeJsonSync(DATA_FILE, {});
+    if (!fs.existsSync(DATA_FILE))
+      fs.writeJsonSync(DATA_FILE, {});
     return fs.readJsonSync(DATA_FILE);
   },
 
@@ -26,101 +27,192 @@ module.exports = {
     fs.writeJsonSync(DATA_FILE, data, { spaces: 2 });
   },
 
-  reactions: ["❤️", "❤️‍🩹", "🧡", "💛", "🖤", "🤎", "💜", "💚", "💖", "💝"],
-
-  captions: [
-    "তোমার একটা হাসি আমার পুরো দিনটাই বদলে দেয়… তুমি কি আমার হয়ে হাসবে?",
-    "তোমার নামটা আজকাল দোয়ার আগেই মনে আসে… তুমি কি আমার হবে?",
-    "তোমাকে চাই নিজের মতো, নিজের জন্য—চিরদিন। হবে?",
-    "তোমায় না পেলে মনে হয় জীবনটা ঠিকমতো বাঁচিনি… প্লিজ, আমার হও?",
-    "হৃদয়টা আজকাল বড় অস্থির… কারণ তুমি ওখানে জায়গা করে নিয়েছো।",
-    "তুমি না থাকলে বাঁচার মজা অর্ধেক কমে যায়… তুমি কি আমার পাশে থাকবে?",
-    "তোমার সাথে কথা বললেই মনটা শান্ত হয়ে যায়—তুমি কি এই শান্তিটাকে চিরদিনের করতে দিবে?",
-    "হাজার মানুষের ভিড়ে চোখ শুধু তোমাকেই খোঁজে… তুমি কি আমার সেই একজন হবে?",
-    "তোমাকে ছাড়া ভবিষ্যৎ চিন্তাই করতে পারি না… তুমি কি আমার আগামী হবে?",
-    "আমি প্রপোজ করছি না… আমার ভবিষ্যৎ তোমার হাতে তুলে দিচ্ছি। ধরবে?"
-  ],
-
-  // ===========================
-  // ►► ON / OFF / STATUS
-  // ===========================
-  onStart({ api, event, args }) {
+  // =====================================================
+  // ON / OFF / STATUS
+  // =====================================================
+  async onStart({ event, api, args, usersData }) {
     const threadID = event.threadID;
+    const messageID = event.messageID;
     const data = this.loadData();
-    if (!data[threadID]) data[threadID] = { enabled: false, target: null };
 
-    const cmd = (args[0] || "").toLowerCase();
+    if (!data[threadID]) data[threadID] = {};
+    if (!Array.isArray(data[threadID].targets)) data[threadID].targets = [];
 
-    // OFF
-    if (cmd === "off") {
-      data[threadID].enabled = false;
-      data[threadID].target = null;
-      this.saveData(data);
-      return api.sendMessage("⛔ Auto-Propose বন্ধ করা হলো।", threadID);
-    }
+    const list = data[threadID].targets;
+    const sub = (args[0] || "").toLowerCase();
 
     // STATUS
-    if (cmd === "status") {
-      const t = data[threadID].target;
-      return api.sendMessage(
-        `Status: ${data[threadID].enabled ? "ON ❤️" : "OFF ❌"}\nTarget: ${t ? t : "❌ Set না"}`,
-        threadID
-      );
+    if (sub === "status") {
+      if (list.length === 0)
+        return api.sendMessage("এই গ্রুপে কারো PW চলছে না।", threadID, messageID);
+
+      let msg = "বর্তমানে PW চলছে:\n\n";
+      for (let i = 0; i < list.length; i++) {
+        let name = await usersData.getName(list[i]);
+        msg += `${i + 1}. ${name} (${list[i]})\n`;
+      }
+      return api.sendMessage(msg, threadID, messageID);
     }
 
-    // ON (reply / tag / manual)
-    if (cmd === "on") {
-      let targetUID = null;
+    // ON
+    if (sub === "on") {
+      let targetID = null;
 
-      // If reply
-      if (event.messageReply) {
-        targetUID = event.messageReply.senderID;
-      }
+      if (event.messageReply)
+        targetID = event.messageReply.senderID;
 
-      // If tag
-      if (event.mentions && Object.keys(event.mentions).length > 0) {
-        targetUID = Object.keys(event.mentions)[0];
-      }
+      if (event.mentions && Object.keys(event.mentions).length > 0)
+        targetID = Object.keys(event.mentions)[0];
 
-      // If neither reply nor tag → keep last target
-      if (!targetUID) {
-        if (!data[threadID].target)
-          return api.sendMessage("❗ Please reply/tag someone অথবা আগের target নেই।", threadID);
-        targetUID = data[threadID].target;
-      }
+      if (!targetID && args[1] && /^\d+$/.test(args[1]))
+        targetID = args[1];
 
-      data[threadID].enabled = true;
-      data[threadID].target = targetUID;
+      if (!targetID)
+        return api.sendMessage("reply/tag/uid দিয়ে আবার চেষ্টা করুন।", threadID, messageID);
+
+      if (!list.includes(targetID))
+        list.push(targetID);
+
       this.saveData(data);
 
+      const name = await usersData.getName(targetID);
       return api.sendMessage(
-        `❤️ Auto-Propose চালু!\n🎯 Target UID: ${targetUID}`,
-        threadID
+        `Auto-Propose চালু হয়েছে।\nTarget: ${name}`,
+        threadID,
+        messageID
       );
     }
 
-    return api.sendMessage("Use: {pn} on/off/status", threadID);
+    // OFF → Global PW OFF
+    if (sub === "off") {
+      if (list.length === 0)
+        return api.sendMessage("এই গ্রুপে কারো PW চালু নেই।", threadID, messageID);
+
+      let msg = "যার PW বন্ধ করতে চান তার নম্বর রিপ্লাই দিন:\n\n";
+      for (let i = 0; i < list.length; i++) {
+        let n = await usersData.getName(list[i]);
+        msg += `${i + 1}. ${n}\n`;
+      }
+
+      return api.sendMessage(msg, threadID, (err, info) => {
+        global.GoatBot.onReply.set(info.messageID, {
+          commandName: this.config.name,
+          threadID,
+          messageID: info.messageID,
+          author: event.senderID,
+          type: "off-global"
+        });
+      });
+    }
+
+    return api.sendMessage("Use pw on/off/status", threadID, messageID);
   },
 
-  // ===========================
-  // ►► AUTO TRIGGER
-  // ===========================
-  async onChat({ api, event }) {
+  // =====================================================
+  // GLOBAL OFF HANDLER
+  // =====================================================
+  async onReply({ event, api, usersData, Reply }) {
+    if (Reply.type !== "off-global") return;
+
+    if (event.senderID !== Reply.author)
+      return;
+
+    const data = this.loadData();
+    const threadID = Reply.threadID;
+    const list = data[threadID].targets;
+
+    const choice = parseInt(event.body.trim());
+
+    if (!choice || choice < 1 || choice > list.length)
+      return api.sendMessage("ভুল নাম্বার দিয়েছেন।", threadID, event.messageID);
+
+    const targetID = list[choice - 1];
+    const name = await usersData.getName(targetID);
+
+    // GLOBAL OFF → সব গ্রুপ থেকে ওই user PW OFF
+    for (const tID in data) {
+      if (Array.isArray(data[tID].targets)) {
+        data[tID].targets = data[tID].targets.filter(uid => uid !== targetID);
+      }
+    }
+
+    this.saveData(data);
+
+    return api.sendMessage(
+      `${name}-এর PW সব গ্রুপ থেকে OFF করা হলো।`,
+      threadID,
+      event.messageID
+    );
+  },
+
+  // =====================================================
+  // AUTO TRIGGER
+  // =====================================================
+  async onChat({ event, api, usersData }) {
     const threadID = event.threadID;
     const senderID = event.senderID;
 
     const data = this.loadData();
-    if (!data[threadID] || !data[threadID].enabled) return;
 
-    const target = data[threadID].target;
-    if (!target || String(senderID) !== String(target)) return;
+    if (!data[threadID]) return;
+    if (!Array.isArray(data[threadID].targets)) return;
+    const list = data[threadID].targets;
 
-    // Reaction
-    const r = this.reactions[Math.floor(Math.random() * this.reactions.length)];
-    api.setMessageReaction(r, event.messageID, () => {}, true);
+    if (!list.includes(senderID)) return;
 
-    // Caption
-    const c = this.captions[Math.floor(Math.random() * this.captions.length)];
-    api.sendMessage(c, threadID, undefined, event.messageID);
+    const targetName = await usersData.getName(senderID);
+
+    const reacts = ["❤️","💛","🖤","🤎","💜","💚","💝","🧡","💖"];
+    const reactPick = reacts[Math.floor(Math.random() * reacts.length)];
+
+    api.setMessageReaction(reactPick, event.messageID, () => {}, true);
+
+    // 40+ CAPTIONS
+    const captions = [
+      `${targetName}, তোমাকে ছাড়া পৃথিবীটা অসম্পূর্ণ লাগে।`,
+      `${targetName}, তোমার চোখে তাকালে মনে হয় এটাই আমার ঘর।`,
+      `${targetName}, তোমার কথা ভাবলেই মনটা নরম হয়ে যায়।`,
+      `${targetName}, তুমি থাকলে আমার সব ভয় হারায়।`,
+      `${targetName}, তুমি আমার অনুভূতির সবচেয়ে সত্যি অংশ।`,
+      `${targetName}, তোমাকে ছাড়া অন্য কাউকে ভাবতে পারি না।`,
+      `${targetName}, তোমাকে হারানোর ভয়টাই আমার দুর্বলতা।`,
+      `${targetName}, তুমি থাকলে জীবনটা সুন্দর হয়ে যায়।`,
+      `${targetName}, তোমার হাসিটা আমার দিনের শান্তি।`,
+      `${targetName}, তুমি চাইলে আমি পুরো জীবন বদলে দিতে পারি।`,
+      `${targetName}, তোমাকে ছাড়া কিছুই সম্পূর্ণ লাগে না।`,
+      `${targetName}, তোমাকে ভাবলেই মনে হয় সব ঠিক হয়ে যাবে।`,
+      `${targetName}, তুমি আমার কাছে অনুভূতির নামে পরিচিত।`,
+      `${targetName}, তোমার কাছেই আমার মনটা আটকে থাকে।`,
+      `${targetName}, তোমার কথা না ভাবার চেষ্টা করেও পারি না।`,
+      `${targetName}, তুমি থাকলে পৃথিবীটা অন্যরকম লাগে।`,
+      `${targetName}, তোমার কণ্ঠটাই আমার সবচেয়ে প্রিয় শব্দ।`,
+      `${targetName}, তোমার কাছে একটু জায়গা চাই… খুব ছোট্ট, কিন্তু সত্যি।`,
+      `${targetName}, তুমি আরেকটু কাছে এলে আমি বদলে যাই।`,
+      `${targetName}, তোমার জন্য আমার মনটা প্রতিদিন নরম হয়।`,
+      `${targetName}, তুমি বুঝতে পারো না, তোমাকে কতটা ভালোবাসি।`,
+      `${targetName}, তোমার নামটা শোনার পরই মন ভালো হয়ে যায়।`,
+      `${targetName}, তুমি থাকলে সব দুঃখ ভুলে যাই।`,
+      `${targetName}, তোমাকেই চাই… আজ, কাল, সবসময়।`,
+      `${targetName}, তোমার অস্তিত্বই আমার জীবনের শান্তি।`,
+      `${targetName}, তোমার জন্য মনটা প্রতিদিন একটু করে বদলায়।`,
+      `${targetName}, তুমি পাশে থাকলে সব সহজ হয়ে যায়।`,
+      `${targetName}, তোমার কাছেই আমার মন বারবার ফিরে আসে।`,
+      `${targetName}, তোমাকে ছাড়া আমার কিছুই ভালো লাগে না।`,
+      `${targetName}, তুমি আমার জীবনের সবচেয়ে সুন্দর প্রয়োজন।`,
+      `${targetName}, তোমার presence আমার vibe পুরো বদলে দেয়।`,
+      `${targetName}, তোমার একটা মেসেজেই পুরো mood ঠিক হয়ে যায়।`,
+      `${targetName}, তুমি হাসলে আমার পৃথিবী হালকা লাগে।`,
+      `${targetName}, তুমি না থাকলে সবকিছু ফাঁকা লাগে।`,
+      `${targetName}, তোমাকে ছাড়া দিনটা অসম্পূর্ণ থাকে।`,
+      `${targetName}, তুমি আমার মনকে শান্ত করার মানুষ।`,
+      `${targetName}, তোমার কথা মনে পড়লে চোখে হাসি চলে আসে।`,
+      `${targetName}, তোমাকে দেখলে মনে হয়—হ্যাঁ, এটাই আমার!`,
+      `${targetName}, তুমি আমার সবচেয়ে প্রিয় অভ্যাস।`,
+      `${targetName}, তোমাকে পেলে—সব পেয়ে যাই।`
+    ];
+
+    const pick = captions[Math.floor(Math.random() * captions.length)];
+
+    api.sendMessage(pick, threadID, event.messageID);
   }
 };
