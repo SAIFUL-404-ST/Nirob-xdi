@@ -1,4 +1,4 @@
-.cmd install xl.js const axios = require("axios");
+const axios = require("axios");
 const fs = require("fs");
 const path = require("path");
 
@@ -63,5 +63,4 @@ module.exports = {
       api.sendMessage("❌ Failed to generate XL image.", event.threadID, event.messageID);
       api.setMessageReaction("❌", event.messageID, () => {}, true);
     }
-  }
-};
+const
