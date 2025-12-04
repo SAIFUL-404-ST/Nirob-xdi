@@ -13,7 +13,7 @@ module.exports = {
     role: 0,
     shortDescription: { en: "Generate images using XL AI" },
     longDescription: { en: "Send a text prompt and the bot will generate an image using the XL AI API." },
-    category: "image",
+    category: "ai",
     guide: { en: "{pn} <prompt>\n\nExample:\n{pn} cute cat sitting on a tree" }
   },
 
@@ -63,4 +63,5 @@ module.exports = {
       api.sendMessage("❌ Failed to generate XL image.", event.threadID, event.messageID);
       api.setMessageReaction("❌", event.messageID, () => {}, true);
     }
-const
+  }
+};
