@@ -26,7 +26,7 @@ module.exports = {
     role: 0,
     shortDescription: "Download MP3 using YouTube search",
     longDescription: "Search YouTube then fetch MP3 from Mahabub CDN API",
-    category: "media",
+    category: "music",
     guide: "{p}{n} <song name>",
   },
 
@@ -120,4 +120,4 @@ module.exports = {
       );
     }
   },
-};const
+};
