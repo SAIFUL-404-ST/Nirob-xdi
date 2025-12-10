@@ -27,7 +27,7 @@ module.exports={
     author:"SAIF",
     category:"game",
     shortDescription:{en:"Stylish bullet spin game"},
-    countDown:20 // 20 second cooldown
+    countDown:10 // 20 second cooldown
   },
 
   onStart: async({args,message,event,usersData})=>{
