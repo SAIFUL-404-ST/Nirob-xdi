@@ -9,10 +9,10 @@ const baseApiUrl = async () => {
 
 const config = {
   name: "autodl",
-  version: "3.0",
+  version: "3.1",
   author: "Saif",
-  credits: "xnil",
-  description: "𝐀𝐮𝐭𝐨 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐯𝐢𝐝𝐞𝐨𝐬/𝐢𝐦𝐚𝐠𝐞𝐬 𝐟𝐫𝐨𝐦 𝐓𝐢𝐤𝐓𝐨𝐤, 𝐘𝐨𝐮𝐓𝐮𝐛𝐞, 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤, 𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦 𝐚𝐧𝐝 𝐦𝐨𝐫𝐞.",
+  credits: "Saif",
+  description: "𝐀𝐮𝐭𝐨 𝐝𝐨𝐰𝐧𝐥𝐨𝐚𝐝 𝐯𝐢𝐝𝐞𝐨𝐬/𝐢𝐦𝐚𝐠𝐞𝐬 𝐟𝐫𝐨𝐦 𝐓𝐢𝐤𝐓𝐨𝐤, 𝐘𝐨𝐮𝐓𝐮𝐛𝐞, 𝐅𝐚𝐜𝐞𝐛𝐨𝐨𝐤, 𝐈𝐧𝐬𝐭𝐚𝐠𝐫𝐚𝐦 and more.",
   category: "media",
   commandCategory: "media",
   usePrefix: true,
@@ -49,7 +49,8 @@ const onChat = async ({ api, event }) => {
 
     const mediaLink = content?.result || content?.url;
     if (!mediaLink) {
-      return api.sendMessage("❌ 𝐔𝐍𝐀𝐁𝐋𝐄 𝐓𝐎 𝐑𝐄𝐓𝐑𝐈𝐄𝐕𝐄 𝐌𝐄𝐃𝐈𝐀. 𝐂𝐇𝐄𝐂𝐊 𝐘𝐎𝐔𝐑 𝐋𝐈𝐍𝐊 𝐎𝐑 𝐓𝐑𝐘 𝐀𝐆𝐀𝐈𝐍.", event.threadID, event.messageID);
+      api.unsendMessage(waitMsg.messageID); // Remove wait message
+      return; // Just exit silently without showing error
     }
 
     let extension = ".mp4";
@@ -86,7 +87,7 @@ const onChat = async ({ api, event }) => {
 ║ 💾 𝐒𝐓𝐀𝐓𝐔𝐒: 𝐒𝐔𝐂𝐂𝐄𝐒𝐒 ✅
 ╚══════════════════════════════╝
 ✨ 𝐄𝐍𝐉𝐎𝐘 𝐘𝐎𝐔𝐑 ${mediaLabel}!
-💖 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐒𝐀𝐈𝐅`;
+💖 𝐏𝐎𝐖𝐄𝐑𝐄𝐃 𝐁𝐘 𝐌𝐈𝐊𝐀𝐒𝐀`;
 
     await api.sendMessage(
       {
@@ -100,17 +101,8 @@ const onChat = async ({ api, event }) => {
 
   } catch (err) {
     console.error("[autodl] error:", err);
-    api.setMessageReaction("❌", event.messageID, true);
-
-    const errorMsg = `
-⚠️ 𝐎𝐎𝐏𝐒! 𝐒𝐎𝐌𝐄𝐓𝐇𝐈𝐍𝐆 𝐖𝐄𝐍𝐓 𝐖𝐑𝐎𝐍𝐆 💀
-━━━━━━━━━━━━━━━━━━━━━
-• 𝐄𝐑𝐑𝐎𝐑: ${err.message}
-• 𝐓𝐑𝐘 𝐀𝐆𝐀𝐈𝐍 𝐋𝐀𝐓𝐄𝐑 𝐎𝐑 𝐂𝐇𝐄𝐂𝐊 𝐘𝐎𝐔𝐑 𝐋𝐈𝐍𝐊
-━━━━━━━━━━━━━━━━━━━━━
-💡 𝐓𝐈𝐏: 𝐌𝐀𝐊𝐄 𝐒𝐔𝐑𝐄 𝐓𝐇𝐄 𝐌𝐄𝐃𝐈𝐀 𝐈𝐒 𝐏𝐔𝐁𝐋𝐈𝐂.`;
-
-    api.sendMessage(errorMsg, event.threadID, event.messageID);
+    api.unsendMessage(waitMsg.messageID); // Remove wait message
+    // Do not show download fail feedback
   }
 };
 
