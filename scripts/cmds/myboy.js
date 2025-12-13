@@ -14,7 +14,7 @@ module.exports.config = {
   author: "MahMUD",
   category: "love",
   cooldowns: 5,
-  cost: 50 // coins per use
+  cost: 500 // coins per use
 };
 
 module.exports.onStart = async ({ event, api, args, usersData, message }) => {
