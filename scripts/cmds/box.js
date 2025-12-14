@@ -8,7 +8,7 @@ const fs = require("fs");
                  version: "1.0", 
                  author: "Rocky", 
                  countDown: 5, 
-                 role: 2, 
+                 role: 1, 
                  shortDescription: "set admin/change group photo,emoji,name", 
                  longDescription: "", 
                  category: "box chat", 
