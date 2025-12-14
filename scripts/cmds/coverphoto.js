@@ -17,7 +17,7 @@ const config = {
   usePrefix: true,
   hasPermission: 2,
   premium: false,
-  category: "Owner",
+  category: "owner",
   commandCategory: "user",
   guide: {
     en: "{pn} [uid/link]",
