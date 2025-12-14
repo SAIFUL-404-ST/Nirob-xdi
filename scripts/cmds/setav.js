@@ -11,7 +11,7 @@ module.exports = {
     role: 2, // admin only
     shortDescription: "Change bot's profile picture",
     longDescription: "Change the bot ID's profile picture using a photo reply or image URL.",
-    category: "Owner",
+    category: "admin",
     guide: "Reply to a photo or use an image URL"
   },
 
