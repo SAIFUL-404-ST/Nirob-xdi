@@ -11,7 +11,7 @@ module.exports = {
     credits: "IMRAN | Updated by MAHABUB",
     description: "AI image editing using prompt + image or link",
     prefix: true,
-    category: "Image Generator",
+    category: "image",
     usage: "editimg [prompt] | [imageUrl]",
     cooldown: 5
   },
