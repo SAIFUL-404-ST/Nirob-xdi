@@ -1,40 +1,41 @@
 const { getTime, drive } = global.utils;
-
-if (!global.temp.welcomeEvent)
-	global.temp.welcomeEvent = {};
+if (!global.temp.welcomeEvent) global.temp.welcomeEvent = {};
 
 module.exports = {
 	config: {
 		name: "welcome",
-		version: "2.0",
-		author: "Saif",
+		version: "1.8",
+		author: "SAIF",
 		category: "events"
 	},
 
 	langs: {
+		vi: {
+			session1: "𝐒𝐀𝐍𝐆",
+			session2: "𝐓𝐑𝐔̛𝐀",
+			session3: "𝐂𝐇𝐈𝐄̂̀𝐔",
+			session4: "𝐓𝐎̂́𝐈",
+			welcomeMessage: "✨ 𝐂𝐚̉𝐦 𝐨̛𝐧 𝐛𝐚̣𝐧 𝐯𝐢̀ 𝐝𝐚̃ 𝐦𝐨̛̀𝐢 𝐭𝐨̂𝐢 𝐯𝐚̀𝐨 𝐧𝐡𝐨́𝐦! \n📌 𝐏𝐫𝐞𝐟𝐢𝐱 𝐛𝐨𝐭: %1\n📜 𝐗𝐞𝐦 𝐝𝐚𝐧𝐡 𝐬𝐚́𝐜𝐡 𝐥𝐞̣̂𝐧𝐡: %1help",
+			multiple1: "𝐛𝐚̣𝐧",
+			multiple2: "𝐜𝐚́𝐜 𝐛𝐚̣𝐧",
+			defaultWelcomeMessage: "🌸 𝐗𝐢𝐧 𝐜𝐡𝐚̀𝐨 {userName}.\n🌟 𝐂𝐡𝐚̀𝐨 𝐦𝐮̛̀𝐧𝐠 𝐛𝐚̣𝐧 đ𝐞̂́n 𝐯𝐨̛́𝐢 {boxName}.\n💫 𝐂𝐡𝐮́𝐜 𝐛𝐚̣𝐧 có bư𝐨̛̉𝐢 {session} 𝐯𝐮𝐢 vẻ!"
+		},
 		en: {
-			session1: "𝐌𝐨𝐫𝐧𝐢𝐧𝐠",
-			session2: "𝐍𝐨𝐨𝐧",
-			session3: "𝐀𝐟𝐭𝐞𝐫𝐧𝐨𝐨𝐧",
-			session4: "𝐄𝐯𝐞𝐧𝐢𝐧𝐠",
-			session5: "𝐍𝐢𝐠𝐡𝐭",
-
-			welcomeMessage:
-				`𝐇𝐞𝐲 𝐅𝐯𝐫𝐭 𝐁𝐨𝐭\n\n` +
-				`𝐓𝐡𝐞 𝐁𝐨𝐭 𝐈𝐬 𝐍𝐨𝐰 𝐀𝐜𝐭𝐢𝐯𝐞 𝐈𝐧 𝐓𝐡𝐢𝐬 𝐆𝐫𝐨𝐮𝐩\n\n` +
-				`𝐁𝐨𝐭 𝐏𝐫𝐞𝐟𝐢𝐱 : %1\n\n` +
-				`𝐓𝐨 𝐕𝐢𝐞𝐰 𝐀𝐥𝐥 𝐂𝐨𝐦𝐦𝐚𝐧𝐝𝐬\n` +
-				`𝐓𝐲𝐩𝐞 : %1help`,
-
-			multiple1: "𝐓𝐨",
-			multiple2: "𝐓𝐨 𝐎𝐮𝐫",
-
-			defaultWelcomeMessage:
-				`𝐀𝐬𝐬𝐚𝐥𝐚𝐦𝐮𝐚𝐥𝐚𝐢𝐤𝐮𝐦\n\n` +
-				`𝐇𝐞𝐲 {userName}\n\n` +
-				`𝐖𝐞𝐥𝐜𝐨𝐦𝐞 {multiple} 𝐂𝐡𝐚𝐭 𝐆𝐫𝐨𝐮𝐩\n` +
-				`𝐆𝐫𝐨𝐮𝐩 𝐍𝐚𝐦𝐞 : {boxName}\n\n` +
-				`𝐖𝐢𝐬𝐡𝐢𝐧𝐠 𝐘𝐨𝐮 𝐀 𝐍𝐢𝐜𝐞 {session}`
+			session1: "𝑴𝒐𝒓𝑵𝒊𝒏𝑮",
+			session2: "𝑵𝒐𝒐𝑵",
+			session3: "𝑨𝒇𝒕𝒆𝑹𝒏𝒐𝒐𝑵",
+			session4: "𝑬𝒗𝒆𝑵𝒊𝒏𝑮",
+			session5: "𝑵𝒊𝒈𝑯𝒕",
+			welcomeMessage: `🫧 𝐀𝐒𝐀𝐋𝐀𝐌𝐔𝐖𝐀𝐋𝐈𝐊𝐔𝐌 🫧`
+				+ `\n💠 𝐓𝐡𝐞 𝐁𝐨𝐭 𝐇𝐚𝐬 𝐂𝐨𝐧𝐧𝐞𝐜𝐭𝐞𝐝 𝐭𝐨 𝐭𝐡𝐞 𝐆𝐫𝐨𝐮𝐩 ⚜`
+				+ `\n🌀 𝐏𝐫𝐞𝐟𝐢𝐱: %1`
+				+ `\n__________________________`
+				+ `\n👑 𝐎𝐰𝐧𝐞𝐫: https://www.facebook.com/profile.php?id=100081317798618`
+				+ `\n__________________________`
+				+ `\n✨ 𝐓𝐨 𝐯𝐢𝐞𝐰 𝐜𝐨𝐦𝐦𝐚𝐧𝐝𝐬: %1help`,
+			multiple1: "𝐭𝐨 𝐭𝐡𝐞",
+			multiple2: "𝐭𝐨 𝐨𝐮𝐫",
+			defaultWelcomeMessage: `🌟 𝐇𝐞𝐥𝐥𝐨 {userName}!\n💫 𝐖𝐞𝐥𝐜𝐨𝐦𝐞 {multiple} 𝐭𝐨 𝐭𝐡𝐞 𝐆𝐫𝐨𝐮𝐩: {boxName}\n🎉 𝐇𝐚𝐯𝐞 𝐚  𝐟𝐚𝐧𝐭𝐚𝐬𝐭𝐢𝐜 {session}! 😎`
 		}
 	},
 
@@ -43,22 +44,18 @@ module.exports = {
 
 		const hours = getTime("HH");
 		const { threadID } = event;
-		const prefix = global.utils.getPrefix(threadID);
 		const { nickNameBot } = global.GoatBot.config;
+		const prefix = global.utils.getPrefix(threadID);
 		const dataAddedParticipants = event.logMessageData.addedParticipants;
 
-		// Bot added to group
-		if (dataAddedParticipants.some(u => u.userFbId == api.getCurrentUserID())) {
-			if (nickNameBot)
-				api.changeNickname(nickNameBot, threadID, api.getCurrentUserID());
+		// Bot added
+		if (dataAddedParticipants.some((item) => item.userFbId == api.getCurrentUserID())) {
+			if (nickNameBot) api.changeNickname(nickNameBot, threadID, api.getCurrentUserID());
 			return message.send(getLang("welcomeMessage", prefix));
 		}
 
 		if (!global.temp.welcomeEvent[threadID]) {
-			global.temp.welcomeEvent[threadID] = {
-				joinTimeout: null,
-				dataAddedParticipants: []
-			};
+			global.temp.welcomeEvent[threadID] = { joinTimeout: null, dataAddedParticipants: [] };
 		}
 
 		global.temp.welcomeEvent[threadID].dataAddedParticipants.push(...dataAddedParticipants);
@@ -66,47 +63,34 @@ module.exports = {
 
 		global.temp.welcomeEvent[threadID].joinTimeout = setTimeout(async () => {
 			const threadData = await threadsData.get(threadID);
-			if (threadData.settings.sendWelcomeMessage === false) return;
+			if (threadData.settings.sendWelcomeMessage == false) return;
 
-			const added = global.temp.welcomeEvent[threadID].dataAddedParticipants;
-			const banned = threadData.data.banned_ban || [];
+			const dataAdded = global.temp.welcomeEvent[threadID].dataAddedParticipants;
+			const dataBanned = threadData.data.banned_ban || [];
 			const threadName = threadData.threadName;
+			const userName = [], mentions = [];
+			let multiple = dataAdded.length > 1;
 
-			const names = [];
-			const mentions = [];
-			let multiple = added.length > 1;
-
-			for (const user of added) {
-				if (banned.some(b => b.id == user.userFbId)) continue;
-				names.push(user.fullName);
-				mentions.push({
-					tag: user.fullName,
-					id: user.userFbId
-				});
+			for (const user of dataAdded) {
+				if (dataBanned.some((item) => item.id == user.userFbId)) continue;
+				userName.push(user.fullName);
+				mentions.push({ tag: user.fullName, id: user.userFbId });
 			}
+			if (!userName.length) return;
 
-			if (!names.length) return;
-
-			let welcomeMessage =
-				threadData.data.welcomeMessage || getLang("defaultWelcomeMessage");
-
-			const form = {
-				mentions: welcomeMessage.includes("{userNameTag}") ? mentions : null
-			};
+			let { welcomeMessage = getLang("defaultWelcomeMessage") } = threadData.data;
+			const form = { mentions: welcomeMessage.match(/\{userNameTag\}/g) ? mentions : null };
 
 			welcomeMessage = welcomeMessage
-				.replace(/\{userName\}|\{userNameTag\}/g, names.join(", "))
+				.replace(/\{userName\}|\{userNameTag\}/g, userName.join(", "))
 				.replace(/\{boxName\}|\{threadName\}/g, threadName)
 				.replace(/\{multiple\}/g, multiple ? getLang("multiple2") : getLang("multiple1"))
 				.replace(
 					/\{session\}/g,
-					hours <= 10
-						? getLang("session1")
-						: hours <= 12
-							? getLang("session2")
-							: hours <= 18
-								? getLang("session3")
-								: getLang("session4")
+					hours <= 10 ? getLang("session1") :
+					hours <= 12 ? getLang("session2") :
+					hours <= 18 ? getLang("session3") :
+					getLang("session4")
 				);
 
 			form.body = welcomeMessage;
@@ -115,10 +99,9 @@ module.exports = {
 				const files = threadData.data.welcomeAttachment;
 				const attachments = files.map(file => drive.getFile(file, "stream"));
 				form.attachment = (await Promise.allSettled(attachments))
-					.filter(r => r.status === "fulfilled")
-					.map(r => r.value);
+					.filter(({ status }) => status == "fulfilled")
+					.map(({ value }) => value);
 			}
-
 			message.send(form);
 			delete global.temp.welcomeEvent[threadID];
 		}, 1500);
