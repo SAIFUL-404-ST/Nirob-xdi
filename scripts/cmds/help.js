@@ -36,7 +36,7 @@ module.exports = {
     // Admin info for full help only
     const adminName = "Saif";
     const adminFacebook = "https://www.facebook.com/61567256940629";
-    const adminWhatsApp = "01823772045 (Important Msg Only)";
+    const adminWhatsApp = "0182377204* (Important Msg Only)";
 
     if (!args || args.length === 0) {
       const categories = {};
